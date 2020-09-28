@@ -17,9 +17,7 @@ exports.checkId = (req, res, next, val) => {
 exports.getAllHabits = (req, res) => {
     res.status(200).json({
         status: 'success',
-        tours: {
-            habits
-        }
+        habits: habits
     });
 };
 
