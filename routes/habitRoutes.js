@@ -9,6 +9,10 @@ router
     .route('/')
     .get(habitController.getAllHabits)
     .post(habitController.createHabit);
-router.route('/:id').get(habitController.getHabit);
+router
+    .route('/:id')
+    .get(habitController.getHabit)
+    .patch(habitController.updateHabit)
+    .delete(habitController.deleteHabit);
 
 module.exports = router;

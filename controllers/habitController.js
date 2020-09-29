@@ -49,3 +49,41 @@ exports.createHabit = async (req, res) => {
         });
     }
 };
+
+exports.updateHabit = async (req, res) => {
+    try {
+        const updatedHabit = await Habit.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        res.status(201).json({
+            status: 'success',
+            habit: updatedHabit
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+};
+
+exports.deleteHabit = async (req, res) => {
+    try {
+        await Habit.findByIdAndDelete(req.params.id);
+
+        res.status(201).json({
+            status: 'success'
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+};
