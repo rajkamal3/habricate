@@ -3,8 +3,6 @@ const habitController = require('./../controllers/habitController');
 
 const router = express.Router();
 
-// router.param('id', habitController.checkId);
-
 router
     .route('/')
     .get(habitController.getAllHabits)

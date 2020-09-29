@@ -11,9 +11,7 @@ app.use((req, res, next) => {
     next();
 });
 
-if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-}
+app.use(morgan('dev'));
 
 app.use('/api/v1/habits/', habitRouter);
 app.use('/api/v1/users/', userRouter);

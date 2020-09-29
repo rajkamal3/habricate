@@ -2,7 +2,7 @@ const Habit = require('./../models/habitModel');
 
 exports.getAllHabits = async (req, res) => {
     try {
-        const habits = await Habit.find();
+        const habits = await Habit.find(req.query);
 
         res.status(200).json({
             status: 'success',
