@@ -19,7 +19,8 @@
   "homepage": "https://github.com/rajkamal3/habricate#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7"
   },
   "devDependencies": {
     "eslint": "^7.9.0",
