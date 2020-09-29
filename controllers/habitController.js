@@ -1,42 +1,51 @@
-const fs = require('fs');
+const Habit = require('./../models/habitModel');
 
-const habits = JSON.parse(
-    fs.readFileSync(`${__dirname}/../devData/habits.json`)
-);
+exports.getAllHabits = async (req, res) => {
+    try {
+        const habits = await Habit.find();
 
-exports.checkId = (req, res, next, val) => {
-    if (req.params.id * 1 > habits.length) {
-        return res.status(404).json({
+        res.status(200).json({
+            status: 'success',
+            data: {
+                habits
+            }
+        });
+    } catch (err) {
+        res.status(400).json({
             status: 'fail',
-            message: 'Invalid ID'
+            message: err
         });
     }
-    next();
 };
 
-exports.getAllHabits = (req, res) => {
-    res.status(200).json({
-        status: 'success',
-        habits: habits
-    });
+exports.getHabit = async (req, res) => {
+    try {
+        const habit = await Habit.findById(req.params.id);
+
+        res.status(200).json({
+            status: 'success',
+            habit: habit
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
 };
 
-exports.getHabit = (req, res) => {
-    const habitId = req.params.id * 1;
-    const habit = habits.find(el => {
-        return el.id === habitId;
-    });
+exports.createHabit = async (req, res) => {
+    try {
+        const newHabit = await Habit.create(req.body);
 
-    res.status(200).json({
-        status: 'success',
-        habit: habit
-    });
-};
-
-exports.createHabit = (req, res) => {
-    console.log(req.params);
-    res.status(200).json({
-        status: 'success',
-        habit: req.body
-    });
+        res.status(201).json({
+            status: 'success',
+            habit: newHabit
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: 'Invalid data sent'
+        });
+    }
 };

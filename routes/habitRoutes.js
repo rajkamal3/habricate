@@ -3,9 +3,12 @@ const habitController = require('./../controllers/habitController');
 
 const router = express.Router();
 
-router.param('id', habitController.checkId);
+// router.param('id', habitController.checkId);
 
-router.route('/').get(habitController.getAllHabits);
+router
+    .route('/')
+    .get(habitController.getAllHabits)
+    .post(habitController.createHabit);
 router.route('/:id').get(habitController.getHabit);
 
 module.exports = router;
