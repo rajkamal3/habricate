@@ -4,6 +4,10 @@ const habitController = require('./../controllers/habitController');
 const router = express.Router();
 
 router
+    .route('/top-5-habits')
+    .get(habitController.getTopFiveHabits, habitController.getAllHabits);
+
+router
     .route('/')
     .get(habitController.getAllHabits)
     .post(habitController.createHabit);

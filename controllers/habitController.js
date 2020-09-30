@@ -1,56 +1,22 @@
 const Habit = require('./../models/habitModel');
+const APIFeatures = require('./../utils/apiFeatures');
+
+exports.getTopFiveHabits = (req, res, next) => {
+    req.query.limit = '5';
+    req.query.sort = 'name';
+    req.query.fields = 'name,minutes';
+    next();
+};
 
 exports.getAllHabits = async (req, res) => {
     try {
-        console.log(req.query);
-        // Build query
+        const features = new APIFeatures(Habit.find(), req.query)
+            .filter()
+            .sort()
+            .limit()
+            .paginate();
 
-        // 1) Filtering
-        const queryObj = { ...req.query };
-        const excludedFields = ['page', 'sort', 'limit', 'fields'];
-        excludedFields.forEach(el => delete queryObj[el]);
-
-        // 2) Advanced filtering
-        let queryString = JSON.stringify(queryObj);
-        queryString = queryString.replace(
-            /\b(gt|gte|lt|lte)\b/g,
-            match => `$${match}`
-        );
-
-        let query = Habit.find(JSON.parse(queryString));
-
-        // 3) Sorting
-        if (req.query.sort) {
-            const sortBy = req.query.sort.split(',').join(' ');
-            query = query.sort(sortBy);
-        } else {
-            query = query.sort('name');
-        }
-
-        // 4) Limiting
-        if (req.query.fields) {
-            const limitBy = req.query.fields.split(',').join(' ');
-            query = query.select(limitBy);
-        } else {
-            query = query.select('-__v');
-        }
-
-        // 5) Pagination
-        const page = req.query.page * 1 || 1;
-        const limit = req.query.limit * 1 || 10;
-        const skip = (page - 1) * limit;
-
-        query = query.skip(skip).limit(limit);
-
-        if (req.query.page) {
-            const numHabits = await Habit.countDocuments();
-            if (skip >= numHabits) {
-                throw new Error('This page does not exist!');
-            }
-        }
-
-        // Execute query
-        const habits = await query;
+        const habits = await features.query;
 
         res.status(200).json({
             status: 'success',
