@@ -2,12 +2,13 @@ const Habit = require('./../models/habitModel');
 
 exports.getAllHabits = async (req, res) => {
     try {
+        console.log(req.query);
         // Build query
 
         // 1) Filtering
         const queryObj = { ...req.query };
         const excludedFields = ['page', 'sort', 'limit', 'fields'];
-        excludedFields.forEach(el => delete excludedFields[el]);
+        excludedFields.forEach(el => delete queryObj[el]);
 
         // 2) Advanced filtering
         let queryString = JSON.stringify(queryObj);
@@ -16,13 +17,30 @@ exports.getAllHabits = async (req, res) => {
             match => `$${match}`
         );
 
-        const query = Habit.find(JSON.parse(queryString));
+        let query = Habit.find(JSON.parse(queryString));
+
+        // 3) Sorting
+        if (req.query.sort) {
+            const sortBy = req.query.sort.split(',').join(' ');
+            query = query.sort(sortBy);
+        } else {
+            query = query.sort('name');
+        }
+
+        // 4) Limiting
+        if (req.query.fields) {
+            const limitBy = req.query.fields.split(',').join(' ');
+            query = query.select(limitBy);
+        } else {
+            query = query.select('-__v');
+        }
 
         // Execute query
         const habits = await query;
 
         res.status(200).json({
             status: 'success',
+            results: habits.length,
             data: {
                 habits
             }

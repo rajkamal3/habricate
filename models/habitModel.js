@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const habitSchema = new mongoose.Schema({
+    createdAt: {
+        type: Date,
+        default: Date.now(),
+        select: false
+    },
     name: {
         type: String,
         required: [true, 'A habit must have a name!'],
@@ -16,7 +21,10 @@ const habitSchema = new mongoose.Schema({
     },
     goal: Number,
     goalUnits: String,
-    reminder: Boolean
+    reminder: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const Habit = mongoose.model('Habit', habitSchema);
