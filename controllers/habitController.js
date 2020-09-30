@@ -2,7 +2,24 @@ const Habit = require('./../models/habitModel');
 
 exports.getAllHabits = async (req, res) => {
     try {
-        const habits = await Habit.find(req.query);
+        // Build query
+
+        // 1) Filtering
+        const queryObj = { ...req.query };
+        const excludedFields = ['page', 'sort', 'limit', 'fields'];
+        excludedFields.forEach(el => delete excludedFields[el]);
+
+        // 2) Advanced filtering
+        let queryString = JSON.stringify(queryObj);
+        queryString = queryString.replace(
+            /\b(gt|gte|lt|lte)\b/g,
+            match => `$${match}`
+        );
+
+        const query = Habit.find(JSON.parse(queryString));
+
+        // Execute query
+        const habits = await query;
 
         res.status(200).json({
             status: 'success',
