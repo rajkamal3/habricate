@@ -35,6 +35,20 @@ exports.getAllHabits = async (req, res) => {
             query = query.select('-__v');
         }
 
+        // 5) Pagination
+        const page = req.query.page * 1 || 1;
+        const limit = req.query.limit * 1 || 10;
+        const skip = (page - 1) * limit;
+
+        query = query.skip(skip).limit(limit);
+
+        if (req.query.page) {
+            const numHabits = await Habit.countDocuments();
+            if (skip >= numHabits) {
+                throw new Error('This page does not exist!');
+            }
+        }
+
         // Execute query
         const habits = await query;
 
