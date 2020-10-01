@@ -102,3 +102,32 @@ exports.deleteHabit = async (req, res) => {
         });
     }
 };
+
+exports.getHabitStats = async (req, res) => {
+    try {
+        const stats = await Habit.aggregate([
+            {
+                $match: { goal: { $gte: 5 } }
+            },
+            {
+                $group: {
+                    _id: null,
+                    numHabits: { $sum: 1 },
+                    avgGoal: { $avg: '$goal' }
+                }
+            }
+        ]);
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                stats: stats
+            }
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+};

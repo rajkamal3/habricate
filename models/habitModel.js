@@ -11,6 +11,10 @@ const habitSchema = new mongoose.Schema({
         required: [true, 'A habit must have a name!'],
         unique: true
     },
+    difficulty: {
+        type: String,
+        required: [true, 'A habit must have a difficulty']
+    },
     repeat: {
         type: Date,
         required: [true, 'A habit must have a repeat!']

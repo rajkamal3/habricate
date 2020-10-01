@@ -7,6 +7,8 @@ router
     .route('/top-5-habits')
     .get(habitController.getTopFiveHabits, habitController.getAllHabits);
 
+router.route('/habitStats').get(habitController.getHabitStats);
+
 router
     .route('/')
     .get(habitController.getAllHabits)
