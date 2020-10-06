@@ -1,5 +1,7 @@
 const Habit = require('./../models/habitModel');
 const APIFeatures = require('./../utils/apiFeatures');
+const AppError = require('../utils/appError');
+const catchAsync = require('./../utils/catchAsync');
 
 exports.getTopFiveHabits = (req, res, next) => {
     req.query.limit = '5';
@@ -8,126 +10,96 @@ exports.getTopFiveHabits = (req, res, next) => {
     next();
 };
 
-exports.getAllHabits = async (req, res) => {
-    try {
-        const features = new APIFeatures(Habit.find(), req.query)
-            .filter()
-            .sort()
-            .limit()
-            .paginate();
+exports.getAllHabits = catchAsync(async (req, res, next) => {
+    const features = new APIFeatures(Habit.find(), req.query)
+        .filter()
+        .sort()
+        .limit()
+        .paginate();
 
-        const habits = await features.query;
+    const habits = await features.query;
 
-        res.status(200).json({
-            status: 'success',
-            results: habits.length,
-            data: {
-                habits
+    res.status(200).json({
+        status: 'success',
+        results: habits.length,
+        data: {
+            habits
+        }
+    });
+});
+
+exports.getHabit = catchAsync(async (req, res, next) => {
+    const habit = await Habit.findById(req.params.id);
+
+    if (!habit) {
+        return next(new AppError(`No habit with that ID`, 404));
+    }
+
+    res.status(200).json({
+        status: 'success',
+        habit: habit
+    });
+});
+
+exports.createHabit = catchAsync(async (req, res, next) => {
+    const newHabit = await Habit.create(req.body);
+
+    res.status(201).json({
+        status: 'success',
+        habit: newHabit
+    });
+});
+
+exports.updateHabit = catchAsync(async (req, res, next) => {
+    const updatedHabit = await Habit.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+
+    if (!updatedHabit) {
+        return next(new AppError(`No habit with that ID`, 404));
+    }
+
+    res.status(201).json({
+        status: 'success',
+        habit: updatedHabit
+    });
+});
+
+exports.deleteHabit = catchAsync(async (req, res, next) => {
+    const habit = await Habit.findByIdAndDelete(req.params.id);
+
+    if (!habit) {
+        return next(new AppError(`No habit with that ID`, 404));
+    }
+
+    res.status(201).json({
+        status: 'success'
+    });
+});
+
+exports.getHabitStats = catchAsync(async (req, res, next) => {
+    const stats = await Habit.aggregate([
+        {
+            $match: { goal: { $gte: 5 } }
+        },
+        {
+            $group: {
+                _id: null,
+                numHabits: { $sum: 1 },
+                avgGoal: { $avg: '$goal' }
             }
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err
-        });
-    }
-};
+        }
+    ]);
 
-exports.getHabit = async (req, res) => {
-    try {
-        const habit = await Habit.findById(req.params.id);
-
-        res.status(200).json({
-            status: 'success',
-            habit: habit
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: 'fail',
-            message: err
-        });
-    }
-};
-
-exports.createHabit = async (req, res) => {
-    try {
-        const newHabit = await Habit.create(req.body);
-
-        res.status(201).json({
-            status: 'success',
-            habit: newHabit
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: 'Invalid data sent'
-        });
-    }
-};
-
-exports.updateHabit = async (req, res) => {
-    try {
-        const updatedHabit = await Habit.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            {
-                new: true,
-                runValidators: true
-            }
-        );
-
-        res.status(201).json({
-            status: 'success',
-            habit: updatedHabit
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: 'fail',
-            message: err
-        });
-    }
-};
-
-exports.deleteHabit = async (req, res) => {
-    try {
-        await Habit.findByIdAndDelete(req.params.id);
-
-        res.status(201).json({
-            status: 'success'
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: 'fail',
-            message: err
-        });
-    }
-};
-
-exports.getHabitStats = async (req, res) => {
-    try {
-        const stats = await Habit.aggregate([
-            {
-                $match: { goal: { $gte: 5 } }
-            },
-            {
-                $group: {
-                    _id: null,
-                    numHabits: { $sum: 1 },
-                    avgGoal: { $avg: '$goal' }
-                }
-            }
-        ]);
-
-        res.status(200).json({
-            status: 'success',
-            data: {
-                stats: stats
-            }
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: 'fail',
-            message: err
-        });
-    }
-};
+    res.status(200).json({
+        status: 'success',
+        data: {
+            stats: stats
+        }
+    });
+});
