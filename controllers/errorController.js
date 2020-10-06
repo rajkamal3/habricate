@@ -1,7 +1,7 @@
 const AppError = require('./../utils/appError');
 
 const handleCastErrorDB = err => {
-    const message = `Invalid ${err.path}: ${err.value}`;
+    const message = `Habit with the same name already exists!`;
     return new AppError(message, 400);
 };
 
@@ -38,7 +38,9 @@ module.exports = (err, req, res, next) => {
     } else if (process.env.NODE_ENV === 'production') {
         let error = { ...err };
 
-        if (error.name === 'CastError') error = handleCastErrorDB(error);
+        if (error.code === 11000) {
+            error = handleCastErrorDB(error);
+        }
 
         sendErrorProd(error, res);
     }
