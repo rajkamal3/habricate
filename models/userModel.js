@@ -31,6 +31,11 @@ const userSchema = new mongoose.Schema({
         }
     },
     passwordChangedAt: Date,
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
+    },
     photo: {
         type: String,
         default: 'defaultUser.png'

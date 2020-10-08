@@ -18,6 +18,10 @@ router
     .route('/:id')
     .get(habitController.getHabit)
     .patch(habitController.updateHabit)
-    .delete(habitController.deleteHabit);
+    .delete(
+        authController.protect,
+        authController.restrictTo('admin'),
+        habitController.deleteHabit
+    );
 
 module.exports = router;
