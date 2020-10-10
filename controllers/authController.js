@@ -29,7 +29,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     res.cookie('jwt', token, cookieOptions);
 
     // Remove password from output
-    user.password = undefined;
+    newUser.password = undefined;
 
     res.status(201).json({
         status: 'success',

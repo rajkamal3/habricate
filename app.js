@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const habitRouter = require('./routes/habitRoutes');
 const userRouter = require('./routes/userRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const rateLimit = require('express-rate-limit');
@@ -38,6 +39,7 @@ app.use(
 
 app.use('/api/v1/habits/', habitRouter);
 app.use('/api/v1/users/', userRouter);
+app.use('/api/v1/reviews/', reviewRouter);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`));
