@@ -13,6 +13,11 @@ router.patch(
     authController.protect,
     authController.changePassword
 );
+router.patch(
+    '/updateAccountDetails',
+    authController.protect,
+    userController.updateAccountDetails
+);
 
 router.route('/').get(userController.getAllUsers);
 
