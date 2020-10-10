@@ -18,6 +18,11 @@ router.patch(
     authController.protect,
     userController.updateAccountDetails
 );
+router.delete(
+    '/deleteMyAccount',
+    authController.protect,
+    userController.deleteMyAccount
+);
 
 router.route('/').get(userController.getAllUsers);
 
