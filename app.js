@@ -5,8 +5,12 @@ const userRouter = require('./routes/userRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const rateLimit = require('express-rate-limit');
+const hemlet = require('helmet');
 
 const app = express();
+
+app.use(helmet());
+
 app.use(express.json());
 
 app.use(morgan('dev'));
