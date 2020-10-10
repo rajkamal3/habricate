@@ -4,11 +4,20 @@ const habitRouter = require('./routes/habitRoutes');
 const userRouter = require('./routes/userRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(express.json());
 
 app.use(morgan('dev'));
+
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message: 'Too many requests. Please try again later.'
+});
+
+app.use('/api', limiter);
 
 app.use('/api/v1/habits/', habitRouter);
 app.use('/api/v1/users/', userRouter);
