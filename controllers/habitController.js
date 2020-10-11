@@ -17,7 +17,7 @@ exports.getAllHabits = catchAsync(async (req, res, next) => {
         .limit()
         .paginate();
 
-    const habits = await features.query;
+    const habits = await features.query.populate('reviews');
 
     res.status(200).json({
         status: 'success',
@@ -29,7 +29,7 @@ exports.getAllHabits = catchAsync(async (req, res, next) => {
 });
 
 exports.getHabit = catchAsync(async (req, res, next) => {
-    const habit = await Habit.findById(req.params.id);
+    const habit = await Habit.findById(req.params.id).populate('reviews');
 
     if (!habit) {
         return next(new AppError(`No habit with that ID`, 404));

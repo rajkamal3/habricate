@@ -59,6 +59,12 @@ habitSchema.virtual('goalSeconds').get(function () {
     return this.goal * 60;
 });
 
+habitSchema.virtual('reviews', {
+    ref: 'Review',
+    foreignField: 'habit',
+    localField: '_id'
+});
+
 habitSchema.pre('save', function (next) {
     this.slug = slugify(this.name, { lower: true });
     next();
