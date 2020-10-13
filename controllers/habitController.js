@@ -1,7 +1,8 @@
 const Habit = require('./../models/habitModel');
 const APIFeatures = require('./../utils/apiFeatures');
-const AppError = require('../utils/appError');
+const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
+const factory = require('./handlerFactory');
 
 exports.getTopFiveHabits = (req, res, next) => {
     req.query.limit = '5';
@@ -70,17 +71,7 @@ exports.updateHabit = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.deleteHabit = catchAsync(async (req, res, next) => {
-    const habit = await Habit.findByIdAndDelete(req.params.id);
-
-    if (!habit) {
-        return next(new AppError(`No habit with that ID`, 404));
-    }
-
-    res.status(201).json({
-        status: 'success'
-    });
-});
+exports.deleteHabit = factory.deleteOne(Habit);
 
 exports.getHabitStats = catchAsync(async (req, res, next) => {
     const stats = await Habit.aggregate([

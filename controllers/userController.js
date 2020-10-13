@@ -1,6 +1,7 @@
 const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
+const factory = require('./../controllers/handlerFactory');
 
 const filterObj = (obj, ...allowedFields) => {
     const newObj = {};
@@ -57,3 +58,5 @@ exports.deleteMyAccount = catchAsync(async (req, res, next) => {
         data: null
     });
 });
+
+exports.deleteUser = factory.deleteOne(User);
