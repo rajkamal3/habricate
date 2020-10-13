@@ -17,6 +17,7 @@ router
     .route('/')
     .get(authController.protect, habitController.getAllHabits)
     .post(habitController.createHabit);
+
 router
     .route('/:id')
     .get(habitController.getHabit)
