@@ -13,17 +13,10 @@ const filterObj = (obj, ...allowedFields) => {
     return newObj;
 };
 
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-    const users = await User.find();
-
-    res.status(200).json({
-        status: 'success',
-        results: users.length,
-        tours: {
-            users
-        }
-    });
-});
+exports.getAllUsers = factory.getAll(User);
+exports.getUser = factory.getOne(User);
+exports.updateUser = factory.updateOne(User);
+exports.deleteUser = factory.deleteOne(User);
 
 exports.updateAccountDetails = catchAsync(async (req, res, next) => {
     // 1) Create an error if user tries to update password
@@ -58,6 +51,3 @@ exports.deleteMyAccount = catchAsync(async (req, res, next) => {
         data: null
     });
 });
-
-exports.updateUser = factory.updateOne(User);
-exports.deleteUser = factory.deleteOne(User);
