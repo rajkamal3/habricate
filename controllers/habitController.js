@@ -42,35 +42,8 @@ exports.getHabit = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.createHabit = catchAsync(async (req, res, next) => {
-    const newHabit = await Habit.create(req.body);
-
-    res.status(201).json({
-        status: 'success',
-        habit: newHabit
-    });
-});
-
-exports.updateHabit = catchAsync(async (req, res, next) => {
-    const updatedHabit = await Habit.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {
-            new: true,
-            runValidators: true
-        }
-    );
-
-    if (!updatedHabit) {
-        return next(new AppError(`No habit with that ID`, 404));
-    }
-
-    res.status(201).json({
-        status: 'success',
-        habit: updatedHabit
-    });
-});
-
+exports.createHabit = factory.createOne(Habit);
+exports.updateHabit = factory.updateOne(Habit);
 exports.deleteHabit = factory.deleteOne(Habit);
 
 exports.getHabitStats = catchAsync(async (req, res, next) => {
