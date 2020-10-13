@@ -55,6 +55,8 @@ const habitSchema = new mongoose.Schema(
     }
 );
 
+habitSchema.index({ goal: 1 });
+
 habitSchema.virtual('goalSeconds').get(function () {
     return this.goal * 60;
 });
