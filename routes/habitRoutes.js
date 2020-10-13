@@ -15,13 +15,21 @@ router.route('/habit-stats').get(habitController.getHabitStats);
 
 router
     .route('/')
-    .get(authController.protect, habitController.getAllHabits)
-    .post(habitController.createHabit);
+    .get(habitController.getAllHabits)
+    .post(
+        authController.protect,
+        authController.restrictTo('admin'),
+        habitController.createHabit
+    );
 
 router
     .route('/:id')
     .get(habitController.getHabit)
-    .patch(habitController.updateHabit)
+    .patch(
+        authController.protect,
+        authController.restrictTo('admin'),
+        habitController.updateHabit
+    )
     .delete(
         authController.protect,
         authController.restrictTo('admin'),
