@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
+const cors = require('cors');
 const habitRouter = require('./routes/habitRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
@@ -18,6 +19,8 @@ app.use(helmet());
 app.use(express.json());
 
 app.use(morgan('dev'));
+
+app.use(cors());
 
 const limiter = rateLimit({
     max: 100,

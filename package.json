@@ -4,6 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"devBackend": "set NODE_ENV=development& nodemon backend/server",
+		"devFrontend": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run devBackend\" \"npm run devFrontend\"",
 		"start": "set NODE_ENV=development& nodemon backend/server.js",
 		"start:prod": "set NODE_ENV=production& nodemon backend/server.js",
 		"debug": "ndb node backend/server.js"
@@ -20,6 +23,8 @@
 	"homepage": "https://github.com/rajkamal3/habricate#readme",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
+		"concurrently": "^5.3.0",
+		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-mongo-sanitize": "^2.0.0",
@@ -28,14 +33,14 @@
 		"hpp": "^0.2.3",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.10.7",
+		"morgan": "^1.10.0",
 		"nodemailer": "^6.4.13",
 		"slugify": "^1.4.5",
 		"validator": "^13.1.17",
-		"xss-clean": "^0.1.1",
-		"morgan": "^1.10.0"
+		"xss-clean": "^0.1.1"
 	},
 	"devDependencies": {
-		"eslint": "^7.9.0",
+		"eslint": "^7.11.0",
 		"eslint-config-airbnb": "^18.2.0",
 		"eslint-config-prettier": "^6.12.0",
 		"eslint-plugin-import": "^2.22.0",
