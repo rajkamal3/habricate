@@ -1,5 +1,5 @@
-const Review = require('./../models/reviewModel');
-const factory = require('./../controllers/handlerFactory');
+const Review = require('../models/reviewModel');
+const factory = require('./handlerFactory');
 
 exports.setHabitUserIds = (req, res, next) => {
     // Allow nested routes

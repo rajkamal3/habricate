@@ -1,5 +1,5 @@
-const Habit = require('./../models/habitModel');
-const catchAsync = require('./../utils/catchAsync');
+const Habit = require('../models/habitModel');
+const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
 exports.getTopFiveHabits = (req, res, next) => {
