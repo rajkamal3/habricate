@@ -1,6 +1,6 @@
 import React from 'react';
 
-const currentHabits = ({ data }) => {
+const CurrentHabits = ({ data }) => {
     console.log(data);
     return (
         <div>
@@ -57,4 +57,4 @@ const currentHabits = ({ data }) => {
     );
 };
 
-export default currentHabits;
+export default CurrentHabits;

@@ -2,7 +2,7 @@ import React from 'react';
 import CurrentHabits from './../../components/currentHabits/currentHabits';
 import user from './../../assets/images/user.png';
 
-const homeScreen = ({ data }) => {
+const HomeScreen = ({ data }) => {
     return (
         <div>
             <header
@@ -49,9 +49,9 @@ const homeScreen = ({ data }) => {
                     />
                 </div>
             </header>
-            <CurrentHabits data={data} />
+            {/* <CurrentHabits data={data} /> */}
         </div>
     );
 };
 
-export default homeScreen;
+export default HomeScreen;
