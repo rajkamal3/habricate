@@ -19,15 +19,7 @@ function LoginScreen() {
     };
 
     return (
-        <div
-        // style={{
-        //     display: 'flex',
-        //     flexDirection: 'column',
-        //     height: '100vh',
-        //     justifyContent: 'space-between',
-        //     alignItems: 'center'
-        // }}
-        >
+        <div>
             <Header />
             <div
                 style={{
@@ -39,9 +31,7 @@ function LoginScreen() {
             >
                 <div
                     style={{
-                        backgroundColor: 'rgb(102, 168, 81)',
-                        height: '300px',
-                        width: '500px',
+                        height: '360px',
                         display: 'flex',
                         flexFlow: 'column',
                         alignItems: 'center',
@@ -52,11 +42,11 @@ function LoginScreen() {
                     <div>
                         <input
                             style={{
-                                width: '300px',
-                                height: '40px',
+                                width: '360px',
+                                height: '60px',
                                 boxSizing: 'border-box',
                                 fontSize: '20px',
-                                fontFamily: "'Gilroy'",
+                                fontFamily: 'Gilroy',
                                 fontWeight: '500',
                                 paddingLeft: '20px',
                                 border: 'none',
@@ -71,8 +61,8 @@ function LoginScreen() {
                     <div>
                         <input
                             style={{
-                                width: '300px',
-                                height: '40px',
+                                width: '360px',
+                                height: '60px',
                                 boxSizing: 'border-box',
                                 fontSize: '20px',
                                 fontFamily: "'Gilroy'",
@@ -80,7 +70,7 @@ function LoginScreen() {
                                 paddingLeft: '20px',
                                 border: 'none',
                                 borderRadius: '500px',
-                                marginTop: '10px',
+                                marginTop: '15px',
                                 backgroundColor: 'whitesmoke'
                             }}
                             onChange={e => setPassword(e.target.value)}
@@ -90,20 +80,62 @@ function LoginScreen() {
                     </div>
                     <button
                         style={{
-                            width: '120px',
-                            height: '35px',
+                            width: '250px',
+                            height: '45px',
                             border: 'none',
-                            borderRadius: '500px',
                             marginTop: '15px',
                             cursor: 'pointer',
-                            color: '#66a851',
-                            fontSize: '14px'
+                            backgroundColor: 'rgb(102, 168, 81)',
+                            fontSize: '16px',
+                            fontWeight: '600',
+                            borderRadius: '60px',
+                            fontFamily: "'Gilroy'",
+                            color: 'white',
+                            letterSpacing: '10px'
                         }}
                         className={styles.loginButton}
                         onClick={sumbitHandler}
                     >
                         LOGIN
                     </button>
+                    <div
+                        style={{
+                            height: '25px',
+                            alignItems: 'center',
+                            display: 'flex',
+                            width: '250px',
+                            justifyContent: 'center',
+                            textDecoration: 'underline',
+                            color: 'rgb(102, 168, 81)',
+                            fontWeight: '600',
+                            marginTop: '15px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Forgot your password?
+                    </div>
+                    <div
+                        style={{
+                            height: '25px',
+                            alignItems: 'center',
+                            display: 'flex',
+                            width: '250px',
+                            justifyContent: 'center',
+                            marginTop: '15px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Not a member yet? &nbsp;
+                        <span
+                            style={{
+                                textDecoration: 'underline',
+                                color: 'rgb(102, 168, 81)',
+                                fontWeight: '600'
+                            }}
+                        >
+                            Register now
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

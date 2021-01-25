@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './../../ui/header/header';
 
-const HomeScreen = ({ data }) => {
+const HomeScreen = () => {
     return (
         <div>
             <Header />
