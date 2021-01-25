@@ -2,7 +2,7 @@ import React from 'react';
 import CurrentHabits from './../../components/currentHabits/currentHabits';
 import user from './../../assets/images/user.png';
 
-const homeScreen = () => {
+const homeScreen = ({ data }) => {
     return (
         <div>
             <header
@@ -49,7 +49,7 @@ const homeScreen = () => {
                     />
                 </div>
             </header>
-            <CurrentHabits />
+            <CurrentHabits data={data} />
         </div>
     );
 };

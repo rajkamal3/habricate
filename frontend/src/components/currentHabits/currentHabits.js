@@ -1,6 +1,7 @@
 import React from 'react';
 
-const currentHabits = () => {
+const currentHabits = ({ data }) => {
+    console.log(data);
     return (
         <div>
             <div
@@ -17,7 +18,7 @@ const currentHabits = () => {
             >
                 <div
                     style={{
-                        height: '85%',
+                        height: '75%',
                         width: '90%',
                         backgroundColor: 'green',
                         display: 'flex',
