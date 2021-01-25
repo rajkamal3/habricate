@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from './../../ui/header/header';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login } from './../../actions/userActions';
 import styles from './loginScreen.module.css';
 
@@ -20,12 +20,11 @@ function LoginScreen() {
 
     return (
         <div>
-            <Header />
             <div
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    height: '80vh',
+                    height: 'calc(100vh - 70px)',
                     alignItems: 'center'
                 }}
             >
@@ -98,7 +97,8 @@ function LoginScreen() {
                     >
                         LOGIN
                     </button>
-                    <div
+                    <Link
+                        to="/forgot-password"
                         style={{
                             height: '25px',
                             alignItems: 'center',
@@ -113,7 +113,7 @@ function LoginScreen() {
                         }}
                     >
                         Forgot your password?
-                    </div>
+                    </Link>
                     <div
                         style={{
                             height: '25px',
@@ -126,7 +126,8 @@ function LoginScreen() {
                         }}
                     >
                         Not a member yet? &nbsp;
-                        <span
+                        <Link
+                            to="register"
                             style={{
                                 textDecoration: 'underline',
                                 color: 'rgb(102, 168, 81)',
@@ -134,7 +135,7 @@ function LoginScreen() {
                             }}
                         >
                             Register now
-                        </span>
+                        </Link>
                     </div>
                 </div>
             </div>

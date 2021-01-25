@@ -3,14 +3,9 @@
 }
 
 .loginButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+    background-color: rgb(76 125 61) !important;
 }
 
-.loginButton:active {
-    transform: translateY(0px);
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-}
 .loginButton:focus {
     outline: none;
 }
