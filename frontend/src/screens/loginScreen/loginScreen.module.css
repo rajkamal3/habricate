@@ -1,0 +1,16 @@
+.loginButton {
+    transition: 0.3s ease;
+}
+
+.loginButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.loginButton:active {
+    transform: translateY(1px);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+.loginButton:focus {
+    outline: none;
+}
