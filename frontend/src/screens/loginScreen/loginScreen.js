@@ -33,7 +33,6 @@ function LoginScreen({ location, history }) {
     return (
         <div>
             {loading && <div className={styles.loader}>Loading...</div>}
-            {error && <div>{error.data.message}</div>}
             <div
                 style={{
                     display: 'flex',
@@ -53,6 +52,22 @@ function LoginScreen({ location, history }) {
                     }}
                 >
                     <div>
+                        {error && (
+                            <div
+                                style={{
+                                    textAlign: 'center',
+                                    backgroundColor: '#ff7575',
+                                    height: '35px',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    color: 'white',
+                                    marginBottom: '10px'
+                                }}
+                            >
+                                {error.data.message}
+                            </div>
+                        )}
                         <input
                             style={{
                                 width: '360px',
@@ -141,7 +156,7 @@ function LoginScreen({ location, history }) {
                     >
                         Not a member yet? &nbsp;
                         <Link
-                            to="register"
+                            to="/register"
                             style={{
                                 textDecoration: 'underline',
                                 color: 'rgb(102, 168, 81)',
