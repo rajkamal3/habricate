@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { login } from './../../actions/userActions';
 import styles from './loginScreen.module.css';
 
-function LoginScreen() {
+function LoginScreen({ location, history }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
+
+    const userLogin = useSelector(state => state.userLogin);
+    const { loading, error, userInfo } = userLogin;
+
+    const redirect = location.search ? location.search.split('=')[1] : '/';
+    console.log(redirect);
+
+    useEffect(() => {
+        if (userInfo) {
+            history.push(redirect);
+        }
+    }, [userInfo, history, redirect]);
 
     const sumbitHandler = e => {
         e.preventDefault();
@@ -20,6 +32,8 @@ function LoginScreen() {
 
     return (
         <div>
+            {loading && <div className={styles.loader}>Loading...</div>}
+            {error && <div>{error.data.message}</div>}
             <div
                 style={{
                     display: 'flex',
