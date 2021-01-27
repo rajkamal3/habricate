@@ -16,7 +16,7 @@ const HomeScreen = () => {
     return (
         <div
             style={{
-                // backgroundColor: 'red',
+                backgroundColor: 'red',
                 width: '100%',
                 height: 'calc(100vh - 70px)',
                 display: 'flex',
@@ -28,8 +28,8 @@ const HomeScreen = () => {
             <div
                 style={{
                     width: '90%',
-                    height: '93%'
-                    // backgroundColor: 'green'
+                    height: '93%',
+                    backgroundColor: 'green'
                 }}
             >
                 <div
@@ -46,7 +46,7 @@ const HomeScreen = () => {
                             <div
                                 style={{
                                     width: '100%',
-                                    // backgroundColor: 'mediumvioletred',
+                                    backgroundColor: 'mediumvioletred',
                                     height: '150px',
                                     borderRadius: '10px',
                                     marginTop: '10px',
@@ -60,7 +60,7 @@ const HomeScreen = () => {
                             >
                                 <div
                                     style={{
-                                        // backgroundColor: 'orange',
+                                        backgroundColor: 'orange',
                                         width: '90%',
                                         height: '75%',
                                         display: 'flex',
@@ -69,7 +69,7 @@ const HomeScreen = () => {
                                 >
                                     <div
                                         style={{
-                                            // backgroundColor: '#edeeef',
+                                            backgroundColor: '#edeeef',
                                             width: '25%',
                                             borderRadius: '10px',
                                             display: 'flex',
@@ -81,7 +81,7 @@ const HomeScreen = () => {
                                     </div>
                                     <div
                                         style={{
-                                            // backgroundColor: '#81d4fa',
+                                            backgroundColor: '#81d4fa',
                                             width: '70%',
                                             boxSizing: 'border-box',
                                             display: 'flex',

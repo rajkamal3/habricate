@@ -1,53 +1,32 @@
 const express = require('express');
-const morgan = require('morgan');
-const xss = require('xss-clean');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
-const hpp = require('hpp');
-const cors = require('cors');
-const habitRouter = require('./routes/habitRoutes');
-const userRouter = require('./routes/userRoutes');
-const reviewRouter = require('./routes/reviewRoutes');
-const AppError = require('./utils/appError');
-const globalErrorHandler = require('./controllers/errorController');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config({
+    path: `${__dirname}/config.env`
+});
 
 const app = express();
 
-app.use(helmet());
+const DB = process.env.DB.replace('<password>', process.env.DB_PASSWORD);
 
-app.use(express.json());
-
-app.use(morgan('dev'));
-
-app.use(cors());
-
-const limiter = rateLimit({
-    max: 100,
-    windowMs: 60 * 60 * 1000,
-    message: 'Too many requests. Please try again later.'
-});
-
-app.use('/api', limiter);
-
-app.use(mongoSanitize());
-
-app.use(xss());
-
-app.use(
-    hpp({
-        whitelist: ['goal']
+mongoose
+    .connect(DB, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+        useFindAndModify: true,
+        useCreateIndex: true
     })
-);
+    .then(() => {
+        console.log(`Database connection successful.`);
+    });
 
-app.use('/api/v1/habits/', habitRouter);
-app.use('/api/v1/users/', userRouter);
-app.use('/api/v1/reviews/', reviewRouter);
-
-app.all('*', (req, res, next) => {
-    next(new AppError(`Can't find ${req.originalUrl} on this server!`));
+app.get('/', (req, res) => {
+    res.send(`I'm a freakin' server!`);
 });
 
-app.use(globalErrorHandler);
+const port = 3000;
 
-module.exports = app;
+app.listen(port || 3000, (req, res, next) => {
+    console.log(`App running on port 3000`);
+});
