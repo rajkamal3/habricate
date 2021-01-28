@@ -18,6 +18,7 @@ const userSchema = mongoose.Schema(
             type: String,
             required: [true, 'Please enter a password.'],
             minlength: 8
+            // select: false
         },
         isAdmin: {
             type: Boolean,
