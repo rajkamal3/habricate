@@ -8,7 +8,8 @@ const habitSchema = mongoose.Model({
     },
     name: {
         type: String,
-        required: [true, 'Habit name is mandatory']
+        required: [true, 'Habit name is mandatory'],
+        trim: true
     }
 });
 
