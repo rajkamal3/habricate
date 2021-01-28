@@ -28,12 +28,12 @@ exports.login = async (req, res, next) => {
     if (user && (await user.matchPassword(password))) {
         res.status(201).json({
             status: 'success',
-            result: user
+            data: user
         });
     } else {
         res.status(400).json({
             status: 'fail',
-            res: res.err
+            data: 'Incorrect email/password.'
         });
     }
 };
