@@ -19,11 +19,12 @@ const habitSchema = mongoose.Schema({
     },
     targetUnit: {
         type: String
-    },
-    lastSevenDays: {
-        type: String,
-        enum: [false, false, false, false, false, false, false]
     }
+    // progress: [
+    //     [1, 2, 1, 1, 2, 1, 1],
+    //     [2, 2, 1, 2, 2, 1, 1],
+    //     [1, 2, 1, 1, 2, 2, 2]
+    // ]
 });
 
 const habit = new mongoose.model('habit', habitSchema);
