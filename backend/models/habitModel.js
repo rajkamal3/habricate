@@ -10,7 +10,17 @@ const habitSchema = mongoose.Model({
         type: String,
         required: [true, 'Habit name is mandatory'],
         trim: true
-    }
+    },
+    doAt: {
+        type: Date
+    },
+    target: {
+        type: String
+    },
+    targetUnit: {
+        type: String
+    },
+    lastSevenDays: [false, false, false, false, false, false, false]
 });
 
 const user = new mongoose.Schema('habit', habitSchema);

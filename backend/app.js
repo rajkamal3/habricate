@@ -12,6 +12,8 @@ dotenv.config({
 const app = express();
 app.use(express.json());
 
+console.log(Date.now());
+
 if (process.env.NODE_ENV === 'dev') {
     app.use(morgan('dev'));
 }
