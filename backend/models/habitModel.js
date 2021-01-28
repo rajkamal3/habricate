@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const habitSchema = mongoose.Model({
+const habitSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -20,9 +20,12 @@ const habitSchema = mongoose.Model({
     targetUnit: {
         type: String
     },
-    lastSevenDays: [false, false, false, false, false, false, false]
+    lastSevenDays: {
+        type: String,
+        enum: [false, false, false, false, false, false, false]
+    }
 });
 
-const user = new mongoose.Schema('habit', habitSchema);
+const habit = new mongoose.model('habit', habitSchema);
 
-module.exports = user;
+module.exports = habit;

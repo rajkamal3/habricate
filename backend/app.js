@@ -12,8 +12,6 @@ dotenv.config({
 const app = express();
 app.use(express.json());
 
-console.log(Date.now());
-
 if (process.env.NODE_ENV === 'dev') {
     app.use(morgan('dev'));
 }
@@ -40,6 +38,6 @@ app.use('/api/v1/users', userRoutes);
 
 const port = 3000;
 
-app.listen(port || 3000, (req, res, next) => {
+app.listen(port || 3000, () => {
     console.log(`App running on port ${port}`);
 });
