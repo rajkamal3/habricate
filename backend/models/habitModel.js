@@ -25,6 +25,7 @@ const habitSchema = mongoose.Schema({
     //     [2, 2, 1, 2, 2, 1, 1],
     //     [1, 2, 1, 1, 2, 2, 2]
     // ]
+    //
 });
 
 const habit = new mongoose.model('habit', habitSchema);
