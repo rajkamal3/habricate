@@ -1,7 +1,19 @@
 const Habit = require('./../models/habitModel');
 
-exports.getAllHabits = (req, res, next) => {
-    res.send('Here are the habits');
+exports.getAllHabits = async (req, res, next) => {
+    try {
+        const habits = await Habit.find({});
+
+        res.status(200).json({
+            status: 'success',
+            data: habits
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            data: error
+        });
+    }
 };
 
 exports.createHabit = async (req, res, next) => {

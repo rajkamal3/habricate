@@ -1,31 +1,41 @@
 const mongoose = require('mongoose');
 
-const habitSchema = mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+const habitSchema = new mongoose.Schema(
+    {
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'User'
+        },
+        name: {
+            type: String,
+            required: [true, 'Habit name is mandatory'],
+            trim: true
+        },
+        doAtTime: [
+            {
+                type: String
+            }
+        ],
+        doAtPlace: {
+            type: String
+        },
+        dailyTarget: {
+            type: String
+        },
+        dailyTargetUnit: {
+            type: String
+        }
     },
-    name: {
-        type: String,
-        required: [true, 'Habit name is mandatory'],
-        trim: true
-    },
-    doAt: {
-        type: Date
-    },
-    target: {
-        type: String
-    },
-    targetUnit: {
-        type: String
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+        timestamps: true
     }
-    // progress: [
-    //     [1, 2, 1, 1, 2, 1, 1],
-    //     [2, 2, 1, 2, 2, 1, 1],
-    //     [1, 2, 1, 1, 2, 2, 2]
-    // ]
-    //
+);
+
+habitSchema.virtual('averageGoal').get(function () {
+    return parseInt(this.dailyTarget) / this.doAtTime.length;
 });
 
 const habit = new mongoose.model('habit', habitSchema);
