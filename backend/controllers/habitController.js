@@ -4,6 +4,8 @@ const catchAsync = require('express-async-handler');
 exports.getAllHabits = catchAsync(async (req, res, next) => {
     const habits = await Habit.find({});
 
+    console.log(habits);
+
     res.status(200).json({
         status: 'success',
         data: habits
