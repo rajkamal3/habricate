@@ -65,7 +65,7 @@ function LoginScreen({ location, history }) {
                                     marginBottom: '10px'
                                 }}
                             >
-                                {error.data.message}
+                                {error.statusText}
                             </div>
                         )}
                         <input
