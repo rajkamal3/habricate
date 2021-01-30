@@ -13,8 +13,6 @@ exports.getAllHabits = catchAsync(async (req, res, next) => {
 exports.createHabit = async (req, res, next) => {
     const habit = await Habit.create(req.body);
 
-    console.log(habit);
-
     res.status(201).json({
         status: 'success',
         data: habit

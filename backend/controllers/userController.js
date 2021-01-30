@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const catchAsync = require('express-async-handler');
 const jwt = require('jsonwebtoken');
 
 const signToken = id => {
@@ -16,7 +17,6 @@ const createAndSendToken = (user, statusCode, res) => {
     if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
     res.cookie('jwt', token, cookieOptions);
 
-    //Remove password from output
     user.password = undefined;
 
     res.status(statusCode).json({
@@ -27,6 +27,31 @@ const createAndSendToken = (user, statusCode, res) => {
         }
     });
 };
+
+exports.protect = catchAsync(async (req, res, next) => {
+    let token;
+
+    // console.log(req.headers);
+
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        try {
+            token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            req.user = await User.findById(decoded.id).select('-password');
+        } catch (error) {
+            console.log(error);
+            res.status(401);
+            throw new Error('Token error.');
+        }
+    }
+
+    if (!token) {
+        res.status(401);
+        throw new Error(`Not authorized`);
+    }
+
+    next();
+});
 
 exports.signup = async (req, res, next) => {
     const { email, password, name, isAdmin } = req.body;
@@ -41,11 +66,6 @@ exports.signup = async (req, res, next) => {
     } else {
         const user = await User.create({ name, email, password, isAdmin });
 
-        // res.status(201).json({
-        //     status: 'success',
-        //     data: user
-        // });
-
         createAndSendToken(user, 201, res);
     }
 };
@@ -53,13 +73,10 @@ exports.signup = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select('+password');
 
     if (user && (await user.matchPassword(password))) {
-        res.status(201).json({
-            status: 'success',
-            data: user
-        });
+        createAndSendToken(user, 200, res);
     } else {
         res.status(400).json({
             status: 'fail',
