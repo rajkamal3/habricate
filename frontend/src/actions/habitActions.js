@@ -42,7 +42,7 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
 
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_SUCCESS,
-            payload: userHabits
+            payload: userHabits.data.data.data
         });
 
         console.log(userHabits);
