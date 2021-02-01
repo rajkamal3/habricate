@@ -38,11 +38,13 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
         const jwt = localStorage.getItem('jwt');
 
         const AuthStr = 'Bearer '.concat(jwt);
-        const userHabits = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: AuthStr } });
+        const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: AuthStr } });
+
+        const userHabits = data.data.data;
 
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_SUCCESS,
-            payload: userHabits.data.data.data
+            payload: userHabits
         });
 
         console.log(userHabits);
