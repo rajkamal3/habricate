@@ -38,7 +38,7 @@ const HomeScreen = () => {
                                             {habit.name}
                                         </div>
                                         <div>{habit.doAtTime.join(', ')}</div>
-                                        <div>{habit.dailyTargetUnit}</div>
+                                        <div>{`${habit.dailyTarget} ${habit.dailyTargetUnit.toLowerCase()} per day`}</div>
                                     </div>
                                     <div className={styles.eachHabitRightArrow}>
                                         <img src={arrow} alt="arrow" width="6px" />
