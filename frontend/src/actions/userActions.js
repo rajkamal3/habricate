@@ -22,7 +22,7 @@ export const login = (email, password) => async dispatch => {
             payload: data
         });
 
-        localStorage.setItem('jwt', JSON.parse(data.token));
+        localStorage.setItem('jwt', data.token);
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,

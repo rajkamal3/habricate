@@ -1,4 +1,11 @@
-import { HABIT_REQUEST, HABIT_REQUEST_SUCCESS, HABIT_REQUEST_FAIL, FETCH_ALL_HABITS_OF_USER_REQUEST } from './../constants/habitConstants';
+import {
+    HABIT_REQUEST,
+    HABIT_REQUEST_SUCCESS,
+    HABIT_REQUEST_FAIL,
+    FETCH_ALL_HABITS_OF_USER_REQUEST,
+    FETCH_ALL_HABITS_OF_USER_SUCCESS,
+    FETCH_ALL_HABITS_OF_USER_FAIL
+} from './../constants/habitConstants';
 import axios from 'axios';
 
 export const getHabits = () => async dispatch => {
@@ -28,14 +35,21 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
             type: FETCH_ALL_HABITS_OF_USER_REQUEST
         });
 
-        // let headers = {
-        //     'Content-Type': 'application/json',
-        //     Accept: 'application/json',
-        //     Authorization: `Bearer ${token}`
-        // };
-        console.log(this.cookie);
+        const jwt = localStorage.getItem('jwt');
 
-        const data = await axios.get('/api/v1/habits/myHabits');
-        console.log(data);
-    } catch (error) {}
+        const AuthStr = 'Bearer '.concat(jwt);
+        const userHabits = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: AuthStr } });
+
+        dispatch({
+            type: FETCH_ALL_HABITS_OF_USER_SUCCESS,
+            payload: userHabits
+        });
+
+        console.log(userHabits);
+    } catch (error) {
+        dispatch({
+            type: FETCH_ALL_HABITS_OF_USER_FAIL,
+            payload: error.response
+        });
+    }
 };
