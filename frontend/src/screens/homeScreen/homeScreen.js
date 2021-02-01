@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllHabitsOfUser } from './../../actions/habitActions';
 import styles from './homeScreen.module.css';
 import book from './../../assets/images/book.png';
+import arrow from './../../assets/images/habitArrow.png';
 import Spinner from './../../ui/spinner/spinner';
 
 const HomeScreen = () => {
@@ -39,7 +40,9 @@ const HomeScreen = () => {
                                         <div>{habit.doAtTime.join(', ')}</div>
                                         <div>{habit.dailyTargetUnit}</div>
                                     </div>
-                                    <div className={styles.eachHabitRightArrow}>&#x3e;</div>
+                                    <div className={styles.eachHabitRightArrow}>
+                                        <img src={arrow} alt="arrow" width="6px" />
+                                    </div>
                                 </div>
                             </div>
                         );
