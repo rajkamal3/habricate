@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getHabits } from './../../actions/habitActions';
+import { fetchAllHabitsOfUser } from './../../actions/habitActions';
 import book from './../../assets/images/book.png';
 
 const HomeScreen = () => {
@@ -10,7 +10,7 @@ const HomeScreen = () => {
     const { loading, habits } = habitsStore;
 
     useEffect(() => {
-        dispatch(getHabits());
+        dispatch(fetchAllHabitsOfUser());
     }, [dispatch]);
 
     return (
