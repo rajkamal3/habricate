@@ -1,38 +1,42 @@
 .homeScreenContainer {
-    background-color: red;
+    /* background-color: red; */
     width: 100%;
     height: calc(100vh - 70px);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     color: rgb(34, 34, 34);
 }
 
 .homeScreenContainerChild {
-    width: 90%;
+    width: 85%;
     height: 93%;
-    background-color: green;
+    /* background-color: green; */
+    box-sizing: border-box;
+    padding-top: 15px;
 }
 
 .currentHabitsTitle {
-    font-weight: 700;
+    font-weight: 800;
+    color: #66a851;
 }
 
 .eachHabit {
     width: 100%;
-    background-color: mediumvioletred;
-    height: 150px;
+    /* background-color: mediumvioletred; */
+    height: 110px;
     border-radius: 10px;
-    margin-top: 10px;
-    box-shadow: rgb(0 0 0 / 50%) 0px 0px 10px -3px;
+    margin-top: 15px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 0px 20px -3px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-weight: lighter !important;
 }
 
 .eachHabitChild {
-    background-color: orange;
+    /* background-color: orange; */
     width: 90%;
     height: 75%;
     display: flex;
@@ -40,8 +44,8 @@
 }
 
 .habitImageContainer {
-    background-color: rgb(237, 238, 239);
-    width: 25%;
+    background: rgb(237, 238, 239);
+    width: 21%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -49,14 +53,16 @@
 }
 
 .habitDetailsContainer {
-    background-color: rgb(129, 212, 250);
-    width: 70%;
+    /* background-color: rgb(129, 212, 250); */
+    width: 74%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 500;
+    padding-left: 10px;
+    color: #888888;
 }
 
 .eachHabitRightArrow {
@@ -65,5 +71,4 @@
     justify-content: center;
     align-items: center;
     font-weight: 400;
-    transform: scaleY(2);
 }

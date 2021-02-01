@@ -26,11 +26,17 @@ const HomeScreen = () => {
                             <div className={styles.eachHabit} key={habit._id}>
                                 <div className={styles.eachHabitChild}>
                                     <div className={styles.habitImageContainer}>
-                                        <img src={book} width="45px" alt="book" />
+                                        <img src={book} width="30px" alt="book" />
                                     </div>
                                     <div className={styles.habitDetailsContainer}>
-                                        <div>{habit.name}</div>
-                                        <div>{habit.doAtTime.join(' ')}</div>
+                                        <div
+                                            style={{
+                                                color: '#66a851'
+                                            }}
+                                        >
+                                            {habit.name}
+                                        </div>
+                                        <div>{habit.doAtTime.join(', ')}</div>
                                         <div>{habit.dailyTargetUnit}</div>
                                     </div>
                                     <div className={styles.eachHabitRightArrow}>&#x3e;</div>

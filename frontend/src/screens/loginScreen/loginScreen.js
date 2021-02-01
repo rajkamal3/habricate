@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Spinner from '../../ui/spinner/spinner';
 import { login } from './../../actions/userActions';
 import styles from './loginScreen.module.css';
 
@@ -32,7 +33,7 @@ function LoginScreen({ location, history }) {
 
     return (
         <div>
-            {loading && <div className={styles.loader}>Loading...</div>}
+            {loading && <Spinner />}
             <div
                 style={{
                     display: 'flex',
