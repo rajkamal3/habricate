@@ -6,7 +6,7 @@ const header = () => {
         <header
             style={{
                 display: 'flex',
-                justifyContent: 'space-between',
+                justifyContent: 'center',
                 height: '70px',
                 width: '100%',
                 backgroundColor: '#fff',
@@ -21,8 +21,8 @@ const header = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontWeight: '900',
-                    fontSize: '34px',
+                    fontWeight: '800',
+                    fontSize: '30px',
                     color: '#66a851'
                 }}
             >

@@ -47,7 +47,7 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
             payload: userHabits
         });
 
-        console.log('USER ' + userHabits);
+        console.log(userHabits);
     } catch (error) {
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_FAIL,

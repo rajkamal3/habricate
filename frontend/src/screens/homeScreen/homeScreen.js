@@ -5,6 +5,7 @@ import styles from './homeScreen.module.css';
 import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
 import Spinner from './../../ui/spinner/spinner';
+import { Link } from 'react-router-dom';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const HomeScreen = () => {
                 {habits &&
                     habits.map(habit => {
                         return (
-                            <div className={styles.eachHabit} key={habit._id}>
+                            <Link to={`/habits/${habit._id}`} className={styles.eachHabit} key={habit._id} data-id={habit._id}>
                                 <div className={styles.eachHabitChild}>
                                     <div className={styles.habitImageContainer}>
                                         <img src={book} width="30px" alt="book" />
@@ -44,7 +45,7 @@ const HomeScreen = () => {
                                         <img src={arrow} alt="arrow" width="6px" />
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         );
                     })}
             </div>
