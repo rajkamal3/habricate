@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllHabitsOfUser } from './../../actions/habitActions';
+import { fetchAllHabitsOfUser, fetchSingleHabit } from './../../actions/habitActions';
 import styles from './homeScreen.module.css';
 import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
@@ -12,6 +12,10 @@ const HomeScreen = () => {
 
     const userHabitsStore = useSelector(state => state.userHabits);
     const { loading, habits } = userHabitsStore;
+
+    const toHabit = id => {
+        dispatch(fetchSingleHabit(id));
+    };
 
     useEffect(() => {
         dispatch(fetchAllHabitsOfUser());
@@ -25,7 +29,13 @@ const HomeScreen = () => {
                 {habits &&
                     habits.map(habit => {
                         return (
-                            <Link to={`/habits/${habit._id}`} className={styles.eachHabit} key={habit._id} data-id={habit._id}>
+                            <Link
+                                to={`/habits/${habit._id}`}
+                                className={styles.eachHabit}
+                                key={habit._id}
+                                data-id={habit._id}
+                                onClick={() => toHabit(habit._id)}
+                            >
                                 <div className={styles.eachHabitChild}>
                                     <div className={styles.habitImageContainer}>
                                         <img src={book} width="30px" alt="book" />
