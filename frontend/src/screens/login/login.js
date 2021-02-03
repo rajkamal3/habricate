@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Spinner from '../../ui/spinner/spinner';
-import { login } from './../../actions/userActions';
-import styles from './loginScreen.module.css';
+import { login } from '../../actions/userActions';
+import styles from './login.module.css';
 
 function LoginScreen({ location, history }) {
     const [email, setEmail] = useState('');

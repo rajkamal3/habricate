@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './ui/header/header';
-import LoginScreen from './screens/loginScreen/loginScreen';
-import HomeScreen from './screens/homeScreen/homeScreen';
+import LoginScreen from './screens/login/login';
+import HomeScreen from './screens/home/home';
+import SingleHabitScreen from './screens/singleHabit/singleHabit';
 import RegisterScreen from './screens/register/register';
 import { Route, BrowserRouter } from 'react-router-dom';
 
@@ -11,10 +12,10 @@ function App() {
             <BrowserRouter>
                 <Header />
                 <Route path="/login" component={LoginScreen} />
-                <Route path="/home" component={HomeScreen} />
+                {/* <Route path="/home" component={HomeScreen} /> */}
                 <Route path="/register" component={RegisterScreen} />
+                <Route path="/habit/:id" component={SingleHabitScreen} />
                 {/* <Route path="/register" component={RegisterScreen} /> */}
-                {/* <Route path="/product/:id" component={ProductScreen} /> */}
                 {/* <Route path="/admin/productlist/:pageNumber" component={ProductListScreen} exact /> */}
                 {/* <Route path="/search/:keyword" component={HomeScreen} exact /> */}
                 {/* <Route path="/page/:pageNumber" component={HomeScreen} exact /> */}

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllHabitsOfUser, fetchSingleHabit } from './../../actions/habitActions';
-import styles from './homeScreen.module.css';
+import { fetchAllHabitsOfUser, fetchSingleHabit } from '../../actions/habitActions';
+import styles from './home.module.css';
 import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
-import Spinner from './../../ui/spinner/spinner';
+import Spinner from '../../ui/spinner/spinner';
 import { Link } from 'react-router-dom';
 
 const HomeScreen = () => {

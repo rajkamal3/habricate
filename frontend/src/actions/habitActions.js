@@ -41,9 +41,6 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
             type: FETCH_ALL_HABITS_OF_USER_REQUEST
         });
 
-        // const jwt = localStorage.getItem('jwt');
-
-        // const AuthStr = 'Bearer '.concat(jwt);
         const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: AuthStr } });
 
         const userHabits = data.data.data;
