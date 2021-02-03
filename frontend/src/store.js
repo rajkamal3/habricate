@@ -2,11 +2,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { userLoginReducer } from './reducers/userLoginReducer';
-import { habitReducer } from './reducers/habitsReducer';
+import { getUserHabitsReducer, habitReducer } from './reducers/habitsReducer';
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
-    habits: habitReducer
+    habits: habitReducer,
+    userHabits: getUserHabitsReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;

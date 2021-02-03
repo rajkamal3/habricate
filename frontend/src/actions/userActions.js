@@ -15,10 +15,14 @@ export const login = (email, password) => async dispatch => {
 
         const { data } = await axios.post('/api/v1/users/login', { email, password }, config);
 
+        console.log(data);
+
         dispatch({
             type: USER_LOGIN_SUCCESS,
             payload: data
         });
+
+        localStorage.setItem('jwt', data.token);
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
