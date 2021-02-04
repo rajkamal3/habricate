@@ -58,6 +58,31 @@ const HomeScreen = () => {
                             </Link>
                         );
                     })}
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        <div
+                            style={{
+                                width: '140px',
+                                height: '40px',
+                                // backgroundColor: 'red',
+                                fontWeight: '700',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: '10px',
+                                color: 'rgb(102, 168, 81)',
+                                boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px -3px',
+                                marginTop: '18px',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            Add habit
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

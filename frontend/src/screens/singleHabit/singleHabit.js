@@ -22,13 +22,44 @@ const SingleHabit = ({ history }) => {
             {loading && <Spinner />}
             {habit && (
                 <div className={styles.singleHabitContainerChild}>
-                    <div className={styles.singleHabitTitleAndEditAlign}>
+                    <div className={styles.singleHabitTitleAndEditContainer}>
                         <div className={styles.currentHabitTitle}>{habit && habit.name}</div>
                         <div className={styles.editButtonContainer}>
                             <span>
                                 <img src={pen} alt="pen" width="14px" />
                             </span>
                             <span>Edit habit</span>
+                        </div>
+                    </div>
+                    <div className={styles.habitDetailsContainer}>
+                        <div
+                            className="ticks"
+                            style={{
+                                paddingTop: '10px'
+                            }}
+                        >
+                            <span>
+                                {habit.doAtTime.map(time => {
+                                    return (
+                                        <div
+                                            key={Math.random()}
+                                            style={{
+                                                height: '35px',
+                                                // backgroundColor: 'red',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                fontWeight: '500',
+                                                color: '#888888'
+                                            }}
+                                        >
+                                            <input type="checkbox" id={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`} />
+                                            <label for={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
+                                                {time} - {habit.averageGoal} {habit.dailyTargetUnit}
+                                            </label>
+                                        </div>
+                                    );
+                                })}
+                            </span>
                         </div>
                     </div>
                 </div>

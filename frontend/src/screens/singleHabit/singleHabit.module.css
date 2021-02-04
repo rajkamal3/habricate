@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-.singleHabitTitleAndEditAlign {
+.singleHabitTitleAndEditContainer {
     display: flex;
     justify-content: space-between;
 }
@@ -40,6 +40,10 @@
     height: 30px;
     color: white;
     font-weight: 500;
+    cursor: pointer;
+}
+
+.habitDetailsContainer {
 }
 
 /* .eachHabit {
