@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllHabitsOfUser, fetchSingleHabit } from '../../actions/habitActions';
+import { openModal, closeModal } from '../../actions/uiActions';
 import styles from './home.module.css';
 import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
@@ -21,9 +22,10 @@ const HomeScreen = () => {
         dispatch(fetchAllHabitsOfUser());
     }, [dispatch]);
 
-    // const openModal = () => {
-    //     document.body.insertAdjacentHTML('afterbegin', <div>Hueller BBerrrr</div>);
-    // };
+    const openModall = () => {
+        // document.body.insertAdjacentHTML('afterbegin', <div>Hueller BBerrrr</div>);
+        dispatch(openModal());
+    };
 
     return (
         <div className={styles.homeScreenContainer}>
@@ -83,7 +85,7 @@ const HomeScreen = () => {
                                 marginTop: '18px',
                                 cursor: 'pointer'
                             }}
-                            // onClick={openModal}
+                            onClick={openModall}
                         >
                             Add habit
                         </div>
