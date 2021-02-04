@@ -41,7 +41,7 @@ export const getSingleHabitReducer = (state = {}, action) => {
         case FETCH_SINGLE_HABIT_OF_USER_REQUEST:
             return { loading: true };
         case FETCH_SINGLE_HABIT_OF_USER_SUCCESS:
-            return { loading: false, habits: action.payload };
+            return { loading: false, habit: action.payload };
         case FETCH_SINGLE_HABIT_OF_USER_FAIL:
             return { loading: false, error: action.payload };
         default:
