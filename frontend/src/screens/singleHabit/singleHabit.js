@@ -22,28 +22,9 @@ const SingleHabit = ({ history }) => {
             {loading && <Spinner />}
             {habit && (
                 <div className={styles.singleHabitContainerChild}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between'
-                        }}
-                    >
+                    <div className={styles.singleHabitTitleAndEditAlign}>
                         <div className={styles.currentHabitTitle}>{habit && habit.name}</div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                width: '95px',
-                                border: '2px solid rgb(102, 168, 81)',
-                                borderRadius: '5px',
-                                padding: '1px 6px',
-                                backgroundColor: 'rgb(102, 168, 81)',
-                                height: '30px',
-                                color: 'white',
-                                fontWeight: '500'
-                            }}
-                        >
+                        <div className={styles.editButtonContainer}>
                             <span>
                                 <img src={pen} alt="pen" width="14px" />
                             </span>

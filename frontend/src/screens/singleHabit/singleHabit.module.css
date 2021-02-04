@@ -23,6 +23,25 @@
     align-items: center;
 }
 
+.singleHabitTitleAndEditAlign {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95px;
+    border: 2px solid rgb(102, 168, 81);
+    border-radius: 5px;
+    padding: 1px 6px;
+    background-color: rgb(102, 168, 81);
+    height: 30px;
+    color: white;
+    font-weight: 500;
+}
+
 /* .eachHabit {
     width: 100%;
     background: mediumvioletred;
