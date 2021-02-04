@@ -21,6 +21,10 @@ const HomeScreen = () => {
         dispatch(fetchAllHabitsOfUser());
     }, [dispatch]);
 
+    // const openModal = () => {
+    //     document.body.insertAdjacentHTML('afterbegin', <div>Hueller BBerrrr</div>);
+    // };
+
     return (
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
@@ -79,6 +83,7 @@ const HomeScreen = () => {
                                 marginTop: '18px',
                                 cursor: 'pointer'
                             }}
+                            // onClick={openModal}
                         >
                             Add habit
                         </div>
