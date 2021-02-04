@@ -23,11 +23,11 @@ const HomeScreen = () => {
 
     return (
         <div className={styles.homeScreenContainer}>
-            <div className={styles.homeScreenContainerChild}>
-                <div className={styles.currentHabitsTitle}>Current habits</div>
-                {loading && <Spinner />}
-                {habits &&
-                    habits.map(habit => {
+            {loading && <Spinner />}
+            {habits && (
+                <div className={styles.homeScreenContainerChild}>
+                    <div className={styles.currentHabitsTitle}>Current habits</div>
+                    {habits.map(habit => {
                         return (
                             <Link
                                 to={`/habits/${habit._id}`}
@@ -58,7 +58,8 @@ const HomeScreen = () => {
                             </Link>
                         );
                     })}
-            </div>
+                </div>
+            )}
         </div>
     );
 };
