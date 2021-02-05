@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllHabitsOfUser, fetchSingleHabit } from '../../actions/habitActions';
-import { openModal, closeModal } from '../../actions/uiActions';
+import { openModal } from '../../actions/uiActions';
 import styles from './home.module.css';
 import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
@@ -22,9 +22,9 @@ const HomeScreen = () => {
         dispatch(fetchAllHabitsOfUser());
     }, [dispatch]);
 
-    const openModall = () => {
-        // document.body.insertAdjacentHTML('afterbegin', <div>Hueller BBerrrr</div>);
+    const openModalClick = () => {
         dispatch(openModal());
+        document.body.style.filter = 'blur(5px)';
     };
 
     return (
@@ -85,7 +85,7 @@ const HomeScreen = () => {
                                 marginTop: '18px',
                                 cursor: 'pointer'
                             }}
-                            onClick={openModall}
+                            onClick={openModalClick}
                         >
                             Add habit
                         </div>

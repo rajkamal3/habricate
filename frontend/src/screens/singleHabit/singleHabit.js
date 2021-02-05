@@ -53,7 +53,7 @@ const SingleHabit = ({ history }) => {
                                             }}
                                         >
                                             <input type="checkbox" id={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`} />
-                                            <label for={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
+                                            <label htmlFor={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
                                                 {time} - {habit.averageGoal} {habit.dailyTargetUnit}
                                             </label>
                                         </div>
