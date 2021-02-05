@@ -30,9 +30,7 @@ function App() {
                             height: '100%',
                             opacity: '0.05',
                             color: 'red'
-                            // background: `url('https://images.unsplash.com/photo-1486723312829-f32b4a25211b?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') no-repeat center center fixed`,
-                            // backgroundSize: 'cover',
-                            // filter: 'blur(5px)'
+                            // transition: '0.8s ease-in'
                         }}
                         className="modal"
                         onClick={closeModalClick}

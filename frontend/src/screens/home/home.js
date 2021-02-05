@@ -30,6 +30,18 @@ const HomeScreen = () => {
     return (
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
+            <div
+                style={{
+                    width: '85%',
+                    height: '30%',
+                    position: 'absolute',
+                    backgroundColor: 'red',
+                    opacity: '0.3',
+                    marginTop: '20px'
+                }}
+            >
+                Add habit huelelerer
+            </div>
             {habits && (
                 <div className={styles.homeScreenContainerChild}>
                     <div className={styles.currentHabitsTitle}>Current habits</div>
