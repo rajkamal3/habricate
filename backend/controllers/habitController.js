@@ -27,3 +27,12 @@ exports.getAllHabits = catchAsync(async (req, res, next) => {
         data: habits
     });
 });
+
+exports.getSingleHabit = catchAsync(async (req, res, next) => {
+    const habit = await Habit.findById(req.params.id);
+
+    res.status(201).json({
+        status: 'success',
+        data: habit
+    });
+});

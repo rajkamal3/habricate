@@ -1,5 +1,5 @@
-.homeScreenContainer {
-    background-color: red;
+.singleHabitContainer {
+    /* background-color: red; */
     width: 100%;
     height: calc(100vh - 70px);
     display: flex;
@@ -8,22 +8,47 @@
     color: rgb(34, 34, 34);
 }
 
-.homeScreenContainerChild {
+.singleHabitContainerChild {
     width: 85%;
     height: 93%;
-    background-color: green;
+    /* background-color: green; */
     box-sizing: border-box;
     padding-top: 15px;
 }
 
-.currentHabitsTitle {
+.currentHabitTitle {
     font-weight: 800;
     color: #66a851;
+    display: flex;
+    align-items: center;
 }
 
-.eachHabit {
+.singleHabitTitleAndEditContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95px;
+    border: 2px solid rgb(102, 168, 81);
+    border-radius: 5px;
+    padding: 1px 6px;
+    background-color: rgb(102, 168, 81);
+    height: 30px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* .habitDetailsContainer {
+} */
+
+/* .eachHabit {
     width: 100%;
-    background-color: mediumvioletred;
+    background: mediumvioletred;
     height: 110px;
     border-radius: 10px;
     margin-top: 15px;
@@ -36,7 +61,7 @@
 }
 
 .eachHabitChild {
-    background-color: orange;
+    background: orange;
     width: 90%;
     height: 75%;
     display: flex;
@@ -53,7 +78,7 @@
 }
 
 .habitDetailsContainer {
-    background-color: rgb(129, 212, 250);
+    background: rgb(129, 212, 250);
     width: 74%;
     box-sizing: border-box;
     display: flex;
@@ -71,4 +96,4 @@
     justify-content: center;
     align-items: center;
     font-weight: 400;
-}
+} */

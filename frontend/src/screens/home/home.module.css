@@ -1,0 +1,74 @@
+.homeScreenContainer {
+    /* background-color: red; */
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: rgb(34, 34, 34);
+}
+
+.homeScreenContainerChild {
+    width: 85%;
+    height: 93%;
+    /* background-color: green; */
+    box-sizing: border-box;
+    padding-top: 15px;
+}
+
+.currentHabitsTitle {
+    font-weight: 800;
+    color: #66a851;
+}
+
+.eachHabit {
+    width: 100%;
+    /* background-color: mediumvioletred; */
+    height: 110px;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 0px 20px -3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: lighter !important;
+}
+
+.eachHabitChild {
+    /* background-color: orange; */
+    width: 90%;
+    height: 75%;
+    display: flex;
+    flex-direction: row;
+}
+
+.habitImageContainer {
+    background: rgb(237, 238, 239);
+    width: 21%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.habitDetailsContainer {
+    /* background-color: rgb(129, 212, 250); */
+    width: 74%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 17px;
+    font-weight: 500;
+    padding-left: 10px;
+    color: #888888;
+}
+
+.eachHabitRightArrow {
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+}
