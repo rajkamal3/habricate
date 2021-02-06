@@ -4,6 +4,7 @@ import user from './../../assets/images/user.png';
 const header = () => {
     return (
         <header
+            className="header"
             style={{
                 display: 'flex',
                 justifyContent: 'center',

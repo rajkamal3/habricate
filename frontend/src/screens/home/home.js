@@ -31,6 +31,7 @@ const HomeScreen = () => {
         dispatch(openModalAction());
         dispatch(openAddHabitAction());
         document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
+        document.body.querySelector('.header').style.filter = 'blur(5px)';
     };
 
     return (
@@ -71,29 +72,8 @@ const HomeScreen = () => {
                             </Link>
                         );
                     })}
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center'
-                        }}
-                    >
-                        <div
-                            style={{
-                                width: '140px',
-                                height: '40px',
-                                // backgroundColor: 'red',
-                                fontWeight: '700',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: '10px',
-                                color: 'rgb(102, 168, 81)',
-                                boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px -3px',
-                                marginTop: '18px',
-                                cursor: 'pointer'
-                            }}
-                            onClick={openModalClick}
-                        >
+                    <div className={styles.addHabitButtonContainer}>
+                        <div className={styles.addHabitButton} onClick={openModalClick}>
                             Add habit
                         </div>
                     </div>

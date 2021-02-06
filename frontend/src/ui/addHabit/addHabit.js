@@ -7,7 +7,7 @@ const AddHabit = () => {
                 width: '85%',
                 height: '30%',
                 position: 'absolute',
-                marginTop: '34px',
+                // marginTop: '34px',
                 zIndex: '999',
                 backgroundColor: 'white',
                 borderRadius: '10px',

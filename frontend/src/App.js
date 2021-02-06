@@ -18,6 +18,7 @@ function App() {
         dispatch(closeModalAction());
         dispatch(closeAddHabitAction());
         document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
+        document.body.querySelector('.header').style.filter = 'none';
     };
 
     return (
