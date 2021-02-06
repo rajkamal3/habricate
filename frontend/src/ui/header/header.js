@@ -1,35 +1,12 @@
 import React from 'react';
-import user from './../../assets/images/user.png';
+// import user from './../../assets/images/user.png';
+import styles from './header.module.css';
 
 const header = () => {
     return (
-        <header
-            className="header"
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                height: '70px',
-                width: '100%',
-                backgroundColor: '#fff',
-                alignItems: 'center',
-                boxShadow: '0px -25px 40px 0px rgba(0,0,0,0.5)'
-            }}
-        >
-            <div
-                style={{
-                    height: 'inherit',
-                    width: '220px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: '800',
-                    fontSize: '30px',
-                    color: '#66a851'
-                }}
-            >
-                Habricate
-            </div>
-            {false && (
+        <header className={[styles.header, 'header'].join(' ')}>
+            <div className={styles.habricateTitle}>Habricate</div>
+            {/* {false && (
                 <div
                     style={{
                         height: '70px',
@@ -48,7 +25,7 @@ const header = () => {
                         alt="user"
                     />
                 </div>
-            )}
+            )} */}
         </header>
     );
 };
