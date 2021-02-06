@@ -54,63 +54,15 @@ function LoginScreen({ location, history }) {
                             placeholder="Password"
                         />
                     </div>
-                    <button
-                        style={{
-                            width: '250px',
-                            height: '45px',
-                            border: 'none',
-                            marginTop: '15px',
-                            cursor: 'pointer',
-                            backgroundColor: 'rgb(102, 168, 81)',
-                            fontSize: '16px',
-                            fontWeight: '600',
-                            borderRadius: '60px',
-                            fontFamily: "'Gilroy'",
-                            color: 'white',
-                            letterSpacing: '10px'
-                        }}
-                        className={styles.loginButton}
-                        onClick={sumbitHandler}
-                    >
+                    <button className={styles.loginButton} onClick={sumbitHandler}>
                         LOGIN
                     </button>
-                    <Link
-                        to="/forgot-password"
-                        style={{
-                            height: '25px',
-                            alignItems: 'center',
-                            display: 'flex',
-                            width: '250px',
-                            justifyContent: 'center',
-                            textDecoration: 'underline',
-                            color: 'rgb(102, 168, 81)',
-                            fontWeight: '600',
-                            marginTop: '15px',
-                            cursor: 'pointer'
-                        }}
-                    >
+                    <Link to="/forgot-password" className={styles.forgotPassword}>
                         Forgot your password?
                     </Link>
-                    <div
-                        style={{
-                            height: '25px',
-                            alignItems: 'center',
-                            display: 'flex',
-                            width: '250px',
-                            justifyContent: 'center',
-                            marginTop: '15px',
-                            cursor: 'pointer'
-                        }}
-                    >
+                    <div className={styles.notAMemberYet}>
                         Not a member yet? &nbsp;
-                        <Link
-                            to="/register"
-                            style={{
-                                textDecoration: 'underline',
-                                color: 'rgb(102, 168, 81)',
-                                fontWeight: '600'
-                            }}
-                        >
+                        <Link to="/register" className={styles.registerNow}>
                             Register now
                         </Link>
                     </div>
