@@ -7,6 +7,7 @@ import RegisterScreen from './screens/register/register';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeAddHabitAction, closeModalAction } from './actions/uiActions';
+import Modal from './ui/modal/modal';
 
 function App() {
     const dispatch = useDispatch();
@@ -22,21 +23,7 @@ function App() {
     return (
         <div>
             <BrowserRouter>
-                {openModalLocal && (
-                    <div
-                        style={{
-                            backgroundColor: '#222',
-                            position: 'absolute',
-                            width: '100%',
-                            height: '100%',
-                            opacity: '0.05',
-                            color: 'red',
-                            zIndex: 99
-                        }}
-                        className="modal"
-                        onClick={closeModalClick}
-                    ></div>
-                )}
+                {openModalLocal && <Modal click={closeModalClick} />}
                 <Header />
                 <Route path="/login" component={LoginScreen} />
                 {/* <Route path="/home" component={HomeScreen} /> */}
