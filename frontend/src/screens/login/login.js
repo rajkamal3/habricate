@@ -34,54 +34,12 @@ function LoginScreen({ location, history }) {
     return (
         <div>
             {loading && <Spinner />}
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    height: 'calc(100vh - 70px)',
-                    alignItems: 'center'
-                }}
-            >
-                <div
-                    style={{
-                        height: '360px',
-                        display: 'flex',
-                        flexFlow: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: '25px'
-                    }}
-                >
+            <div className={styles.loginContainer}>
+                <div className={styles.loginContainerChild}>
                     <div>
-                        {error && (
-                            <div
-                                style={{
-                                    textAlign: 'center',
-                                    backgroundColor: '#ff7575',
-                                    height: '35px',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    color: 'white',
-                                    marginBottom: '10px'
-                                }}
-                            >
-                                {error.statusText}
-                            </div>
-                        )}
+                        {error && <div className={styles.errorMessage}>{error.statusText}</div>}
                         <input
-                            style={{
-                                width: '360px',
-                                height: '60px',
-                                boxSizing: 'border-box',
-                                fontSize: '20px',
-                                fontFamily: 'Gilroy',
-                                fontWeight: '500',
-                                paddingLeft: '20px',
-                                border: 'none',
-                                borderRadius: '500px',
-                                backgroundColor: 'whitesmoke'
-                            }}
+                            className={styles.emailAndPassword}
                             onChange={e => setEmail(e.target.value)}
                             type="text"
                             placeholder="Email"
@@ -89,19 +47,8 @@ function LoginScreen({ location, history }) {
                     </div>
                     <div>
                         <input
-                            style={{
-                                width: '360px',
-                                height: '60px',
-                                boxSizing: 'border-box',
-                                fontSize: '20px',
-                                fontFamily: "'Gilroy'",
-                                fontWeight: '500',
-                                paddingLeft: '20px',
-                                border: 'none',
-                                borderRadius: '500px',
-                                marginTop: '15px',
-                                backgroundColor: 'whitesmoke'
-                            }}
+                            className={styles.emailAndPassword}
+                            style={{ marginTop: '15px' }}
                             onChange={e => setPassword(e.target.value)}
                             type="password"
                             placeholder="Password"

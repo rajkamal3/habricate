@@ -10,6 +10,46 @@
     outline: none;
 }
 
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 70px);
+    align-items: center;
+}
+
+.loginContainerChild {
+    height: 360px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+}
+
+.errorMessage {
+    text-align: center;
+    background-color: rgb(255, 117, 117);
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.emailAndPassword {
+    width: 360px;
+    height: 60px;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: Gilroy;
+    font-weight: 500;
+    padding-left: 20px;
+    border: none;
+    border-radius: 500px;
+    background-color: whitesmoke;
+}
+
 /* loader */
 .loader,
 .loader:after {
