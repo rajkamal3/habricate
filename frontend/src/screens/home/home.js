@@ -7,6 +7,7 @@ import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
 import Spinner from '../../ui/spinner/spinner';
 import { Link } from 'react-router-dom';
+import AddHabit from '../../ui/addHabit/addHabit';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -24,26 +25,15 @@ const HomeScreen = () => {
 
     const openModalClick = () => {
         dispatch(openModal());
-        document.body.style.filter = 'blur(5px)';
+        document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
     };
 
     return (
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
-            <div
-                style={{
-                    width: '85%',
-                    height: '30%',
-                    position: 'absolute',
-                    backgroundColor: 'red',
-                    opacity: '0.3',
-                    marginTop: '20px'
-                }}
-            >
-                Add habit huelelerer
-            </div>
+            <AddHabit />
             {habits && (
-                <div className={styles.homeScreenContainerChild}>
+                <div className={[styles.homeScreenContainerChild, 'homeScreenContainerChild'].join(' ')}>
                     <div className={styles.currentHabitsTitle}>Current habits</div>
                     {habits.map(habit => {
                         return (
