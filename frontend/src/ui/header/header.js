@@ -2,7 +2,7 @@ import React from 'react';
 // import user from './../../assets/images/user.png';
 import styles from './header.module.css';
 
-const header = () => {
+const Header = () => {
     return (
         <header className={[styles.header, 'header'].join(' ')}>
             <div className={styles.habricateTitle}>Habricate</div>
@@ -30,4 +30,4 @@ const header = () => {
     );
 };
 
-export default header;
+export default Header;
