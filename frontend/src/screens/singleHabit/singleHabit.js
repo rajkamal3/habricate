@@ -32,26 +32,11 @@ const SingleHabit = ({ history }) => {
                         </div>
                     </div>
                     <div className={styles.habitDetailsContainer}>
-                        <div
-                            className="ticks"
-                            style={{
-                                paddingTop: '10px'
-                            }}
-                        >
+                        <div className={[styles.habitDetailsContainerChild, 'ticks'].join(' ')}>
                             <span>
                                 {habit.doAtTime.map(time => {
                                     return (
-                                        <div
-                                            key={Math.random()}
-                                            style={{
-                                                height: '35px',
-                                                // backgroundColor: 'red',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                fontWeight: '500',
-                                                color: '#888888'
-                                            }}
-                                        >
+                                        <div key={time} className={styles.doAtTime}>
                                             <input type="checkbox" id={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`} />
                                             <label htmlFor={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
                                                 {time} - {habit.averageGoal} {habit.dailyTargetUnit}

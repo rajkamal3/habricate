@@ -43,6 +43,18 @@
     cursor: pointer;
 }
 
+.habitDetailsContainerChild {
+    padding-top: 10px;
+}
+
+.doAtTime {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: rgb(136, 136, 136);
+}
+
 /* .habitDetailsContainer {
 } */
 
