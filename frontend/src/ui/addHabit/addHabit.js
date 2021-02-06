@@ -1,4 +1,3 @@
-import { sign } from 'jsonwebtoken';
 import React from 'react';
 
 const AddHabit = () => {
