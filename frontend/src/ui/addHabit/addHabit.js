@@ -10,7 +10,7 @@ const AddHabit = () => {
                 backgroundColor: 'red',
                 opacity: '0.3',
                 marginTop: '20px',
-                zIndex: 99
+                zIndex: 999
             }}
         >
             Add habit huelelerer

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllHabitsOfUser, fetchSingleHabit } from '../../actions/habitActions';
-import { openModal } from '../../actions/uiActions';
+import { openModalAction } from '../../actions/uiActions';
+import { openAddHabitAction } from '../../actions/uiActions';
 import styles from './home.module.css';
 import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
@@ -12,8 +13,11 @@ import AddHabit from '../../ui/addHabit/addHabit';
 const HomeScreen = () => {
     const dispatch = useDispatch();
 
-    const userHabitsStore = useSelector(state => state.userHabits);
-    const { loading, habits } = userHabitsStore;
+    const userHabitsFromStore = useSelector(state => state.userHabits);
+    const { loading, habits } = userHabitsFromStore;
+
+    const addHabitFromStore = useSelector(state => state.addHabit);
+    const { openAddHabit } = addHabitFromStore;
 
     const toHabit = id => {
         dispatch(fetchSingleHabit(id));
@@ -24,14 +28,15 @@ const HomeScreen = () => {
     }, [dispatch]);
 
     const openModalClick = () => {
-        dispatch(openModal());
+        dispatch(openModalAction());
+        dispatch(openAddHabitAction());
         document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
     };
 
     return (
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
-            <AddHabit />
+            {openAddHabit && <AddHabit />}
             {habits && (
                 <div className={[styles.homeScreenContainerChild, 'homeScreenContainerChild'].join(' ')}>
                     <div className={styles.currentHabitsTitle}>Current habits</div>
