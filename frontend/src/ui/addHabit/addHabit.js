@@ -9,6 +9,7 @@ const AddHabit = () => {
                 <div>
                     At <input type="time" className={styles.addHabitDateInput} /> <img src={plus} alt="plus" width="22px" />
                     <span>
+                        {' '}
                         everyday, I want to <input type="text" className={styles.addHabitTextInputs} placeholder="read a book" /> at the{' '}
                         <input type="text" className={styles.addHabitTextInputs} placeholder="study table" />.
                     </span>
@@ -16,9 +17,8 @@ const AddHabit = () => {
                 <div>
                     <input type="checkbox" id="dailyGoal" />
                     <label htmlFor="dailyGoal">
-                        Daily goal
-                        <input type="text" className={styles.addHabitDateInput} />
-                        <input type="text" className={styles.addHabitDateInput} />
+                        Daily goal: <input type="text" className={styles.addHabitDateInput} placeholder="30" style={{ width: '50px' }} />{' '}
+                        <input type="text" className={styles.addHabitDateInput} placeholder="pages" />
                     </label>
                 </div>
                 <div>
