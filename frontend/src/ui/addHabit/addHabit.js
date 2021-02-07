@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import plus from './../../assets/images/plus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
+    const [times, setTimes] = useState([]);
+    const [habitTitle, setHabitTitle] = useState('');
+    const [location, setLocation] = useState('');
+    const [dailyGoal, setDailyGoal] = useState('');
+    const [reminder, setReminder] = useState(false);
+
     return (
         <div className={styles.addHabitContainer}>
             <div className={styles.addHabitContainerChild}>
                 <div>
-                    At <input type="time" className={styles.addHabitDateInput} /> <img src={plus} alt="plus" width="22px" />
+                    At <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />{' '}
+                    <img src={plus} alt="plus" width="22px" />
                     <span>
                         {' '}
                         everyday, I want to <input type="text" className={styles.addHabitTextInputs} placeholder="read a book" /> at the{' '}
