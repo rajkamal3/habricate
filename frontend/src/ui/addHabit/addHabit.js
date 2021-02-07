@@ -1,4 +1,5 @@
 import React from 'react';
+import plus from './../../assets/images/plus.png';
 
 const AddHabit = () => {
     return (
@@ -43,6 +44,7 @@ const AddHabit = () => {
                             color: 'rgb(102, 168, 81)'
                         }}
                     />{' '}
+                    <img src={plus} alt="plus" />
                     everyday, I want to read a book on the study table.
                 </div>
             </div>
