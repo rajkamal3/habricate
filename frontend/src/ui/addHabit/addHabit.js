@@ -16,6 +16,7 @@ const AddHabit = () => {
             <div className={styles.addHabitContainerChild}>
                 <div>
                     At <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />{' '}
+                    <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />{' '}
                     <img src={plus} alt="plus" width="22px" />
                     <span>
                         {' '}
