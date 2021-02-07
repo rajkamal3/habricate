@@ -9,6 +9,8 @@ const AddHabit = () => {
     const [dailyGoal, setDailyGoal] = useState('');
     const [reminder, setReminder] = useState(false);
 
+    console.log(times);
+
     return (
         <div className={styles.addHabitContainer}>
             <div className={styles.addHabitContainerChild}>
