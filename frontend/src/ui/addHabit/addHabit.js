@@ -9,7 +9,10 @@ const AddHabit = () => {
     const [dailyGoal, setDailyGoal] = useState('');
     const [reminder, setReminder] = useState(false);
 
-    console.log(times);
+    const addHabit = () => {
+        console.log(times);
+        console.log(habitTitle);
+    };
 
     return (
         <div className={styles.addHabitContainer}>
@@ -20,8 +23,14 @@ const AddHabit = () => {
                     <img src={plus} alt="plus" width="22px" />
                     <span>
                         {' '}
-                        everyday, I want to <input type="text" className={styles.addHabitTextInputs} placeholder="read a book" /> at the{' '}
-                        <input type="text" className={styles.addHabitTextInputs} placeholder="study table" />.
+                        everyday, I want to{' '}
+                        <input
+                            type="text"
+                            className={styles.addHabitTextInputs}
+                            onChange={e => setHabitTitle(e.target.value)}
+                            placeholder="read a book"
+                        />{' '}
+                        at the <input type="text" className={styles.addHabitTextInputs} placeholder="study table" />.
                     </span>
                 </div>
                 <div>
@@ -36,7 +45,9 @@ const AddHabit = () => {
                     <label htmlFor="reminder">Reminder</label>
                 </div>
                 <div className={styles.addHabitButtonContainer}>
-                    <div className={styles.addHabitButton}>Add habit</div>
+                    <div className={styles.addHabitButton} onClick={addHabit}>
+                        Add habit
+                    </div>
                 </div>
             </div>
         </div>
