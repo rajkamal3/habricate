@@ -45,7 +45,37 @@ const AddHabit = () => {
                         }}
                     />{' '}
                     <img src={plus} alt="plus" />
-                    everyday, I want to read a book on the study table.
+                    <span>
+                        everyday, I want to{' '}
+                        <input
+                            type="text"
+                            style={{
+                                width: '100px',
+                                border: 'none',
+                                borderBottom: '2px solid rgb(102, 168, 81)',
+                                fontFamily: "'Gilroy'",
+                                fontWeight: '500',
+                                fontSize: '17px',
+                                color: 'rgb(102, 168, 81)'
+                            }}
+                            placeholder="read a book"
+                        />{' '}
+                        at the
+                        <input
+                            type="text"
+                            style={{
+                                width: '100px',
+                                border: 'none',
+                                borderBottom: '2px solid rgb(102, 168, 81)',
+                                fontFamily: "'Gilroy'",
+                                fontWeight: '500',
+                                fontSize: '17px',
+                                color: 'rgb(102, 168, 81)'
+                            }}
+                            placeholder="study table"
+                        />
+                        .
+                    </span>
                 </div>
             </div>
         </div>
