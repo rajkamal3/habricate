@@ -12,6 +12,9 @@ const AddHabit = () => {
     const addHabit = () => {
         console.log(times);
         console.log(habitTitle);
+        console.log(location);
+        console.log(dailyGoal);
+        console.log(reminder);
     };
 
     return (
@@ -30,14 +33,33 @@ const AddHabit = () => {
                             onChange={e => setHabitTitle(e.target.value)}
                             placeholder="read a book"
                         />{' '}
-                        at the <input type="text" className={styles.addHabitTextInputs} placeholder="study table" />.
+                        at the{' '}
+                        <input
+                            type="text"
+                            className={styles.addHabitTextInputs}
+                            onChange={e => setLocation(e.target.value)}
+                            placeholder="study table"
+                        />
+                        .
                     </span>
                 </div>
                 <div>
                     <input type="checkbox" id="dailyGoal" />
                     <label htmlFor="dailyGoal">
-                        Daily goal: <input type="text" className={styles.addHabitDateInput} placeholder="30" style={{ width: '50px' }} />{' '}
-                        <input type="text" className={styles.addHabitDateInput} placeholder="pages" />
+                        Daily goal:{' '}
+                        <input
+                            type="number"
+                            className={styles.addHabitDateInput}
+                            onChange={e => setDailyGoal(e.target.value)}
+                            placeholder="30"
+                            style={{ width: '50px' }}
+                        />{' '}
+                        <input
+                            type="text"
+                            className={styles.addHabitDateInput}
+                            onChange={e => setReminder(!reminder)}
+                            placeholder="pages"
+                        />
                     </label>
                 </div>
                 <div>
