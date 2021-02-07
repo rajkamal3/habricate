@@ -1,0 +1,48 @@
+.addHabitContainer {
+    width: 85%;
+    height: 30%;
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 0px 20px -3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.addHabitContainerChild {
+    width: 80%;
+    height: 65%;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+    color: rgb(136, 136, 136);
+}
+
+.addHabitDateInput {
+    width: 74px;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid rgb(102, 168, 81);
+    border-left: none;
+    border-image: initial;
+    font-family: Gilroy;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgb(102, 168, 81);
+}
+
+.addHabitTextInputs {
+    width: 100px;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid rgb(102, 168, 81);
+    border-left: none;
+    border-image: initial;
+    font-family: Gilroy;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgb(102, 168, 81);
+}
