@@ -12,6 +12,7 @@ const AddHabit = () => {
     const addHabit = () => {
         console.log(times);
         console.log(habitTitle);
+        console.log('habitTitle' + habitTitle);
         console.log(location);
         console.log(dailyGoal);
         console.log(reminder);
