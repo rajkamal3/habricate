@@ -21,8 +21,10 @@ const AddHabit = () => {
         <div className={styles.addHabitContainer}>
             <div className={styles.addHabitContainerChild}>
                 <div>
-                    At <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />{' '}
-                    <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />{' '}
+                    At{' '}
+                    <span className="timingsContainer">
+                        <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />
+                    </span>
                     <img src={plus} alt="plus" width="22px" />
                     <span>
                         {' '}
