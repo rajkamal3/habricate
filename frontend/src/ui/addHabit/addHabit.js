@@ -87,7 +87,7 @@ const AddHabit = () => {
                             type="number"
                             className={styles.addHabitDateInput}
                             onChange={e => setDailyGoal(e.target.value)}
-                            placeholder="30"
+                            placeholder="   30"
                             style={{ width: '50px' }}
                         />{' '}
                         <input
