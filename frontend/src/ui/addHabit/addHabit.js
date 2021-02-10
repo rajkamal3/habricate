@@ -9,6 +9,14 @@ const AddHabit = () => {
     const [dailyGoal, setDailyGoal] = useState('');
     const [reminder, setReminder] = useState(false);
 
+    // const extraTimeHTML = ``
+
+    const addExtraTiming = () => {
+        document
+            .querySelector('.timingsContainer')
+            .insertAdjacentHTML('beforeend', `, <input class='${styles.addHabitDateInput} timingCounter' type="time" />`);
+    };
+
     const addHabit = () => {
         console.log(times);
         console.log(habitTitle);
@@ -25,7 +33,7 @@ const AddHabit = () => {
                     <span className="timingsContainer">
                         <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />
                     </span>
-                    <img src={plus} alt="plus" width="22px" />
+                    <img onClick={addExtraTiming} className={styles.addExtraTimeImage} src={plus} alt="plus" width="22px" />
                     <span>
                         {' '}
                         everyday, I want to{' '}
