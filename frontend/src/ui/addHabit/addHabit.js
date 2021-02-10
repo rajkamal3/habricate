@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import plus from './../../assets/images/plus.png';
 import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
@@ -18,7 +18,10 @@ const AddHabit = () => {
     const addExtraTiming = () => {
         document
             .querySelector('.timingsContainer')
-            .insertAdjacentHTML('beforeend', `<input class='${styles.addHabitDateInput} timingCounter' type="time" />`);
+            .insertAdjacentHTML(
+                'beforeend',
+                `<span class='timingCounter'>,&nbsp;<input class='${styles.addHabitDateInput}' type="time" /></span>`
+            );
 
         const counterToDisplayPlusMinus = document.querySelectorAll('.timingCounter').length;
         if (counterToDisplayPlusMinus > 0) {
