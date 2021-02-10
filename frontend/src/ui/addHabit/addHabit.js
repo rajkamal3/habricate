@@ -9,6 +9,7 @@ const AddHabit = () => {
     const [location, setLocation] = useState('');
     const [dailyGoal, setDailyGoal] = useState('');
     const [reminder, setReminder] = useState(false);
+    const [plusMinus, setPlusMinus] = useState(false);
 
     // const extraTimeHTML = <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />;
 
@@ -16,12 +17,22 @@ const AddHabit = () => {
         document
             .querySelector('.timingsContainer')
             .insertAdjacentHTML('beforeend', `<input class='${styles.addHabitDateInput} timingCounter' type="time" />`);
+
+        const counterToDisplayPlusMinus = document.querySelectorAll('.timingCounter').length;
+        if (counterToDisplayPlusMinus > 0) {
+            setPlusMinus(true);
+        }
     };
 
     const removeExtraTiming = () => {
         const timingCounterForRemoval = document.querySelectorAll('.timingCounter');
         const removeEl = document.querySelectorAll('.timingCounter')[timingCounterForRemoval.length - 1];
         document.querySelector('.timingsContainer').removeChild(removeEl);
+
+        const counterToDisplayPlusMinus = document.querySelectorAll('.timingCounter').length;
+        if (counterToDisplayPlusMinus === 0) {
+            setPlusMinus(false);
+        }
     };
 
     const addHabit = () => {
@@ -48,7 +59,9 @@ const AddHabit = () => {
                         <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />
                     </span>
                     <img onClick={addExtraTiming} className={styles.addExtraTimeImage} src={plus} alt="plus" width="22px" />
-                    <img onClick={removeExtraTiming} className={styles.addExtraTimeImage} src={minus} alt="plus" width="22px" />
+                    {plusMinus && (
+                        <img onClick={removeExtraTiming} className={styles.addExtraTimeImage} src={minus} alt="plus" width="22px" />
+                    )}
                     <span>
                         {' '}
                         everyday, I want to{' '}
