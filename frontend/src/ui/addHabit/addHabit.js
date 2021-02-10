@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import plus from './../../assets/images/plus.png';
+import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
@@ -9,12 +10,18 @@ const AddHabit = () => {
     const [dailyGoal, setDailyGoal] = useState('');
     const [reminder, setReminder] = useState(false);
 
-    // const extraTimeHTML = ``
+    // const extraTimeHTML = <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />;
 
     const addExtraTiming = () => {
         document
             .querySelector('.timingsContainer')
-            .insertAdjacentHTML('beforeend', `, <input class='${styles.addHabitDateInput} timingCounter' type="time" />`);
+            .insertAdjacentHTML('beforeend', `<input class='${styles.addHabitDateInput} timingCounter' type="time" />`);
+    };
+
+    const removeExtraTiming = () => {
+        const timingCounterForRemoval = document.querySelectorAll('.timingCounter');
+        const removeEl = document.querySelectorAll('.timingCounter')[timingCounterForRemoval.length - 1];
+        document.querySelector('.timingsContainer').removeChild(removeEl);
     };
 
     const addHabit = () => {
@@ -25,6 +32,13 @@ const AddHabit = () => {
         console.log(reminder);
     };
 
+    useEffect(() => {
+        const timingCounter = document.querySelectorAll('.timingCounter').length;
+        // if (timingCounter > 1) {
+        console.log(timingCounter);
+        // }
+    }, []);
+
     return (
         <div className={styles.addHabitContainer}>
             <div className={styles.addHabitContainerChild}>
@@ -34,6 +48,7 @@ const AddHabit = () => {
                         <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />
                     </span>
                     <img onClick={addExtraTiming} className={styles.addExtraTimeImage} src={plus} alt="plus" width="22px" />
+                    <img onClick={removeExtraTiming} className={styles.addExtraTimeImage} src={minus} alt="plus" width="22px" />
                     <span>
                         {' '}
                         everyday, I want to{' '}
