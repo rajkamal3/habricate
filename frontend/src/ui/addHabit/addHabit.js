@@ -13,6 +13,8 @@ const AddHabit = () => {
 
     // const extraTimeHTML = <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />;
 
+    const timingsArr = [];
+
     const addExtraTiming = () => {
         document
             .querySelector('.timingsContainer')
@@ -42,13 +44,6 @@ const AddHabit = () => {
         console.log(dailyGoal);
         console.log(reminder);
     };
-
-    useEffect(() => {
-        const timingCounter = document.querySelectorAll('.timingCounter').length;
-        // if (timingCounter > 1) {
-        console.log(timingCounter);
-        // }
-    }, []);
 
     return (
         <div className={styles.addHabitContainer}>
