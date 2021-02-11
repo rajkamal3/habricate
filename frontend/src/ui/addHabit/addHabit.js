@@ -12,8 +12,6 @@ const AddHabit = () => {
     const [plusImg, setPlusImg] = useState(true);
     const [minusImg, setMinusImg] = useState(false);
 
-    // const extraTimeHTML = <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />;
-
     // const timingsArr = [];
 
     const addExtraTiming = () => {
