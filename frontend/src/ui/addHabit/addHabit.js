@@ -9,11 +9,12 @@ const AddHabit = () => {
     const [location, setLocation] = useState('');
     const [dailyGoal, setDailyGoal] = useState('');
     const [reminder, setReminder] = useState(false);
-    const [plusMinus, setPlusMinus] = useState(false);
+    const [plusImg, setPlusImg] = useState(true);
+    const [minusImg, setMinusImg] = useState(false);
 
     // const extraTimeHTML = <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />;
 
-    const timingsArr = [];
+    // const timingsArr = [];
 
     const addExtraTiming = () => {
         document
@@ -23,9 +24,12 @@ const AddHabit = () => {
                 `<span class='timingCounter'>,&nbsp;<input class='${styles.addHabitDateInput}' type="time" /></span>`
             );
 
-        const counterToDisplayPlusMinus = document.querySelectorAll('.timingCounter').length;
-        if (counterToDisplayPlusMinus > 0) {
-            setPlusMinus(true);
+        const counterToDisplayMinus = document.querySelectorAll('.timingCounter').length;
+        if (counterToDisplayMinus > 0) {
+            setMinusImg(true);
+        }
+        if (counterToDisplayMinus > 4) {
+            setPlusImg(false);
         }
     };
 
@@ -34,9 +38,12 @@ const AddHabit = () => {
         const removeEl = document.querySelectorAll('.timingCounter')[timingCounterForRemoval.length - 1];
         document.querySelector('.timingsContainer').removeChild(removeEl);
 
-        const counterToDisplayPlusMinus = document.querySelectorAll('.timingCounter').length;
-        if (counterToDisplayPlusMinus === 0) {
-            setPlusMinus(false);
+        const counterToDisplayMinus = document.querySelectorAll('.timingCounter').length;
+        if (counterToDisplayMinus === 0) {
+            setMinusImg(false);
+        }
+        if (counterToDisplayMinus <= 4) {
+            setPlusImg(true);
         }
     };
 
@@ -56,8 +63,8 @@ const AddHabit = () => {
                     <span className="timingsContainer">
                         <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />
                     </span>
-                    <img onClick={addExtraTiming} className={styles.addExtraTimeImage} src={plus} alt="plus" width="22px" />
-                    {plusMinus && (
+                    {plusImg && <img onClick={addExtraTiming} className={styles.addExtraTimeImage} src={plus} alt="plus" width="22px" />}
+                    {minusImg && (
                         <img onClick={removeExtraTiming} className={styles.addExtraTimeImage} src={minus} alt="plus" width="22px" />
                     )}
                     <span>
