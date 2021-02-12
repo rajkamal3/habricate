@@ -4,6 +4,9 @@ import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
+    // let defaultTime = [];
+    // let addedTimes = [];
+
     const [times, setTimes] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
@@ -12,14 +15,12 @@ const AddHabit = () => {
     const [plusImg, setPlusImg] = useState(true);
     const [minusImg, setMinusImg] = useState(false);
 
-    // const timingsArr = [];
-
     const addExtraTiming = () => {
         document
             .querySelector('.timingsContainer')
             .insertAdjacentHTML(
                 'beforeend',
-                `<span class='timingCounter'>,&nbsp;<input class='${styles.addHabitDateInput}' type="time" /></span>`
+                `<span class='timingCounter'>,&nbsp;<input class='${styles.addHabitDateInput} addedTimes' type="time" /></span>`
             );
 
         const counterToDisplayMinus = document.querySelectorAll('.timingCounter').length;
@@ -46,12 +47,26 @@ const AddHabit = () => {
     };
 
     const addHabit = () => {
-        console.log(times);
-        console.log(habitTitle);
-        console.log(location);
-        console.log(dailyGoal);
-        console.log(reminder);
+        const defaultTimeVar = document.querySelector('.defaultTime').value;
+        const addedTimesVar = document.querySelectorAll('.addedTimes');
+
+        let addedTimesArr = [];
+
+        for (let i = 0; i < addedTimesVar.length; i++) {
+            addedTimesArr.push(addedTimesVar[i].value);
+        }
+
+        console.log([defaultTimeVar, ...addedTimesArr]);
+
+        // console.log(addedTimesVar);
+        // console.log(times);
+        // console.log(habitTitle);
+        // console.log(location);
+        // console.log(dailyGoal);
+        // console.log(reminder);
     };
+
+    // const timingsArr = [];
 
     return (
         <div className={styles.addHabitContainer}>
@@ -59,7 +74,11 @@ const AddHabit = () => {
                 <div>
                     At{' '}
                     <span className="timingsContainer">
-                        <input type="time" className={styles.addHabitDateInput} onChange={e => setTimes(e.target.value)} />
+                        <input
+                            type="time"
+                            className={[styles.addHabitDateInput, 'defaultTime'].join(' ')}
+                            onChange={e => setTimes(e.target.value)}
+                        />
                     </span>
                     {plusImg && <img onClick={addExtraTiming} className={styles.addExtraTimeImage} src={plus} alt="plus" width="22px" />}
                     {minusImg && (
