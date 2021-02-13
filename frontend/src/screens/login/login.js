@@ -34,54 +34,12 @@ function LoginScreen({ location, history }) {
     return (
         <div>
             {loading && <Spinner />}
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    height: 'calc(100vh - 70px)',
-                    alignItems: 'center'
-                }}
-            >
-                <div
-                    style={{
-                        height: '360px',
-                        display: 'flex',
-                        flexFlow: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: '25px'
-                    }}
-                >
+            <div className={styles.loginContainer}>
+                <div className={styles.loginContainerChild}>
                     <div>
-                        {error && (
-                            <div
-                                style={{
-                                    textAlign: 'center',
-                                    backgroundColor: '#ff7575',
-                                    height: '35px',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    color: 'white',
-                                    marginBottom: '10px'
-                                }}
-                            >
-                                {error.statusText}
-                            </div>
-                        )}
+                        {error && <div className={styles.errorMessage}>{error.statusText}</div>}
                         <input
-                            style={{
-                                width: '360px',
-                                height: '60px',
-                                boxSizing: 'border-box',
-                                fontSize: '20px',
-                                fontFamily: 'Gilroy',
-                                fontWeight: '500',
-                                paddingLeft: '20px',
-                                border: 'none',
-                                borderRadius: '500px',
-                                backgroundColor: 'whitesmoke'
-                            }}
+                            className={styles.emailAndPassword}
                             onChange={e => setEmail(e.target.value)}
                             type="text"
                             placeholder="Email"
@@ -89,81 +47,22 @@ function LoginScreen({ location, history }) {
                     </div>
                     <div>
                         <input
-                            style={{
-                                width: '360px',
-                                height: '60px',
-                                boxSizing: 'border-box',
-                                fontSize: '20px',
-                                fontFamily: "'Gilroy'",
-                                fontWeight: '500',
-                                paddingLeft: '20px',
-                                border: 'none',
-                                borderRadius: '500px',
-                                marginTop: '15px',
-                                backgroundColor: 'whitesmoke'
-                            }}
+                            className={styles.emailAndPassword}
+                            style={{ marginTop: '15px' }}
                             onChange={e => setPassword(e.target.value)}
                             type="password"
                             placeholder="Password"
                         />
                     </div>
-                    <button
-                        style={{
-                            width: '250px',
-                            height: '45px',
-                            border: 'none',
-                            marginTop: '15px',
-                            cursor: 'pointer',
-                            backgroundColor: 'rgb(102, 168, 81)',
-                            fontSize: '16px',
-                            fontWeight: '600',
-                            borderRadius: '60px',
-                            fontFamily: "'Gilroy'",
-                            color: 'white',
-                            letterSpacing: '10px'
-                        }}
-                        className={styles.loginButton}
-                        onClick={sumbitHandler}
-                    >
+                    <button className={styles.loginButton} onClick={sumbitHandler}>
                         LOGIN
                     </button>
-                    <Link
-                        to="/forgot-password"
-                        style={{
-                            height: '25px',
-                            alignItems: 'center',
-                            display: 'flex',
-                            width: '250px',
-                            justifyContent: 'center',
-                            textDecoration: 'underline',
-                            color: 'rgb(102, 168, 81)',
-                            fontWeight: '600',
-                            marginTop: '15px',
-                            cursor: 'pointer'
-                        }}
-                    >
+                    <Link to="/forgot-password" className={styles.forgotPassword}>
                         Forgot your password?
                     </Link>
-                    <div
-                        style={{
-                            height: '25px',
-                            alignItems: 'center',
-                            display: 'flex',
-                            width: '250px',
-                            justifyContent: 'center',
-                            marginTop: '15px',
-                            cursor: 'pointer'
-                        }}
-                    >
+                    <div className={styles.notAMemberYet}>
                         Not a member yet? &nbsp;
-                        <Link
-                            to="/register"
-                            style={{
-                                textDecoration: 'underline',
-                                color: 'rgb(102, 168, 81)',
-                                fontWeight: '600'
-                            }}
-                        >
+                        <Link to="/register" className={styles.registerNow}>
                             Register now
                         </Link>
                     </div>

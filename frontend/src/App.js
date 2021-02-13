@@ -6,7 +6,8 @@ import SingleHabit from './screens/singleHabit/singleHabit';
 import RegisterScreen from './screens/register/register';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { closeModal } from './actions/uiActions';
+import { closeAddHabitAction, closeModalAction } from './actions/uiActions';
+import Modal from './ui/modal/modal';
 
 function App() {
     const dispatch = useDispatch();
@@ -14,28 +15,16 @@ function App() {
     const openModalLocal = useSelector(state => state.ui.openModal);
 
     const closeModalClick = () => {
-        dispatch(closeModal());
-        document.body.style.filter = 'none';
+        dispatch(closeModalAction());
+        dispatch(closeAddHabitAction());
+        document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
+        document.body.querySelector('.header').style.filter = 'none';
     };
 
     return (
         <div>
             <BrowserRouter>
-                {openModalLocal && (
-                    <div
-                        style={{
-                            backgroundColor: '#222',
-                            position: 'absolute',
-                            width: '100%',
-                            height: '100%',
-                            opacity: '0.05',
-                            color: 'red'
-                            // transition: '0.8s ease-in'
-                        }}
-                        className="modal"
-                        onClick={closeModalClick}
-                    ></div>
-                )}
+                {openModalLocal && <Modal click={closeModalClick} />}
                 <Header />
                 <Route path="/login" component={LoginScreen} />
                 {/* <Route path="/home" component={HomeScreen} /> */}

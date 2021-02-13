@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllHabitsOfUser, fetchSingleHabit } from '../../actions/habitActions';
-import { openModal } from '../../actions/uiActions';
+import { openModalAction } from '../../actions/uiActions';
+import { openAddHabitAction } from '../../actions/uiActions';
 import styles from './home.module.css';
 import book from './../../assets/images/book.png';
 import arrow from './../../assets/images/habitArrow.png';
 import Spinner from '../../ui/spinner/spinner';
 import { Link } from 'react-router-dom';
+import AddHabit from '../../ui/addHabit/addHabit';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
 
-    const userHabitsStore = useSelector(state => state.userHabits);
-    const { loading, habits } = userHabitsStore;
+    const userHabitsFromStore = useSelector(state => state.userHabits);
+    const { loading, habits } = userHabitsFromStore;
+
+    const addHabitFromStore = useSelector(state => state.addHabit);
+    const { openAddHabit } = addHabitFromStore;
 
     const toHabit = id => {
         dispatch(fetchSingleHabit(id));
@@ -23,27 +28,18 @@ const HomeScreen = () => {
     }, [dispatch]);
 
     const openModalClick = () => {
-        dispatch(openModal());
-        document.body.style.filter = 'blur(5px)';
+        dispatch(openModalAction());
+        dispatch(openAddHabitAction());
+        document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
+        document.body.querySelector('.header').style.filter = 'blur(5px)';
     };
 
     return (
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
-            <div
-                style={{
-                    width: '85%',
-                    height: '30%',
-                    position: 'absolute',
-                    backgroundColor: 'red',
-                    opacity: '0.3',
-                    marginTop: '20px'
-                }}
-            >
-                Add habit huelelerer
-            </div>
+            {openAddHabit && <AddHabit />}
             {habits && (
-                <div className={styles.homeScreenContainerChild}>
+                <div className={[styles.homeScreenContainerChild, 'homeScreenContainerChild'].join(' ')}>
                     <div className={styles.currentHabitsTitle}>Current habits</div>
                     {habits.map(habit => {
                         return (
@@ -76,29 +72,8 @@ const HomeScreen = () => {
                             </Link>
                         );
                     })}
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center'
-                        }}
-                    >
-                        <div
-                            style={{
-                                width: '140px',
-                                height: '40px',
-                                // backgroundColor: 'red',
-                                fontWeight: '700',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: '10px',
-                                color: 'rgb(102, 168, 81)',
-                                boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px -3px',
-                                marginTop: '18px',
-                                cursor: 'pointer'
-                            }}
-                            onClick={openModalClick}
-                        >
+                    <div className={styles.addHabitButtonContainer}>
+                        <div className={styles.addHabitButton} onClick={openModalClick}>
                             Add habit
                         </div>
                     </div>
