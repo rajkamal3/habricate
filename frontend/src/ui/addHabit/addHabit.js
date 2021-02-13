@@ -4,8 +4,8 @@ import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
-    // let defaultTime = [];
-    // let addedTimes = [];
+    let defaultTime = [];
+    let addedTimes = [];
 
     const [times, setTimes] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
