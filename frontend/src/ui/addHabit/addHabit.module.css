@@ -71,3 +71,13 @@
 .addExtraTimeImage {
     cursor: pointer;
 }
+
+.dailyGoalEnable {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.dailyGoalDisable {
+    pointer-events: none;
+    opacity: 0.3;
+}

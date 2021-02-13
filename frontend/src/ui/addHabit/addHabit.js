@@ -4,10 +4,7 @@ import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
-    let defaultTime = [];
-    let addedTimes = [];
-
-    const [times, setTimes] = useState([]);
+    const [times, setTimes] = useState('');
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
     const [dailyGoalCheck, setDailyGoalCheck] = useState(false);
@@ -48,6 +45,14 @@ const AddHabit = () => {
         }
     };
 
+    const toggleDailyGoal = () => {
+        setDailyGoalCheck(!dailyGoalCheck);
+    };
+
+    const toggleReminder = () => {
+        setReminder(!reminder);
+    };
+
     const addHabit = () => {
         const defaultTimeVar = document.querySelector('.defaultTime').value;
         const addedTimesVar = document.querySelectorAll('.addedTimes');
@@ -58,14 +63,16 @@ const AddHabit = () => {
             addedTimesArr.push(addedTimesVar[i].value);
         }
 
-        console.log([defaultTimeVar, ...addedTimesArr]);
+        const totalTimes = [defaultTimeVar, ...addedTimesArr];
+        setTimes(totalTimes);
 
-        // console.log(addedTimesVar);
-        // console.log(times);
-        // console.log(habitTitle);
-        // console.log(location);
-        // console.log(dailyGoal);
-        // console.log(reminder);
+        console.log(times);
+        console.log('HABIT TITLE ' + habitTitle);
+        console.log('LOCATION ' + location);
+        console.log('DAILY GOAL ' + dailyGoalCheck);
+        console.log('DAILY GOAL QUANTITY ' + dailyGoalQuantity);
+        console.log('DAILY GOAL UNITS ' + dailyGoalUnits);
+        console.log('REMINDER ' + reminder);
     };
 
     return (
@@ -74,11 +81,7 @@ const AddHabit = () => {
                 <div>
                     At{' '}
                     <span className="timingsContainer">
-                        <input
-                            type="time"
-                            className={[styles.addHabitDateInput, 'defaultTime'].join(' ')}
-                            onChange={e => setTimes(e.target.value)}
-                        />
+                        <input type="time" className={[styles.addHabitDateInput, 'defaultTime'].join(' ')} />
                     </span>
                     {plusImg && <img onClick={addExtraTiming} className={styles.addExtraTimeImage} src={plus} alt="plus" width="22px" />}
                     {minusImg && (
@@ -104,10 +107,10 @@ const AddHabit = () => {
                     </span>
                 </div>
                 <div>
-                    <input type="checkbox" id="dailyGoal" />
-                    <label htmlFor="dailyGoal">
-                        Daily goal:{' '}
-                        <span>
+                    <input type="checkbox" id="dailyGoal" onChange={toggleDailyGoal} />
+                    <span className={dailyGoalCheck ? styles.dailyGoalEnable : styles.dailyGoalDisable}>
+                        <label htmlFor="dailyGoal">
+                            Daily goal:{' '}
                             <input
                                 type="number"
                                 className={styles.addHabitDateInput}
@@ -118,15 +121,17 @@ const AddHabit = () => {
                             <input
                                 type="text"
                                 className={styles.addHabitDateInput}
-                                onChange={e => setReminder(!reminder)}
+                                onChange={e => setDailyGoalUnits(e.target.value)}
                                 placeholder="pages"
                             />
-                        </span>
-                    </label>
+                        </label>
+                    </span>
                 </div>
                 <div>
-                    <input type="checkbox" id="reminder" />
-                    <label htmlFor="reminder">Reminder</label>
+                    <input type="checkbox" id="reminder" onChange={toggleReminder} />
+                    <label className={reminder ? styles.dailyGoalEnable : styles.dailyGoalDisable} htmlFor="reminder">
+                        Reminder
+                    </label>
                 </div>
                 <div className={styles.addHabitButtonContainer}>
                     <div className={styles.addHabitButton} onClick={addHabit}>
