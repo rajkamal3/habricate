@@ -10,7 +10,9 @@ const AddHabit = () => {
     const [times, setTimes] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
-    const [dailyGoal, setDailyGoal] = useState('');
+    const [dailyGoalCheck, setDailyGoalCheck] = useState(false);
+    const [dailyGoalQuantity, setDailyGoalQuantity] = useState('');
+    const [dailyGoalUnits, setDailyGoalUnits] = useState('');
     const [reminder, setReminder] = useState(false);
     const [plusImg, setPlusImg] = useState(true);
     const [minusImg, setMinusImg] = useState(false);
@@ -66,8 +68,6 @@ const AddHabit = () => {
         // console.log(reminder);
     };
 
-    // const timingsArr = [];
-
     return (
         <div className={styles.addHabitContainer}>
             <div className={styles.addHabitContainerChild}>
@@ -107,19 +107,21 @@ const AddHabit = () => {
                     <input type="checkbox" id="dailyGoal" />
                     <label htmlFor="dailyGoal">
                         Daily goal:{' '}
-                        <input
-                            type="number"
-                            className={styles.addHabitDateInput}
-                            onChange={e => setDailyGoal(e.target.value)}
-                            placeholder="   30"
-                            style={{ width: '50px' }}
-                        />{' '}
-                        <input
-                            type="text"
-                            className={styles.addHabitDateInput}
-                            onChange={e => setReminder(!reminder)}
-                            placeholder="pages"
-                        />
+                        <span>
+                            <input
+                                type="number"
+                                className={styles.addHabitDateInput}
+                                onChange={e => setDailyGoal(e.target.value)}
+                                placeholder="   30"
+                                style={{ width: '50px' }}
+                            />{' '}
+                            <input
+                                type="text"
+                                className={styles.addHabitDateInput}
+                                onChange={e => setReminder(!reminder)}
+                                placeholder="pages"
+                            />
+                        </span>
                     </label>
                 </div>
                 <div>
