@@ -16,6 +16,7 @@ import axios from 'axios';
 
 const jwt = localStorage.getItem('jwt');
 const AuthStr = 'Bearer '.concat(jwt);
+const userId = localStorage.getItem('userId');
 
 export const getHabits = () => async dispatch => {
     try {
@@ -89,15 +90,29 @@ export const addSingleHabit = (timings, title, location, dailyGoal, dailyGoalUni
         dispatch({
             type: ADD_SINGLE_HABIT_REQUEST
         });
-        console.log(timings);
-        console.log(title);
-        console.log(location);
-        console.log(dailyGoal);
-        console.log(dailyGoalUnits);
-        console.log(reminder);
+
+        const config = {
+            user: userId,
+            name: title,
+            doAtTime: timings,
+            doAtPlace: location,
+            dailyTarget: dailyGoal,
+            dailyTargetUnit: dailyGoalUnits
+        };
+
+        const data = await axios.post(`/api/v1/habits`, { headers: { Authorization: AuthStr } }, { data: config });
+
+        console.log(data);
+        // console.log(timings);
+        // console.log(title);
+        // console.log(location);
+        // console.log(dailyGoal);
+        // console.log(dailyGoalUnits);
+        // console.log(reminder);
+        // console.log(userId);
         dispatch({
             type: ADD_SINGLE_HABIT_SUCCESS,
-            payload: 'nothin 4 naw'
+            payload: data
         });
     } catch (error) {
         dispatch({
