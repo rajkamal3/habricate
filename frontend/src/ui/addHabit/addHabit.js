@@ -61,7 +61,7 @@ const AddHabit = () => {
 
         const totalTimes = [defaultTimeVar, ...addedTimesArr];
         console.log('TTTTT' + totalTimes);
-        setTimes([totalTimes]);
+        setTimes(totalTimes);
     };
 
     const toggleDailyGoal = () => {
