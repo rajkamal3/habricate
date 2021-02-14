@@ -29,6 +29,8 @@ const AddHabit = () => {
         if (counterToDisplayMinus > 4) {
             setPlusImg(false);
         }
+
+        updateExtraTime();
     };
 
     const removeExtraTiming = () => {
@@ -43,6 +45,22 @@ const AddHabit = () => {
         if (counterToDisplayMinus <= 4) {
             setPlusImg(true);
         }
+
+        updateExtraTime();
+    };
+
+    const updateExtraTime = () => {
+        const defaultTimeVar = document.querySelector('.defaultTime').value;
+        const addedTimesVar = Array.from(document.querySelectorAll('.addedTimes'));
+
+        let addedTimesArr = [];
+
+        for (let i = 0; i < addedTimesVar.length; i++) {
+            addedTimesArr.push(addedTimesVar[i].value);
+        }
+
+        const totalTimes = [defaultTimeVar, ...addedTimesArr];
+        setTimes(totalTimes);
     };
 
     const toggleDailyGoal = () => {
@@ -54,18 +72,6 @@ const AddHabit = () => {
     };
 
     const addHabit = () => {
-        const defaultTimeVar = document.querySelector('.defaultTime').value;
-        const addedTimesVar = document.querySelectorAll('.addedTimes');
-
-        let addedTimesArr = [];
-
-        for (let i = 0; i < addedTimesVar.length; i++) {
-            addedTimesArr.push(addedTimesVar[i].value);
-        }
-
-        const totalTimes = [defaultTimeVar, ...addedTimesArr];
-        setTimes(totalTimes);
-
         console.log(times);
         console.log('HABIT TITLE ' + habitTitle);
         console.log('LOCATION ' + location);
