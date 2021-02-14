@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addSingleHabit } from './../../actions/habitActions';
 import plus from './../../assets/images/plus.png';
 import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
+    const dispatch = useDispatch();
+
+    const tempState = useSelector(state => state.addSingleHabit);
+
     const [times, setTimes] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
@@ -81,6 +87,7 @@ const AddHabit = () => {
         console.log('DAILY GOAL QUANTITY ' + dailyGoalQuantity);
         console.log('DAILY GOAL UNITS ' + dailyGoalUnits);
         console.log('REMINDER ' + reminder);
+        dispatch(addSingleHabit(times, habitTitle, location, dailyGoalCheck, dailyGoalUnits, reminder));
     };
 
     return (

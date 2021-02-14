@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { userLoginReducer } from './reducers/userLoginReducer';
-import { getUserHabitsReducer, habitReducer, getSingleHabitReducer } from './reducers/habitsReducer';
+import { getUserHabitsReducer, habitReducer, getSingleHabitReducer, addSingleHabitReducer } from './reducers/habitsReducer';
 import { uiModalReducer, uiAddHabitReducer } from './reducers/uiReducer';
 
 const reducer = combineReducers({
@@ -11,7 +11,8 @@ const reducer = combineReducers({
     userHabits: getUserHabitsReducer,
     singleHabit: getSingleHabitReducer,
     ui: uiModalReducer,
-    addHabit: uiAddHabitReducer
+    addHabit: uiAddHabitReducer,
+    addSingleHabit: addSingleHabitReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;

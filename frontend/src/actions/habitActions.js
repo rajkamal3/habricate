@@ -7,7 +7,10 @@ import {
     FETCH_ALL_HABITS_OF_USER_FAIL,
     FETCH_SINGLE_HABIT_OF_USER_REQUEST,
     FETCH_SINGLE_HABIT_OF_USER_SUCCESS,
-    FETCH_SINGLE_HABIT_OF_USER_FAIL
+    FETCH_SINGLE_HABIT_OF_USER_FAIL,
+    ADD_SINGLE_HABIT_REQUEST,
+    ADD_SINGLE_HABIT_SUCCESS,
+    ADD_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
 import axios from 'axios';
 
@@ -76,6 +79,29 @@ export const fetchSingleHabit = habitId => async dispatch => {
     } catch (error) {
         dispatch({
             type: FETCH_SINGLE_HABIT_OF_USER_FAIL,
+            payload: error.response
+        });
+    }
+};
+
+export const addSingleHabit = (timings, title, location, dailyGoal, dailyGoalUnits, reminder) => async dispatch => {
+    try {
+        dispatch({
+            type: ADD_SINGLE_HABIT_REQUEST
+        });
+        console.log(timings);
+        console.log(title);
+        console.log(location);
+        console.log(dailyGoal);
+        console.log(dailyGoalUnits);
+        console.log(reminder);
+        dispatch({
+            type: ADD_SINGLE_HABIT_SUCCESS,
+            payload: 'nothin 4 naw'
+        });
+    } catch (error) {
+        dispatch({
+            type: ADD_SINGLE_HABIT_FAIL,
             payload: error.response
         });
     }
