@@ -4,7 +4,7 @@ import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
-    const [times, setTimes] = useState('');
+    const [times, setTimes] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
     const [dailyGoalCheck, setDailyGoalCheck] = useState(false);
@@ -60,7 +60,8 @@ const AddHabit = () => {
         }
 
         const totalTimes = [defaultTimeVar, ...addedTimesArr];
-        setTimes(totalTimes);
+        console.log('TTTTT' + totalTimes);
+        setTimes([totalTimes]);
     };
 
     const toggleDailyGoal = () => {
@@ -72,6 +73,7 @@ const AddHabit = () => {
     };
 
     const addHabit = () => {
+        updateExtraTime();
         console.log(times);
         console.log('HABIT TITLE ' + habitTitle);
         console.log('LOCATION ' + location);
