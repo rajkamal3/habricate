@@ -13,7 +13,6 @@ import {
     ADD_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
 import { closeAddHabitAction, closeModalAction } from './uiActions';
-import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const jwt = localStorage.getItem('jwt');
@@ -93,34 +92,17 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
             type: ADD_SINGLE_HABIT_REQUEST
         });
 
-        // const config = {
-        //     user: userId,
-        //     name: title,
-        //     doAtTime: timings,
-        //     doAtPlace: location,
-        //     dailyTarget: dailyGoal,
-        //     dailyTargetUnit: dailyGoalUnits
-
-        // };
-
         const data = await axios.post(
             `/api/v1/habits`,
             { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
             { headers: { Authorization: AuthStr } }
         );
 
-        console.log(data);
-        // console.log(timings);
-        // console.log(title);
-        // console.log(location);
-        // console.log(dailyGoal);
-        // console.log(dailyGoalUnits);
-        // console.log(reminder);
-        // console.log(userId);
         dispatch({
             type: ADD_SINGLE_HABIT_SUCCESS,
             payload: data
         });
+
         dispatch(closeModalAction());
         dispatch(closeAddHabitAction());
         document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
