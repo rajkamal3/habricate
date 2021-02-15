@@ -12,11 +12,13 @@ import {
     ADD_SINGLE_HABIT_SUCCESS,
     ADD_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
+import { closeAddHabitAction, closeModalAction } from './uiActions';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const jwt = localStorage.getItem('jwt');
 const AuthStr = 'Bearer '.concat(jwt);
-const userId = localStorage.getItem('userId');
+const user = localStorage.getItem('userId');
 
 export const getHabits = () => async dispatch => {
     try {
@@ -85,22 +87,27 @@ export const fetchSingleHabit = habitId => async dispatch => {
     }
 };
 
-export const addSingleHabit = (timings, title, location, dailyGoal, dailyGoalUnits, reminder) => async dispatch => {
+export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit) => async dispatch => {
     try {
         dispatch({
             type: ADD_SINGLE_HABIT_REQUEST
         });
 
-        const config = {
-            user: userId,
-            name: title,
-            doAtTime: timings,
-            doAtPlace: location,
-            dailyTarget: dailyGoal,
-            dailyTargetUnit: dailyGoalUnits
-        };
+        // const config = {
+        //     user: userId,
+        //     name: title,
+        //     doAtTime: timings,
+        //     doAtPlace: location,
+        //     dailyTarget: dailyGoal,
+        //     dailyTargetUnit: dailyGoalUnits
 
-        const data = await axios.post(`/api/v1/habits`, { headers: { Authorization: AuthStr } }, { data: config });
+        // };
+
+        const data = await axios.post(
+            `/api/v1/habits`,
+            { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
+            { headers: { Authorization: AuthStr } }
+        );
 
         console.log(data);
         // console.log(timings);
@@ -114,6 +121,10 @@ export const addSingleHabit = (timings, title, location, dailyGoal, dailyGoalUni
             type: ADD_SINGLE_HABIT_SUCCESS,
             payload: data
         });
+        dispatch(closeModalAction());
+        dispatch(closeAddHabitAction());
+        document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
+        document.body.querySelector('.header').style.filter = 'none';
     } catch (error) {
         dispatch({
             type: ADD_SINGLE_HABIT_FAIL,

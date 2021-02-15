@@ -66,7 +66,7 @@ const AddHabit = () => {
         }
 
         const totalTimes = [defaultTimeVar, ...addedTimesArr];
-        console.log('TTTTT' + totalTimes);
+        // console.log('TTTTT' + totalTimes);
         setTimes(totalTimes);
     };
 
@@ -80,14 +80,14 @@ const AddHabit = () => {
 
     const addHabit = () => {
         updateExtraTime();
-        console.log(times);
-        console.log('HABIT TITLE ' + habitTitle);
-        console.log('LOCATION ' + location);
-        console.log('DAILY GOAL ' + dailyGoalCheck);
-        console.log('DAILY GOAL QUANTITY ' + dailyGoalQuantity);
-        console.log('DAILY GOAL UNITS ' + dailyGoalUnits);
-        console.log('REMINDER ' + reminder);
-        dispatch(addSingleHabit(times, habitTitle, location, dailyGoalCheck, dailyGoalUnits, reminder));
+        // console.log(times);
+        // console.log('HABIT TITLE ' + habitTitle);
+        // console.log('LOCATION ' + location);
+        // console.log('DAILY GOAL ' + dailyGoalCheck);
+        // console.log('DAILY GOAL QUANTITY ' + dailyGoalQuantity);
+        // console.log('DAILY GOAL UNITS ' + dailyGoalUnits);
+        // console.log('REMINDER ' + reminder);
+        dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits));
     };
 
     return (
