@@ -103,10 +103,10 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
             payload: data
         });
 
-        dispatch(closeModalAction());
-        dispatch(closeAddHabitAction());
         document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
         document.body.querySelector('.header').style.filter = 'none';
+        dispatch(closeModalAction());
+        dispatch(closeAddHabitAction());
     } catch (error) {
         dispatch({
             type: ADD_SINGLE_HABIT_FAIL,

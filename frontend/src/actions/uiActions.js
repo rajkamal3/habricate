@@ -1,4 +1,5 @@
 import { OPEN_MODAL, CLOSE_MODAL, OPEN_ADD_HABIT, CLOSE_ADD_HABIT } from './../constants/uiConstants';
+import { fetchAllHabitsOfUser } from './habitActions';
 
 export const openModalAction = () => dispatch => {
     dispatch({
@@ -26,4 +27,5 @@ export const closeAddHabitAction = () => dispatch => {
         type: CLOSE_ADD_HABIT,
         payload: false
     });
+    dispatch(fetchAllHabitsOfUser());
 };
