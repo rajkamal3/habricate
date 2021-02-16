@@ -8,8 +8,6 @@ import styles from './addHabit.module.css';
 const AddHabit = () => {
     const dispatch = useDispatch();
 
-    // const tempState = useSelector(state => state.addSingleHabit);
-
     const [times, setTimes] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
