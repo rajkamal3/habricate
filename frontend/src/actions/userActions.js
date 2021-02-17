@@ -54,6 +54,8 @@ export const register = (name, email, password) => async dispatch => {
             payload: data
         });
 
+        localStorage.setItem('jwt', data.token);
+        localStorage.setItem('userId', data.data.user._id);
         dispatch({
             type: USER_LOGIN_SUCCESS,
             payload: data
