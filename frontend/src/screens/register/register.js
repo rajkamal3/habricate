@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { register } from './../../actions/userActions';
+import { login, register } from './../../actions/userActions';
 import Spinner from './../../ui/spinner/spinner';
 import styles from './register.module.css';
 
@@ -15,13 +15,13 @@ const Register = ({ location, history }) => {
     const userLogin = useSelector(state => state.userLogin);
     const { loading, error, userInfo } = userLogin;
 
-    const redirect = location.search ? location.search.split('=')[1] : '/';
+    // const redirect = location.search ? location.search.split('=')[1] : '/';
 
-    useEffect(() => {
-        if (userInfo) {
-            history.push(redirect);
-        }
-    }, [userInfo, history, redirect]);
+    // useEffect(() => {
+    //     if (userInfo) {
+    //         history.push(redirect);
+    //     }
+    // }, [userInfo, history, redirect]);
 
     const sumbitHandler = e => {
         e.preventDefault();
@@ -29,7 +29,7 @@ const Register = ({ location, history }) => {
             return;
         }
         dispatch(register(name, email, password));
-        // dispatch(login(email, password));
+        dispatch(login(email, password));
     };
 
     return (
