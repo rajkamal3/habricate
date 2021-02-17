@@ -12,16 +12,17 @@ const Register = ({ location, history }) => {
 
     const dispatch = useDispatch();
 
-    const userLogin = useSelector(state => state.userLogin);
-    const { loading, error, userInfo } = userLogin;
+    const userSignup = useSelector(state => state.userSignup);
+    const { loading, error, userInfo } = userSignup;
 
-    // const redirect = location.search ? location.search.split('=')[1] : '/';
+    const redirect = location.search ? location.search.split('=')[1] : '/';
 
-    // useEffect(() => {
-    //     if (userInfo) {
-    //         history.push(redirect);
-    //     }
-    // }, [userInfo, history, redirect]);
+    useEffect(() => {
+        if (userInfo) {
+            history.location.pathname = '/';
+            history.push('/');
+        }
+    }, [userInfo, history, redirect]);
 
     const sumbitHandler = e => {
         e.preventDefault();
@@ -29,7 +30,7 @@ const Register = ({ location, history }) => {
             return;
         }
         dispatch(register(name, email, password));
-        dispatch(login(email, password));
+        // dispatch(login(email, password));
     };
 
     return (
