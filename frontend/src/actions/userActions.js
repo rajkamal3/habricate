@@ -41,4 +41,22 @@ export const login = (email, password) => async dispatch => {
 
 export const register = (name, email, password) => async dispatch => {
     console.log(name, email, password);
+    try {
+        dispatch({
+            type: USER_SIGNUP_REQUEST
+        });
+
+        const { data } = await axios.post('/api/v1/users/signup', { name, email, password });
+        console.log(data);
+
+        dispatch({
+            type: USER_SIGNUP_SUCCESS,
+            payload: data
+        });
+    } catch (error) {
+        dispatch({
+            type: USER_SIGNUP_FAIL,
+            payload: error.response
+        });
+    }
 };
