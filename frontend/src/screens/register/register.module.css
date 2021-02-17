@@ -1,4 +1,4 @@
-.loginButton {
+.registerButton {
     transition: 0.3s ease;
     width: 250px;
     height: 45px;
@@ -14,22 +14,22 @@
     letter-spacing: 10px;
 }
 
-.loginButton:hover {
+.registerButton:hover {
     background-color: rgb(76 125 61) !important;
 }
 
-.loginButton:focus {
+.registerButton:focus {
     outline: none;
 }
 
-.loginContainer {
+.registerContainer {
     display: flex;
     justify-content: center;
     height: calc(100vh - 70px);
     align-items: center;
 }
 
-.loginContainerChild {
+.registerContainerChild {
     height: 360px;
     display: flex;
     flex-flow: column;
@@ -49,7 +49,7 @@
     margin-bottom: 10px;
 }
 
-.emailAndPassword {
+.emailNameAndPassword {
     width: 360px;
     height: 60px;
     box-sizing: border-box;
@@ -60,34 +60,4 @@
     border: none;
     border-radius: 500px;
     background-color: whitesmoke;
-}
-
-.forgotPassword {
-    height: 25px;
-    align-items: center;
-    display: flex;
-    width: 250px;
-    justify-content: center;
-    text-decoration: underline;
-    color: rgb(102, 168, 81);
-    font-weight: 600;
-    margin-top: 15px;
-    cursor: pointer;
-}
-
-.notAMemberYet {
-    height: 25px;
-    align-items: center;
-    display: flex;
-    width: 250px;
-    justify-content: center;
-    margin-top: 15px;
-    cursor: text;
-}
-
-.registerNow {
-    text-decoration: underline;
-    color: rgb(102, 168, 81);
-    font-weight: 600;
-    cursor: pointer;
 }
