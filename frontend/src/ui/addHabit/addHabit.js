@@ -8,7 +8,7 @@ import styles from './addHabit.module.css';
 const AddHabit = () => {
     const dispatch = useDispatch();
 
-    const [times, setTimes] = useState([]);
+    const [times] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
     const [dailyGoalCheck, setDailyGoalCheck] = useState(false);
@@ -53,7 +53,7 @@ const AddHabit = () => {
         updateExtraTime();
     };
 
-    const updateExtraTime = () => {
+    const updateExtraTime = async () => {
         const defaultTimeVar = document.querySelector('.defaultTime').value;
         const addedTimesVar = Array.from(document.querySelectorAll('.addedTimes'));
 
@@ -64,8 +64,13 @@ const AddHabit = () => {
         }
 
         const totalTimes = [defaultTimeVar, ...addedTimesArr];
-        // console.log('TTTTT' + totalTimes);
-        setTimes(totalTimes);
+
+        while (times.length > 0) {
+            times.pop();
+        }
+
+        times.push(...totalTimes);
+        console.log(times);
     };
 
     const toggleDailyGoal = () => {
