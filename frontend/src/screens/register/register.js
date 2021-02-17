@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login, register } from './../../actions/userActions';
+import { register } from './../../actions/userActions';
 import Spinner from './../../ui/spinner/spinner';
 import styles from './register.module.css';
 
@@ -30,7 +30,6 @@ const Register = ({ location, history }) => {
             return;
         }
         dispatch(register(name, email, password));
-        // dispatch(login(email, password));
     };
 
     return (
