@@ -6,7 +6,7 @@ import SingleHabit from './screens/singleHabit/singleHabit';
 import RegisterScreen from './screens/register/register';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { closeAddHabitAction, closeModalAction } from './actions/uiActions';
+import { closeAddHabitAction, closeModalAction, closeSidebarAction } from './actions/uiActions';
 import Modal from './ui/modal/modal';
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
     const closeModalClick = () => {
         dispatch(closeModalAction());
         dispatch(closeAddHabitAction());
+        dispatch(closeSidebarAction());
         document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
         document.body.querySelector('.header').style.filter = 'none';
     };
