@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL, OPEN_ADD_HABIT, CLOSE_ADD_HABIT } from './../constants/uiConstants';
+import { OPEN_MODAL, CLOSE_MODAL, OPEN_ADD_HABIT, CLOSE_ADD_HABIT, OPEN_SIDEBAR, CLOSE_SIDEBAR } from './../constants/uiConstants';
 
 export const uiModalReducer = (state = {}, action) => {
     switch (action.type) {
@@ -17,6 +17,17 @@ export const uiAddHabitReducer = (state = {}, action) => {
             return { openAddHabit: action.payload };
         case CLOSE_ADD_HABIT:
             return { openAddHabit: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const uiSidebarReducer = (state = {}, action) => {
+    switch (action.type) {
+        case OPEN_SIDEBAR:
+            return { openSidebar: action.payload };
+        case CLOSE_SIDEBAR:
+            return { openSidebar: action.payload };
         default:
             return state;
     }
