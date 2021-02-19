@@ -25,8 +25,8 @@ function App() {
 
     return (
         <div>
-            <Sidebar />
             <BrowserRouter>
+                <Sidebar />
                 {openModalLocal && <Modal click={closeModalClick} />}
                 <Header />
                 <Route path="/login" component={LoginScreen} />
