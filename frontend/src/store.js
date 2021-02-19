@@ -11,7 +11,7 @@ const reducer = combineReducers({
     habits: habitReducer,
     userHabits: getUserHabitsReducer,
     singleHabit: getSingleHabitReducer,
-    ui: uiModalReducer,
+    modal: uiModalReducer,
     sidebar: uiSidebarReducer,
     addHabit: uiAddHabitReducer,
     addSingleHabit: addSingleHabitReducer

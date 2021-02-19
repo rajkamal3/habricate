@@ -1,6 +1,6 @@
 .modal {
     background-color: rgb(34, 34, 34);
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     opacity: 0.5;

@@ -13,7 +13,7 @@ import Sidebar from './ui/sidebar/sidebar';
 function App() {
     const dispatch = useDispatch();
 
-    const openModalLocal = useSelector(state => state.ui.openModal);
+    const openModalLocal = useSelector(state => state.modal.openModal);
 
     const closeModalClick = () => {
         dispatch(closeModalAction());
