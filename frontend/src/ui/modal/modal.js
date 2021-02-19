@@ -8,8 +8,7 @@ const Modal = ({ click }) => {
                 position: 'absolute',
                 width: '100%',
                 height: '100%',
-                opacity: '0.05',
-                color: 'red',
+                opacity: '0.5',
                 zIndex: 99
             }}
             className="modal"

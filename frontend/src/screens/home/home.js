@@ -30,8 +30,8 @@ const HomeScreen = () => {
     const openModalClick = () => {
         dispatch(openModalAction());
         dispatch(openAddHabitAction());
-        document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
-        document.body.querySelector('.header').style.filter = 'blur(5px)';
+        // document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
+        // document.body.querySelector('.header').style.filter = 'blur(5px)';
     };
 
     return (
