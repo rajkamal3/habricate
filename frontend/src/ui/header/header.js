@@ -8,6 +8,7 @@ import styles from './header.module.css';
 const userLoggedIn = localStorage.getItem('userId');
 
 const Header = () => {
+    console.log(window.location);
     const dispatch = useDispatch();
 
     const openSidebar = () => {
