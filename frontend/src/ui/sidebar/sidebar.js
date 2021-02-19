@@ -1,26 +1,34 @@
-import React from 'react';
-import styles from './sidebar.module.css';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+// import styles from './sidebar.module.css';
 
-const Sidebar = () => {
-    let showSideMenu;
-    let modalActive;
+const Sidebar = props => {
+    const [sidebar, setSidebar] = useState('');
 
-    if (!this.props.showModal) {
-        modalActive = [styles.modal, styles.modalClose].join(' ');
-        showSideMenu = [styles.sideMenu, styles.sideMenuClose].join(' ');
-    }
+    const modalOpened = useSelector(state => state.sidebar.openSidebar);
+    console.log(modalOpened);
 
-    if (this.props.showMenu) {
-        showSideMenu = [styles.sideMenu, styles.sideMenuOpen].join(' ');
-        modalActive = [styles.modal, styles.modalOpen].join(' ');
-    }
+    useEffect(() => {
+        if (modalOpened) {
+            setSidebar('0px');
+        } else {
+            setSidebar('-250px');
+        }
+    }, [modalOpened]);
 
     return (
-        <div>
-            <div className={modalActive} onClick={this.props.clicked}></div>
-            <div className={showSideMenu}>
-                <h1>Huell</h1>
-            </div>
+        <div
+            style={{
+                zIndex: '99999',
+                position: 'absolute',
+                width: '250px',
+                height: '100%',
+                backgroundColor: 'white',
+                transform: `translateX(${sidebar})`,
+                transition: '0.3s ease'
+            }}
+        >
+            <h1>Sidebar</h1>
         </div>
     );
 };

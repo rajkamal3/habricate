@@ -8,6 +8,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeAddHabitAction, closeModalAction, closeSidebarAction } from './actions/uiActions';
 import Modal from './ui/modal/modal';
+import Sidebar from './ui/sidebar/sidebar';
 
 function App() {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
 
     return (
         <div>
+            <Sidebar />
             <BrowserRouter>
                 {openModalLocal && <Modal click={closeModalClick} />}
                 <Header />
