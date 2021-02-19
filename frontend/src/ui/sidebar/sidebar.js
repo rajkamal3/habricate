@@ -10,8 +10,10 @@ const Sidebar = () => {
     useEffect(() => {
         if (modalOpened) {
             setSidebar('0px');
+            document.body.style.overflow = 'hidden';
         } else {
             setSidebar('-250px');
+            document.body.style.overflow = 'auto';
         }
     }, [modalOpened]);
 
