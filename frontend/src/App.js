@@ -14,6 +14,8 @@ function App() {
     const dispatch = useDispatch();
 
     const openModalLocal = useSelector(state => state.modal.openModal);
+    const openSidebarLocal = useSelector(state => state.sidebar.openSidebar);
+    console.log('openSidebarLocal ' + openSidebarLocal);
 
     const closeModalClick = () => {
         dispatch(closeModalAction());
@@ -24,7 +26,13 @@ function App() {
     return (
         <div>
             <BrowserRouter>
-                <Sidebar />
+                <div
+                    style={{
+                        transition: '0.3s ease'
+                    }}
+                >
+                    {openSidebarLocal && <Sidebar />}
+                </div>
                 {openModalLocal && <Modal click={closeModalClick} />}
                 <Header />
                 <Route path="/login" component={LoginScreen} />
