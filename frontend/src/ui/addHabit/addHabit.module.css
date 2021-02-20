@@ -1,6 +1,6 @@
 .addHabitContainer {
     width: 85%;
-    height: 38%;
+    min-height: 240px;
     position: absolute;
     z-index: 999;
     background-color: white;
