@@ -40,7 +40,6 @@ export const login = (email, password) => async dispatch => {
 };
 
 export const register = (name, email, password) => async dispatch => {
-    console.log(name, email, password);
     try {
         dispatch({
             type: USER_SIGNUP_REQUEST

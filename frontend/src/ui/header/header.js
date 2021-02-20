@@ -14,8 +14,6 @@ const Header = () => {
     const openSidebar = () => {
         dispatch(openSidebarAction());
         dispatch(openModalAction());
-        // document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
-        // document.body.querySelector('.header').style.filter = 'blur(5px)';
     };
 
     return (

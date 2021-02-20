@@ -54,8 +54,6 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
             type: FETCH_ALL_HABITS_OF_USER_SUCCESS,
             payload: userHabits
         });
-
-        console.log(userHabits);
     } catch (error) {
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_FAIL,
@@ -103,8 +101,6 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
             payload: data
         });
 
-        document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
-        document.body.querySelector('.header').style.filter = 'none';
         dispatch(closeModalAction());
         dispatch(closeAddHabitAction());
     } catch (error) {

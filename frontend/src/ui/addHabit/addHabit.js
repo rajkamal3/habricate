@@ -4,7 +4,6 @@ import { addSingleHabit } from './../../actions/habitActions';
 import plus from './../../assets/images/plus.png';
 import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
-// import { fetchAllHabitsOfUser } from './../../actions/habitActions';
 
 const AddHabit = () => {
     const dispatch = useDispatch();
@@ -84,7 +83,6 @@ const AddHabit = () => {
     const addHabit = () => {
         updateExtraTime();
         dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits));
-        // fetchAllHabitsOfUser();
     };
 
     const capitalize = title => {
