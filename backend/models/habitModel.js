@@ -9,19 +9,21 @@ const habitSchema = new mongoose.Schema(
         },
         name: {
             type: String,
-            required: [true, 'Habit name is mandatory'],
+            required: [true, 'Habit name is mandatory.'],
             trim: true
         },
         doAtTime: [
             {
-                type: String
+                type: String,
+                required: [true, 'Please enter the time(s) you do this.']
             }
         ],
         doAtPlace: {
-            type: String
+            type: String,
+            required: [true, 'Please enter the place you do this.']
         },
         dailyTarget: {
-            type: String
+            type: Number
         },
         dailyTargetUnit: {
             type: String
@@ -35,7 +37,7 @@ const habitSchema = new mongoose.Schema(
 );
 
 habitSchema.virtual('averageGoal').get(function () {
-    return parseInt(this.dailyTarget) / this.doAtTime.length;
+    return this.dailyTarget / this.doAtTime.length;
 });
 
 const habit = new mongoose.model('habit', habitSchema);
