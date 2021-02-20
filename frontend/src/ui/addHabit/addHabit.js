@@ -87,6 +87,12 @@ const AddHabit = () => {
         // fetchAllHabitsOfUser();
     };
 
+    const capitalize = title => {
+        if (typeof title !== 'string') return '';
+        const newTitle = title.charAt(0).toUpperCase() + title.slice(1);
+        setHabitTitle(newTitle);
+    };
+
     return (
         <div className={styles.addHabitContainer}>
             <div className={styles.addHabitContainerChild}>
@@ -105,7 +111,7 @@ const AddHabit = () => {
                         <input
                             type="text"
                             className={styles.addHabitTextInputs}
-                            onChange={e => setHabitTitle(e.target.value)}
+                            onChange={e => capitalize(e.target.value)}
                             placeholder="read a book"
                         />{' '}
                         at the{' '}

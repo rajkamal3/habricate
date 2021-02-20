@@ -57,8 +57,7 @@ const HomeScreen = () => {
                                     <div className={styles.habitDetailsContainer}>
                                         <div
                                             style={{
-                                                color: '#66a851',
-                                                textTransform: 'capitalize'
+                                                color: '#66a851'
                                             }}
                                         >
                                             {habit.name}
