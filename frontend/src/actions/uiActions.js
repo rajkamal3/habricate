@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL, OPEN_ADD_HABIT, CLOSE_ADD_HABIT } from './../constants/uiConstants';
+import { OPEN_MODAL, CLOSE_MODAL, OPEN_ADD_HABIT, CLOSE_ADD_HABIT, OPEN_SIDEBAR, CLOSE_SIDEBAR } from './../constants/uiConstants';
 
 export const openModalAction = () => dispatch => {
     dispatch({
@@ -24,6 +24,20 @@ export const openAddHabitAction = () => dispatch => {
 export const closeAddHabitAction = () => dispatch => {
     dispatch({
         type: CLOSE_ADD_HABIT,
+        payload: false
+    });
+};
+
+export const openSidebarAction = () => dispatch => {
+    dispatch({
+        type: OPEN_SIDEBAR,
+        payload: true
+    });
+};
+
+export const closeSidebarAction = () => dispatch => {
+    dispatch({
+        type: CLOSE_SIDEBAR,
         payload: false
     });
 };

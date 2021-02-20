@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addSingleHabit } from './../../actions/habitActions';
 import plus from './../../assets/images/plus.png';
 import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
 const AddHabit = () => {
-    const [times, setTimes] = useState('');
+    const dispatch = useDispatch();
+
+    const [times] = useState([]);
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
     const [dailyGoalCheck, setDailyGoalCheck] = useState(false);
@@ -29,6 +33,8 @@ const AddHabit = () => {
         if (counterToDisplayMinus > 4) {
             setPlusImg(false);
         }
+
+        updateExtraTime();
     };
 
     const removeExtraTiming = () => {
@@ -43,6 +49,27 @@ const AddHabit = () => {
         if (counterToDisplayMinus <= 4) {
             setPlusImg(true);
         }
+
+        updateExtraTime();
+    };
+
+    const updateExtraTime = async () => {
+        const defaultTimeVar = document.querySelector('.defaultTime').value;
+        const addedTimesVar = Array.from(document.querySelectorAll('.addedTimes'));
+
+        let addedTimesArr = [];
+
+        for (let i = 0; i < addedTimesVar.length; i++) {
+            addedTimesArr.push(addedTimesVar[i].value);
+        }
+
+        const totalTimes = [defaultTimeVar, ...addedTimesArr];
+
+        while (times.length > 0) {
+            times.pop();
+        }
+
+        times.push(...totalTimes);
     };
 
     const toggleDailyGoal = () => {
@@ -54,25 +81,14 @@ const AddHabit = () => {
     };
 
     const addHabit = () => {
-        const defaultTimeVar = document.querySelector('.defaultTime').value;
-        const addedTimesVar = document.querySelectorAll('.addedTimes');
+        updateExtraTime();
+        dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits));
+    };
 
-        let addedTimesArr = [];
-
-        for (let i = 0; i < addedTimesVar.length; i++) {
-            addedTimesArr.push(addedTimesVar[i].value);
-        }
-
-        const totalTimes = [defaultTimeVar, ...addedTimesArr];
-        setTimes(totalTimes);
-
-        console.log(times);
-        console.log('HABIT TITLE ' + habitTitle);
-        console.log('LOCATION ' + location);
-        console.log('DAILY GOAL ' + dailyGoalCheck);
-        console.log('DAILY GOAL QUANTITY ' + dailyGoalQuantity);
-        console.log('DAILY GOAL UNITS ' + dailyGoalUnits);
-        console.log('REMINDER ' + reminder);
+    const capitalize = title => {
+        if (typeof title !== 'string') return '';
+        const newTitle = title.charAt(0).toUpperCase() + title.slice(1);
+        setHabitTitle(newTitle);
     };
 
     return (
@@ -93,7 +109,7 @@ const AddHabit = () => {
                         <input
                             type="text"
                             className={styles.addHabitTextInputs}
-                            onChange={e => setHabitTitle(e.target.value)}
+                            onChange={e => capitalize(e.target.value)}
                             placeholder="read a book"
                         />{' '}
                         at the{' '}

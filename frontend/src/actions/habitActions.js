@@ -7,12 +7,17 @@ import {
     FETCH_ALL_HABITS_OF_USER_FAIL,
     FETCH_SINGLE_HABIT_OF_USER_REQUEST,
     FETCH_SINGLE_HABIT_OF_USER_SUCCESS,
-    FETCH_SINGLE_HABIT_OF_USER_FAIL
+    FETCH_SINGLE_HABIT_OF_USER_FAIL,
+    ADD_SINGLE_HABIT_REQUEST,
+    ADD_SINGLE_HABIT_SUCCESS,
+    ADD_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
+import { closeAddHabitAction, closeModalAction } from './uiActions';
 import axios from 'axios';
 
 const jwt = localStorage.getItem('jwt');
 const AuthStr = 'Bearer '.concat(jwt);
+const user = localStorage.getItem('userId');
 
 export const getHabits = () => async dispatch => {
     try {
@@ -49,8 +54,6 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
             type: FETCH_ALL_HABITS_OF_USER_SUCCESS,
             payload: userHabits
         });
-
-        console.log(userHabits);
     } catch (error) {
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_FAIL,
@@ -76,6 +79,33 @@ export const fetchSingleHabit = habitId => async dispatch => {
     } catch (error) {
         dispatch({
             type: FETCH_SINGLE_HABIT_OF_USER_FAIL,
+            payload: error.response
+        });
+    }
+};
+
+export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit) => async dispatch => {
+    try {
+        dispatch({
+            type: ADD_SINGLE_HABIT_REQUEST
+        });
+
+        const data = await axios.post(
+            `/api/v1/habits`,
+            { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
+            { headers: { Authorization: AuthStr } }
+        );
+
+        dispatch({
+            type: ADD_SINGLE_HABIT_SUCCESS,
+            payload: data
+        });
+
+        dispatch(closeModalAction());
+        dispatch(closeAddHabitAction());
+    } catch (error) {
+        dispatch({
+            type: ADD_SINGLE_HABIT_FAIL,
             payload: error.response
         });
     }

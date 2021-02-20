@@ -1,17 +1,20 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { userLoginReducer } from './reducers/userLoginReducer';
-import { getUserHabitsReducer, habitReducer, getSingleHabitReducer } from './reducers/habitsReducer';
-import { uiModalReducer, uiAddHabitReducer } from './reducers/uiReducer';
+import { userLoginReducer, userSignupReducer } from './reducers/userReducer';
+import { getUserHabitsReducer, habitReducer, getSingleHabitReducer, addSingleHabitReducer } from './reducers/habitsReducer';
+import { uiModalReducer, uiAddHabitReducer, uiSidebarReducer } from './reducers/uiReducer';
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
+    userSignup: userSignupReducer,
     habits: habitReducer,
     userHabits: getUserHabitsReducer,
     singleHabit: getSingleHabitReducer,
-    ui: uiModalReducer,
-    addHabit: uiAddHabitReducer
+    modal: uiModalReducer,
+    sidebar: uiSidebarReducer,
+    addHabit: uiAddHabitReducer,
+    addSingleHabit: addSingleHabitReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;

@@ -6,24 +6,25 @@ import SingleHabit from './screens/singleHabit/singleHabit';
 import RegisterScreen from './screens/register/register';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { closeAddHabitAction, closeModalAction } from './actions/uiActions';
+import { closeAddHabitAction, closeModalAction, closeSidebarAction } from './actions/uiActions';
 import Modal from './ui/modal/modal';
+import Sidebar from './ui/sidebar/sidebar';
 
 function App() {
     const dispatch = useDispatch();
 
-    const openModalLocal = useSelector(state => state.ui.openModal);
+    const openModalLocal = useSelector(state => state.modal.openModal);
 
     const closeModalClick = () => {
         dispatch(closeModalAction());
         dispatch(closeAddHabitAction());
-        document.body.querySelector('.homeScreenContainerChild').style.filter = 'none';
-        document.body.querySelector('.header').style.filter = 'none';
+        dispatch(closeSidebarAction());
     };
 
     return (
         <div>
             <BrowserRouter>
+                <Sidebar />
                 {openModalLocal && <Modal click={closeModalClick} />}
                 <Header />
                 <Route path="/login" component={LoginScreen} />

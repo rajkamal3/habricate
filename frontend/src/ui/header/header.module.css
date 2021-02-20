@@ -1,6 +1,6 @@
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     height: 70px;
     width: 100%;
     background-color: rgb(255, 255, 255);
@@ -17,4 +17,17 @@
     font-weight: 800;
     font-size: 30px;
     color: rgb(102, 168, 81);
+}
+
+.headerIconContainer {
+    width: 70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.headerIcons {
+    height: 30px;
 }

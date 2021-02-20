@@ -30,8 +30,6 @@ const HomeScreen = () => {
     const openModalClick = () => {
         dispatch(openModalAction());
         dispatch(openAddHabitAction());
-        document.body.querySelector('.homeScreenContainerChild').style.filter = 'blur(5px)';
-        document.body.querySelector('.header').style.filter = 'blur(5px)';
     };
 
     return (
@@ -55,13 +53,7 @@ const HomeScreen = () => {
                                         <img src={book} width="30px" alt="book" />
                                     </div>
                                     <div className={styles.habitDetailsContainer}>
-                                        <div
-                                            style={{
-                                                color: '#66a851'
-                                            }}
-                                        >
-                                            {habit.name}
-                                        </div>
+                                        <div className={styles.habitName}>{habit.name}</div>
                                         <div>{habit.doAtTime.join(', ')}</div>
                                         <div>{`${habit.dailyTarget} ${habit.dailyTargetUnit.toLowerCase()} per day`}</div>
                                     </div>
