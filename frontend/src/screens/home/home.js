@@ -38,7 +38,12 @@ const HomeScreen = () => {
             {openAddHabit && <AddHabit />}
             {habits && (
                 <div className={[styles.homeScreenContainerChild, 'homeScreenContainerChild'].join(' ')}>
-                    <div className={styles.currentHabitsTitle}>Current habits</div>
+                    <div className={styles.currentHabitsTitleAndAddHabitButtonContainer}>
+                        <div>Current habits</div>
+                        <div className={styles.addHabitButton} onClick={openModalClick}>
+                            Add habit
+                        </div>
+                    </div>
                     {habits.map(habit => {
                         return (
                             <Link
@@ -64,11 +69,6 @@ const HomeScreen = () => {
                             </Link>
                         );
                     })}
-                    <div className={styles.addHabitButtonContainer}>
-                        <div className={styles.addHabitButton} onClick={openModalClick}>
-                            Add habit
-                        </div>
-                    </div>
                 </div>
             )}
         </div>

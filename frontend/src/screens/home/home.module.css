@@ -1,11 +1,12 @@
 .homeScreenContainer {
-    /* background-color: red; */
+    /* background-color: saddlebrown; */
     width: 100%;
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 90px);
     display: flex;
     justify-content: center;
     align-items: flex-start;
     color: rgb(34, 34, 34);
+    padding-bottom: 20px;
 }
 
 .homeScreenContainerChild {
@@ -16,9 +17,12 @@
     padding-top: 15px;
 }
 
-.currentHabitsTitle {
+.currentHabitsTitleAndAddHabitButtonContainer {
     font-weight: 800;
     color: #66a851;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .eachHabit {
@@ -80,14 +84,15 @@
 .addHabitButton {
     width: 140px;
     height: 40px;
-    font-weight: 700;
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 5px;
     color: rgb(102, 168, 81);
     box-shadow: rgb(0 0 0 / 25%) 0px 0px 20px -3px;
-    margin-top: 18px;
+    background-color: rgb(102, 168, 81);
+    color: white;
     cursor: pointer;
 }
 

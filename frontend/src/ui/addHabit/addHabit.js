@@ -12,7 +12,7 @@ const AddHabit = () => {
     const [habitTitle, setHabitTitle] = useState('');
     const [location, setLocation] = useState('');
     const [dailyGoalCheck, setDailyGoalCheck] = useState(false);
-    const [dailyGoalQuantity, setDailyGoalQuantity] = useState('');
+    const [dailyGoalQuantity, setDailyGoalQuantity] = useState(0);
     const [dailyGoalUnits, setDailyGoalUnits] = useState('');
     const [reminder, setReminder] = useState(false);
     const [plusImg, setPlusImg] = useState(true);

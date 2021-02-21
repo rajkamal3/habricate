@@ -6,7 +6,6 @@ import pen from './../../assets/images/pen.png';
 import { fetchSingleHabit } from '../../actions/habitActions';
 
 const SingleHabit = ({ history }) => {
-    console.log(window.location);
     const dispatch = useDispatch();
     const id = history.location.pathname.split('/')[2];
     const habitState = useSelector(state => state.singleHabit);
