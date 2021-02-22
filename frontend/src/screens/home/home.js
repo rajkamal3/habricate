@@ -16,6 +16,8 @@ const HomeScreen = () => {
     const userHabitsFromStore = useSelector(state => state.userHabits);
     const { loading, habits } = userHabitsFromStore;
 
+    console.log(habits);
+
     const addHabitFromStore = useSelector(state => state.addHabit);
     const { openAddHabit } = addHabitFromStore;
 
