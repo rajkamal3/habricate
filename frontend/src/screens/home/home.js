@@ -16,8 +16,6 @@ const HomeScreen = () => {
     const userHabitsFromStore = useSelector(state => state.userHabits);
     const { loading, habits } = userHabitsFromStore;
 
-    console.log(habits);
-
     const addHabitFromStore = useSelector(state => state.addHabit);
     const { openAddHabit } = addHabitFromStore;
 
@@ -60,7 +58,17 @@ const HomeScreen = () => {
                                         <img src={book} width="30px" alt="book" />
                                     </div>
                                     <div className={styles.habitDetailsContainer}>
-                                        <div className={styles.habitName}>{habit.name}</div>
+                                        <div className={styles.habitName}>
+                                            {habit.name}{' '}
+                                            <span
+                                                style={{
+                                                    color: '#888888'
+                                                }}
+                                            >
+                                                at
+                                            </span>{' '}
+                                            {habit.doAtPlace}
+                                        </div>
                                         <div>{habit.doAtTime.join(', ')}</div>
                                         <div>{`${habit.dailyTarget} ${habit.dailyTargetUnit.toLowerCase()} per day`}</div>
                                     </div>

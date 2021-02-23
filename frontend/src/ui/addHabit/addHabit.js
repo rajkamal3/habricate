@@ -112,7 +112,7 @@ const AddHabit = () => {
                             onChange={e => capitalize(e.target.value)}
                             placeholder="read a book"
                         />{' '}
-                        at the{' '}
+                        at{' '}
                         <input
                             type="text"
                             className={styles.addHabitTextInputs}
