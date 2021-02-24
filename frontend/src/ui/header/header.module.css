@@ -19,6 +19,11 @@
     color: rgb(102, 168, 81);
 }
 
+.headerIconContainerForSpace {
+    width: 70px;
+    height: 100%;
+}
+
 .headerIconContainer {
     width: 70px;
     height: 100%;

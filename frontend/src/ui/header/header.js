@@ -26,15 +26,21 @@ const Header = () => {
 
     return (
         <header className={[styles.header, 'header'].join(' ')}>
-            <div className={styles.headerIconContainer} onClick={currentPageName === 'singleHabit' ? goBack : openSidebar}>
-                {currentPageName === 'singleHabit' ? (
-                    <img src={back} className={styles.headerIcons} alt="back" />
-                ) : (
-                    <img src={hamburger} className={styles.headerIcons} alt="menu" />
+            <div className={styles.headerIconContainerForSpace}>
+                {userLoggedIn && (
+                    <div className={styles.headerIconContainer} onClick={currentPageName === 'singleHabit' ? goBack : openSidebar}>
+                        <img src={currentPageName === 'singleHabit' ? back : hamburger} className={styles.headerIcons} alt="menu/back" />
+                    </div>
                 )}
             </div>
             <div className={styles.habricateTitle}>Habricate</div>
-            <div className={styles.headerIconContainer}>{userLoggedIn && <img src={user} className={styles.headerIcons} alt="user" />}</div>
+            <div className={styles.headerIconContainerForSpace}>
+                {userLoggedIn && (
+                    <div className={styles.headerIconContainer}>
+                        <img src={user} className={styles.headerIcons} alt="user" />
+                    </div>
+                )}
+            </div>
         </header>
     );
 };
