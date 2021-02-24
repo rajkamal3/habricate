@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styles from './sidebar.module.css';
 
 const Sidebar = () => {
-    const [sidebar, setSidebar] = useState('');
+    const [sidebar, setSidebar] = useState('-250px');
 
     const modalOpened = useSelector(state => state.sidebar.openSidebar);
 

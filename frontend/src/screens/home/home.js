@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllHabitsOfUser, fetchSingleHabit } from '../../actions/habitActions';
-import { openModalAction } from '../../actions/uiActions';
+import { openModalAction, setCurrentPageAction } from '../../actions/uiActions';
 import { openAddHabitAction } from '../../actions/uiActions';
 import styles from './home.module.css';
 import book from './../../assets/images/book.png';
@@ -14,7 +14,7 @@ const HomeScreen = () => {
     const dispatch = useDispatch();
 
     const userHabitsFromStore = useSelector(state => state.userHabits);
-    const { loading, habits } = userHabitsFromStore;
+    const { loading, habits, error } = userHabitsFromStore;
 
     const addHabitFromStore = useSelector(state => state.addHabit);
     const { openAddHabit } = addHabitFromStore;
@@ -25,6 +25,7 @@ const HomeScreen = () => {
 
     useEffect(() => {
         dispatch(fetchAllHabitsOfUser());
+        dispatch(setCurrentPageAction('home'));
     }, [dispatch]);
 
     const openModalClick = () => {
@@ -32,10 +33,54 @@ const HomeScreen = () => {
         dispatch(openAddHabitAction());
     };
 
+    const refreshOnAddHabit = () => {
+        dispatch(fetchAllHabitsOfUser());
+    };
+
     return (
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
-            {openAddHabit && <AddHabit />}
+            {openAddHabit && <AddHabit click={refreshOnAddHabit} />}
+            {error && (
+                <div
+                    style={{
+                        marginTop: '20px'
+                    }}
+                >
+                    <div
+                        style={{
+                            textAlign: 'center'
+                        }}
+                    >
+                        {error}
+                    </div>
+                    <div>
+                        <Link
+                            to="/login"
+                            style={{
+                                transition: '0.3s ease',
+                                width: '250px',
+                                height: '45px',
+                                border: 'none',
+                                marginTop: '15px',
+                                cursor: 'pointer',
+                                backgroundColor: 'rgb(102, 168, 81)',
+                                fontSize: '16px',
+                                fontWeight: '600',
+                                borderRadius: '60px',
+                                fontFamily: 'Gilroy',
+                                color: 'white',
+                                letterSpacing: '5px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}
+                        >
+                            Login/Signup
+                        </Link>
+                    </div>
+                </div>
+            )}
             {habits && (
                 <div className={[styles.homeScreenContainerChild, 'homeScreenContainerChild'].join(' ')}>
                     <div className={styles.currentHabitsTitleAndAddHabitButtonContainer}>
@@ -58,7 +103,9 @@ const HomeScreen = () => {
                                         <img src={book} width="30px" alt="book" />
                                     </div>
                                     <div className={styles.habitDetailsContainer}>
-                                        <div className={styles.habitName}>{habit.name}</div>
+                                        <div className={styles.habitName}>
+                                            {habit.name} <span className={styles.habitDetailsVerbiage}>at</span> {habit.doAtPlace}
+                                        </div>
                                         <div>{habit.doAtTime.join(', ')}</div>
                                         <div>{`${habit.dailyTarget} ${habit.dailyTargetUnit.toLowerCase()} per day`}</div>
                                     </div>

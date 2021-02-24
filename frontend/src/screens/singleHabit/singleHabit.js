@@ -4,6 +4,7 @@ import Spinner from './../../ui/spinner/spinner';
 import styles from './singleHabit.module.css';
 import pen from './../../assets/images/pen.png';
 import { fetchSingleHabit } from '../../actions/habitActions';
+import { setCurrentPageAction } from '../../actions/uiActions';
 
 const SingleHabit = ({ history }) => {
     const dispatch = useDispatch();
@@ -13,9 +14,8 @@ const SingleHabit = ({ history }) => {
 
     useEffect(() => {
         dispatch(fetchSingleHabit(id));
+        dispatch(setCurrentPageAction('singleHabit'));
     }, [dispatch, id]);
-
-    console.log(loading, habit);
 
     return (
         <div className={styles.singleHabitContainer}>

@@ -37,9 +37,10 @@ exports.protect = catchAsync(async (req, res, next) => {
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             req.user = await User.findById(decoded.id).select('-password');
         } catch (error) {
-            console.log(error);
-            res.status(401);
-            throw new Error('Token error.');
+            res.status(401).json({
+                status: 'fail',
+                message: 'Please Sign Up or Log In.'
+            });
         }
     }
 

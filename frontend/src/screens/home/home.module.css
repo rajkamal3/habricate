@@ -73,6 +73,10 @@
     color: #888888;
 }
 
+.habitDetailsVerbiage {
+    color: #888888;
+}
+
 .eachHabitRightArrow {
     width: 5%;
     display: flex;
