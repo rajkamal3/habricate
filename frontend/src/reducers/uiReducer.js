@@ -30,7 +30,7 @@ export const uiAddHabitReducer = (state = {}, action) => {
     }
 };
 
-export const uiSidebarReducer = (state = {}, action) => {
+export const uiSidebarReducer = (state = { openSidebar: false }, action) => {
     switch (action.type) {
         case OPEN_SIDEBAR:
             return { openSidebar: action.payload };

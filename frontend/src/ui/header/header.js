@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { openModalAction, openSidebarAction } from './../../actions/uiActions';
 import { useSelector, useDispatch } from 'react-redux';
 import hamburger from './../../assets/images/hamburger.png';
@@ -8,14 +9,11 @@ import styles from './header.module.css';
 
 const userLoggedIn = localStorage.getItem('userId');
 
-const Header = history => {
-    console.log(history);
-
+const Header = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const currentPageName = useSelector(state => state.currentPageName.pageName);
-
-    console.log(currentPageName);
 
     const openSidebar = () => {
         dispatch(openSidebarAction());
@@ -23,7 +21,7 @@ const Header = history => {
     };
 
     const goBack = () => {
-        window.location = '/';
+        history.push('/');
     };
 
     return (
