@@ -15,8 +15,6 @@ const SingleHabit = ({ history }) => {
         dispatch(fetchSingleHabit(id));
     }, [dispatch, id]);
 
-    console.log(loading, habit);
-
     return (
         <div className={styles.singleHabitContainer}>
             {loading && <Spinner />}
