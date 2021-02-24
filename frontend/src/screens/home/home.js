@@ -14,7 +14,7 @@ const HomeScreen = () => {
     const dispatch = useDispatch();
 
     const userHabitsFromStore = useSelector(state => state.userHabits);
-    const { loading, habits } = userHabitsFromStore;
+    const { loading, habits, error } = userHabitsFromStore;
 
     const addHabitFromStore = useSelector(state => state.addHabit);
     const { openAddHabit } = addHabitFromStore;
@@ -41,6 +41,46 @@ const HomeScreen = () => {
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
             {openAddHabit && <AddHabit click={refreshOnAddHabit} />}
+            {error && (
+                <div
+                    style={{
+                        marginTop: '20px'
+                    }}
+                >
+                    <div
+                        style={{
+                            textAlign: 'center'
+                        }}
+                    >
+                        {error}
+                    </div>
+                    <div>
+                        <Link
+                            to="/login"
+                            style={{
+                                transition: '0.3s ease',
+                                width: '250px',
+                                height: '45px',
+                                border: 'none',
+                                marginTop: '15px',
+                                cursor: 'pointer',
+                                backgroundColor: 'rgb(102, 168, 81)',
+                                fontSize: '16px',
+                                fontWeight: '600',
+                                borderRadius: '60px',
+                                fontFamily: 'Gilroy',
+                                color: 'white',
+                                letterSpacing: '5px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}
+                        >
+                            Login/Signup
+                        </Link>
+                    </div>
+                </div>
+            )}
             {habits && (
                 <div className={[styles.homeScreenContainerChild, 'homeScreenContainerChild'].join(' ')}>
                     <div className={styles.currentHabitsTitleAndAddHabitButtonContainer}>

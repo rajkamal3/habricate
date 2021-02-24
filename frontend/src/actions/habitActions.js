@@ -57,7 +57,7 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
     } catch (error) {
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_FAIL,
-            payload: error.response
+            payload: error.response.data.message
         });
     }
 };
