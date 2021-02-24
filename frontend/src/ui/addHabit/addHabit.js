@@ -5,7 +5,7 @@ import plus from './../../assets/images/plus.png';
 import minus from './../../assets/images/minus.png';
 import styles from './addHabit.module.css';
 
-const AddHabit = () => {
+const AddHabit = ({ click }) => {
     const dispatch = useDispatch();
 
     const [times] = useState([]);
@@ -83,6 +83,7 @@ const AddHabit = () => {
     const addHabit = () => {
         updateExtraTime();
         dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits));
+        click();
     };
 
     const capitalize = title => {

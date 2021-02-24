@@ -33,10 +33,14 @@ const HomeScreen = () => {
         dispatch(openAddHabitAction());
     };
 
+    const refresh = () => {
+        dispatch(fetchAllHabitsOfUser());
+    };
+
     return (
         <div className={styles.homeScreenContainer}>
             {loading && <Spinner />}
-            {openAddHabit && <AddHabit />}
+            {openAddHabit && <AddHabit click={refresh} />}
             {habits && (
                 <div className={[styles.homeScreenContainerChild, 'homeScreenContainerChild'].join(' ')}>
                     <div className={styles.currentHabitsTitleAndAddHabitButtonContainer}>
