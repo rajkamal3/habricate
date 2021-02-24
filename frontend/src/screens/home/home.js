@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllHabitsOfUser, fetchSingleHabit } from '../../actions/habitActions';
-import { openModalAction } from '../../actions/uiActions';
+import { openModalAction, setCurrentPageAction } from '../../actions/uiActions';
 import { openAddHabitAction } from '../../actions/uiActions';
 import styles from './home.module.css';
 import book from './../../assets/images/book.png';
@@ -25,6 +25,7 @@ const HomeScreen = () => {
 
     useEffect(() => {
         dispatch(fetchAllHabitsOfUser());
+        dispatch(setCurrentPageAction('home'));
     }, [dispatch]);
 
     const openModalClick = () => {

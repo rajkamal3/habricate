@@ -14,7 +14,7 @@ const reducer = combineReducers({
     modal: uiModalReducer,
     sidebar: uiSidebarReducer,
     addHabit: uiAddHabitReducer,
-    pageName: uiSetPageNameReducer,
+    currentPageName: uiSetPageNameReducer,
     addSingleHabit: addSingleHabitReducer
 });
 

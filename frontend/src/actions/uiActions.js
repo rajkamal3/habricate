@@ -50,7 +50,7 @@ export const closeSidebarAction = () => dispatch => {
     });
 };
 
-export const setCurrentPage = pageName => dispatch => {
+export const setCurrentPageAction = pageName => dispatch => {
     dispatch({
         type: SET_CURRENT_PAGE_NAME,
         payload: pageName

@@ -1,6 +1,6 @@
 import React from 'react';
 import { openModalAction, openSidebarAction } from './../../actions/uiActions';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import hamburger from './../../assets/images/hamburger.png';
 import user from './../../assets/images/user.png';
 import styles from './header.module.css';
@@ -9,6 +9,10 @@ const userLoggedIn = localStorage.getItem('userId');
 
 const Header = () => {
     const dispatch = useDispatch();
+
+    const currentPageName = useSelector(state => state.currentPageName.pageName);
+
+    console.log(currentPageName);
 
     const openSidebar = () => {
         dispatch(openSidebarAction());
