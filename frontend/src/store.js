@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { userLoginReducer, userSignupReducer } from './reducers/userReducer';
 import { getUserHabitsReducer, habitReducer, getSingleHabitReducer, addSingleHabitReducer } from './reducers/habitsReducer';
-import { uiModalReducer, uiAddHabitReducer, uiSidebarReducer } from './reducers/uiReducer';
+import { uiModalReducer, uiAddHabitReducer, uiSidebarReducer, uiSetPageNameReducer } from './reducers/uiReducer';
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
@@ -14,6 +14,7 @@ const reducer = combineReducers({
     modal: uiModalReducer,
     sidebar: uiSidebarReducer,
     addHabit: uiAddHabitReducer,
+    pageName: uiSetPageNameReducer,
     addSingleHabit: addSingleHabitReducer
 });
 
