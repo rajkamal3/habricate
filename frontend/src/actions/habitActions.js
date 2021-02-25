@@ -40,11 +40,13 @@ export const getHabits = () => async dispatch => {
     }
 };
 
-export const fetchAllHabitsOfUser = () => async dispatch => {
+export const fetchAllHabitsOfUser = () => async (dispatch, getState) => {
     try {
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_REQUEST
         });
+
+        console.log(getState());
 
         const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: AuthStr } });
 
