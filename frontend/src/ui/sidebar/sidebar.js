@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from './../../actions/userActions';
 import styles from './sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = ({ history }) => {
+    const dispatch = useDispatch();
+
     const [sidebar, setSidebar] = useState('-250px');
 
     const modalOpened = useSelector(state => state.sidebar.openSidebar);
@@ -17,14 +20,45 @@ const Sidebar = () => {
         }
     }, [modalOpened]);
 
+    const logoutAction = () => {
+        dispatch(logout());
+    };
+
     return (
         <div
             className={styles.sidebar}
             style={{
-                transform: `translateX(${sidebar})`
+                transform: `translateX(${sidebar})`,
+                display: 'flex',
+                justifyContent: 'center'
             }}
         >
-            <h1>Sidebar</h1>
+            <div
+                style={{
+                    width: '80%',
+                    height: 'inherit'
+                    // backgroundColor: 'red'
+                }}
+            >
+                <div
+                    style={{
+                        width: '140px',
+                        height: '40px',
+                        fontWeight: '500',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderRadius: '5px',
+                        color: 'white',
+                        boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px -3px',
+                        backgroundColor: 'rgb(102, 168, 81)',
+                        cursor: 'pointer'
+                    }}
+                    onClick={logoutAction}
+                >
+                    Log out
+                </div>
+            </div>
         </div>
     );
 };
