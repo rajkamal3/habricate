@@ -71,13 +71,22 @@ export const fetchAllHabitsOfUser = () => async (dispatch, getState) => {
     }
 };
 
-export const fetchSingleHabit = habitId => async dispatch => {
+export const fetchSingleHabit = habitId => async (dispatch, getState) => {
     try {
         dispatch({
             type: FETCH_SINGLE_HABIT_OF_USER_REQUEST
         });
 
-        const data = await axios.get(`/api/v1/habits/${habitId}`, { headers: { Authorization: AuthStr } });
+        const { userLogin } = getState();
+        let bearerToken;
+
+        if (userLogin.userInfo) {
+            bearerToken = userLogin.userInfo.token;
+        } else {
+            bearerToken = AuthStr;
+        }
+
+        const data = await axios.get(`/api/v1/habits/${habitId}`, { headers: { Authorization: `Bearer ${bearerToken}` } });
 
         const habit = data.data.data;
 

@@ -52,7 +52,8 @@ const Sidebar = ({ history }) => {
                         color: 'white',
                         boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px -3px',
                         backgroundColor: 'rgb(102, 168, 81)',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        marginTop: '20px'
                     }}
                     onClick={logoutAction}
                 >
