@@ -15,9 +15,9 @@ import {
 import { closeAddHabitAction, closeModalAction } from './uiActions';
 import axios from 'axios';
 
-const jwt = localStorage.getItem('jwt');
-const AuthStr = 'Bearer '.concat(jwt);
-const user = localStorage.getItem('userId');
+let jwt = localStorage.getItem('jwt');
+let AuthStr = jwt;
+let user = localStorage.getItem('userId');
 
 export const getHabits = () => async dispatch => {
     try {
@@ -46,9 +46,16 @@ export const fetchAllHabitsOfUser = () => async (dispatch, getState) => {
             type: FETCH_ALL_HABITS_OF_USER_REQUEST
         });
 
-        console.log(getState());
+        const { userLogin } = getState();
+        let bearerToken;
 
-        const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: AuthStr } });
+        if (userLogin.userInfo) {
+            bearerToken = userLogin.userInfo.token;
+        } else {
+            bearerToken = AuthStr;
+        }
+
+        const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: `Bearer ${bearerToken}` } });
 
         const userHabits = data.data.data;
 
