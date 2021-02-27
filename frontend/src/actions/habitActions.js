@@ -89,6 +89,7 @@ export const fetchSingleHabit = habitId => async (dispatch, getState) => {
         const data = await axios.get(`/api/v1/habits/${habitId}`, { headers: { Authorization: `Bearer ${bearerToken}` } });
 
         const habit = data.data.data;
+        // const habit = data.data;
 
         dispatch({
             type: FETCH_SINGLE_HABIT_OF_USER_SUCCESS,
