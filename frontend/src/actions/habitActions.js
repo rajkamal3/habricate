@@ -33,8 +33,6 @@ const getToken = () => {
     return bearerToken;
 };
 
-getToken();
-
 export const getHabits = () => async dispatch => {
     try {
         dispatch({
