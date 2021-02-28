@@ -22,7 +22,6 @@ let user = localStorage.getItem('userId');
 
 const getToken = () => {
     const globalStore = store.getState();
-
     let bearerToken;
 
     if (globalStore.userLogin.userInfo) {
@@ -64,9 +63,7 @@ export const fetchAllHabitsOfUser = () => async (dispatch, getState) => {
         });
 
         const bearerToken = getToken();
-
         const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: `Bearer ${bearerToken}` } });
-
         const userHabits = data.data.data;
 
         dispatch({
@@ -88,9 +85,7 @@ export const fetchSingleHabit = habitId => async (dispatch, getState) => {
         });
 
         const bearerToken = getToken();
-
         const data = await axios.get(`/api/v1/habits/${habitId}`, { headers: { Authorization: `Bearer ${bearerToken}` } });
-
         const habit = data.data.data;
 
         dispatch({
@@ -112,7 +107,6 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
         });
 
         const bearerToken = getToken();
-
         const data = await axios.post(
             `/api/v1/habits`,
             { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
