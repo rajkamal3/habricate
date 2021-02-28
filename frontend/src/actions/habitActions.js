@@ -12,12 +12,18 @@ import {
     ADD_SINGLE_HABIT_SUCCESS,
     ADD_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
+import store from './../store';
 import { closeAddHabitAction, closeModalAction } from './uiActions';
 import axios from 'axios';
 
 let jwt = localStorage.getItem('jwt');
 let AuthStr = jwt;
 let user = localStorage.getItem('userId');
+
+const getToken = () => {
+    const globalStore = store.getState();
+    return globalStore;
+};
 
 export const getHabits = () => async dispatch => {
     try {
@@ -54,6 +60,8 @@ export const fetchAllHabitsOfUser = () => async (dispatch, getState) => {
         } else {
             bearerToken = AuthStr;
         }
+        const hueller = getToken();
+        console.log(hueller);
 
         const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: `Bearer ${bearerToken}` } });
 
