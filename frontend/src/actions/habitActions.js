@@ -22,8 +22,19 @@ let user = localStorage.getItem('userId');
 
 const getToken = () => {
     const globalStore = store.getState();
-    return globalStore;
+
+    let bearerToken;
+
+    if (globalStore.userLogin.userInfo) {
+        bearerToken = globalStore.userLogin.userInfo.token;
+    } else {
+        bearerToken = AuthStr;
+    }
+
+    return bearerToken;
 };
+
+getToken();
 
 export const getHabits = () => async dispatch => {
     try {
@@ -52,16 +63,7 @@ export const fetchAllHabitsOfUser = () => async (dispatch, getState) => {
             type: FETCH_ALL_HABITS_OF_USER_REQUEST
         });
 
-        const { userLogin } = getState();
-        let bearerToken;
-
-        if (userLogin.userInfo) {
-            bearerToken = userLogin.userInfo.token;
-        } else {
-            bearerToken = AuthStr;
-        }
-        const hueller = getToken();
-        console.log(hueller);
+        const bearerToken = getToken();
 
         const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: `Bearer ${bearerToken}` } });
 
@@ -85,19 +87,11 @@ export const fetchSingleHabit = habitId => async (dispatch, getState) => {
             type: FETCH_SINGLE_HABIT_OF_USER_REQUEST
         });
 
-        const { userLogin } = getState();
-        let bearerToken;
-
-        if (userLogin.userInfo) {
-            bearerToken = userLogin.userInfo.token;
-        } else {
-            bearerToken = AuthStr;
-        }
+        const bearerToken = getToken();
 
         const data = await axios.get(`/api/v1/habits/${habitId}`, { headers: { Authorization: `Bearer ${bearerToken}` } });
 
         const habit = data.data.data;
-        // const habit = data.data;
 
         dispatch({
             type: FETCH_SINGLE_HABIT_OF_USER_SUCCESS,
@@ -117,10 +111,12 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
             type: ADD_SINGLE_HABIT_REQUEST
         });
 
+        const bearerToken = getToken();
+
         const data = await axios.post(
             `/api/v1/habits`,
             { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
-            { headers: { Authorization: AuthStr } }
+            { headers: { Authorization: `Bearer ${bearerToken}` } }
         );
 
         dispatch({
