@@ -17,11 +17,17 @@ export const userLoginReducer = (state = {}, action) => {
         case USER_LOGIN_FAIL:
             return { loading: false, error: action.payload };
         case USER_LOGOUT:
-            return null;
+            return {};
         default:
             return state;
     }
 };
+
+//     localStorage.removeItem('userInfo');
+//     dispatch({ type: USER_LOGOUT });
+//     dispatch({ type: USER_DETAILS_RESET });
+//     dispatch({ type: ORDER_LIST_MY_RESET });
+//     dispatch({ type: USER_LIST_RESET });
 
 export const userSignupReducer = (state = {}, action) => {
     switch (action.type) {
