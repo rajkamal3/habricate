@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import store from './../../store';
 import { openModalAction, openSidebarAction } from './../../actions/uiActions';
 import { useSelector, useDispatch } from 'react-redux';
 import hamburger from './../../assets/images/hamburger.png';
@@ -7,11 +8,13 @@ import back from './../../assets/images/back.png';
 import user from './../../assets/images/user.png';
 import styles from './header.module.css';
 
-const userLoggedIn = localStorage.getItem('userId');
-
 const Header = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+
+    const userLoggedIn = localStorage.getItem('userId');
+    console.log('LOGGED IN ' + userLoggedIn);
+    const globalStore = store.getState();
 
     const currentPageName = useSelector(state => state.currentPageName.pageName);
 
@@ -23,6 +26,10 @@ const Header = () => {
     const goBack = () => {
         history.push('/');
     };
+
+    useEffect(() => {
+        console.log('huell');
+    }, [globalStore, userLoggedIn]);
 
     return (
         <header className={[styles.header, 'header'].join(' ')}>

@@ -12,28 +12,28 @@ import {
     ADD_SINGLE_HABIT_SUCCESS,
     ADD_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
-import store from './../store';
+// import store from './../store';
 import { closeAddHabitAction, closeModalAction } from './uiActions';
 import axios from 'axios';
 
-let jwt = localStorage.getItem('jwt');
-let AuthStr = jwt;
-let user = localStorage.getItem('userId');
+// let jwt = localStorage.getItem('jwt');
+// let AuthStr = jwt;
+// let user = localStorage.getItem('userId');
 
-const getToken = () => {
-    const globalStore = store.getState();
-    let bearerToken;
+// const getToken = () => {
+//     const globalStore = store.getState();
+//     let bearerToken;
 
-    if (globalStore.userLogin.userInfo) {
-        bearerToken = globalStore.userLogin.userInfo.token;
-    } else {
-        bearerToken = AuthStr;
-    }
+//     if (globalStore.userLogin.userInfo) {
+//         bearerToken = globalStore.userLogin.userInfo.token;
+//     } else {
+//         bearerToken = AuthStr;
+//     }
 
-    return bearerToken;
-};
+//     return bearerToken;
+// };
 
-getToken();
+// getToken();
 
 export const getHabits = () => async dispatch => {
     try {
