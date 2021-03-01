@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from './../../actions/userActions';
 import { closeModalAction, closeSidebarAction } from './../../actions/uiActions';
@@ -35,35 +34,11 @@ const Sidebar = () => {
         <div
             className={styles.sidebar}
             style={{
-                transform: `translateX(${sidebar})`,
-                display: 'flex',
-                justifyContent: 'center'
+                transform: `translateX(${sidebar})`
             }}
         >
-            <div
-                style={{
-                    width: '80%',
-                    height: 'inherit'
-                    // backgroundColor: 'red'
-                }}
-            >
-                <div
-                    style={{
-                        width: '140px',
-                        height: '40px',
-                        fontWeight: '500',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        borderRadius: '5px',
-                        color: 'white',
-                        boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px -3px',
-                        backgroundColor: 'rgb(102, 168, 81)',
-                        cursor: 'pointer',
-                        marginTop: '20px'
-                    }}
-                    onClick={logoutAction}
-                >
+            <div className={styles.sidebarChild}>
+                <div className={styles.logoutButton} onClick={logoutAction}>
                     Log out
                 </div>
             </div>
