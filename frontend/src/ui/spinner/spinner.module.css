@@ -1,4 +1,4 @@
-.skFoldingCube {
+.habricateFoldingCube {
     margin: 20px auto;
     width: 40px;
     height: 40px;
@@ -7,7 +7,7 @@
     transform: rotateZ(45deg);
 }
 
-.skFoldingCube .skCube {
+.habricateFoldingCube .habricateCube {
     float: left;
     width: 50%;
     height: 50%;
@@ -16,7 +16,7 @@
     -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
-.skFoldingCube .skCube:before {
+.habricateFoldingCube .habricateCube:before {
     content: '';
     position: absolute;
     top: 0;
@@ -24,37 +24,37 @@
     width: 100%;
     height: 100%;
     background-color: rgb(102, 168, 81);
-    -webkit-animation: skFoldCubeAngle 2.4s infinite linear both;
-    animation: skFoldCubeAngle 2.4s infinite linear both;
+    -webkit-animation: habricateFoldCubeAngle 2.4s infinite linear both;
+    animation: habricateFoldCubeAngle 2.4s infinite linear both;
     -webkit-transform-origin: 100% 100%;
     -ms-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
 }
-.skFoldingCube .skCube2 {
+.habricateFoldingCube .habricateCube2 {
     -webkit-transform: scale(1.1) rotateZ(90deg);
     transform: scale(1.1) rotateZ(90deg);
 }
-.skFoldingCube .skCube3 {
+.habricateFoldingCube .habricateCube3 {
     -webkit-transform: scale(1.1) rotateZ(180deg);
     transform: scale(1.1) rotateZ(180deg);
 }
-.skFoldingCube .skCube4 {
+.habricateFoldingCube .habricateCube4 {
     -webkit-transform: scale(1.1) rotateZ(270deg);
     transform: scale(1.1) rotateZ(270deg);
 }
-.skFoldingCube .skCube2:before {
+.habricateFoldingCube .habricateCube2:before {
     -webkit-animation-delay: 0.3s;
     animation-delay: 0.3s;
 }
-.skFoldingCube .skCube3:before {
+.habricateFoldingCube .habricateCube3:before {
     -webkit-animation-delay: 0.6s;
     animation-delay: 0.6s;
 }
-.skFoldingCube .skCube4:before {
+.habricateFoldingCube .habricateCube4:before {
     -webkit-animation-delay: 0.9s;
     animation-delay: 0.9s;
 }
-@-webkit-keyframes skFoldCubeAngle {
+@-webkit-keyframes habricateFoldCubeAngle {
     0%,
     10% {
         -webkit-transform: perspective(140px) rotateX(-180deg);
@@ -75,7 +75,7 @@
     }
 }
 
-@keyframes skFoldCubeAngle {
+@keyframes habricateFoldCubeAngle {
     0%,
     10% {
         -webkit-transform: perspective(140px) rotateX(-180deg);
