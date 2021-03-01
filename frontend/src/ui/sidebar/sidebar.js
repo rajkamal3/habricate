@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from './../../actions/userActions';
 import { closeModalAction, closeSidebarAction } from './../../actions/uiActions';
 import styles from './sidebar.module.css';
 
 const Sidebar = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const [sidebar, setSidebar] = useState('-250px');
@@ -25,6 +28,7 @@ const Sidebar = () => {
         dispatch(logout());
         dispatch(closeModalAction());
         dispatch(closeSidebarAction());
+        history.push('/login');
     };
 
     return (
