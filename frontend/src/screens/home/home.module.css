@@ -1,3 +1,30 @@
+.errorContainer {
+    margin-top: 20px;
+}
+
+.errorContainerChild {
+    text-align: center;
+}
+
+.loginSignup {
+    transition: 0.3s ease;
+    width: 250px;
+    height: 45px;
+    border: none;
+    margin-top: 15px;
+    cursor: pointer;
+    background-color: rgb(102, 168, 81);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 60px;
+    font-family: Gilroy;
+    color: white;
+    letter-spacing: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .homeScreenContainer {
     /* background-color: saddlebrown; */
     width: 100%;
