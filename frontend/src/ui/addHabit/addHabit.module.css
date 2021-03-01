@@ -72,6 +72,10 @@
     cursor: pointer;
 }
 
+.dailyGoalInput {
+    width: 50px;
+}
+
 .dailyGoalEnable {
     pointer-events: all;
     opacity: 1;

@@ -46,8 +46,7 @@ function LoginScreen({ location, history }) {
                     </div>
                     <div>
                         <input
-                            className={styles.emailAndPassword}
-                            style={{ marginTop: '15px' }}
+                            className={[styles.emailAndPassword, styles.marginTop15px].join(' ')}
                             onChange={e => setPassword(e.target.value)}
                             type="password"
                             placeholder="Password"

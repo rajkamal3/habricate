@@ -130,10 +130,9 @@ const AddHabit = ({ click }) => {
                             Daily goal:{' '}
                             <input
                                 type="number"
-                                className={styles.addHabitDateInput}
+                                className={[styles.addHabitDateInput, styles.dailyGoalInput].join(' ')}
                                 onChange={e => setDailyGoalQuantity(e.target.value)}
                                 placeholder="   30"
-                                style={{ width: '50px' }}
                             />{' '}
                             <input
                                 type="text"

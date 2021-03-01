@@ -49,19 +49,15 @@ const Register = ({ location, history }) => {
                     <div>
                         {error && <div className={styles.errorMessage}>{error.statusText}</div>}
                         <input
-                            className={styles.emailNameAndPassword}
+                            className={[styles.emailNameAndPassword, styles.marginTop15px].join(' ')}
                             onChange={e => setEmail(e.target.value)}
                             type="text"
                             placeholder="Email"
-                            style={{
-                                marginTop: '15px'
-                            }}
                         />
                     </div>
                     <div>
                         <input
-                            className={styles.emailNameAndPassword}
-                            style={{ marginTop: '15px' }}
+                            className={[styles.emailNameAndPassword, styles.marginTop15px].join(' ')}
                             onChange={e => setPassword(e.target.value)}
                             type="password"
                             placeholder="Password"
@@ -70,20 +66,9 @@ const Register = ({ location, history }) => {
                     <button className={styles.registerButton} onClick={sumbitHandler}>
                         SIGN UP
                     </button>
-                    <div
-                        style={{
-                            marginTop: '15px'
-                        }}
-                    >
+                    <div className={styles.marginTop15px}>
                         Already have an account?{' '}
-                        <Link
-                            style={{
-                                textDecoration: 'underline',
-                                color: 'rgb(102, 168, 81)',
-                                fontWeight: '600'
-                            }}
-                            to="/login"
-                        >
+                        <Link className={styles.loginButtonLink} to="/login">
                             Log in
                         </Link>
                     </div>

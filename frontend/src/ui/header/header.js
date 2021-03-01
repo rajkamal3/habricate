@@ -7,13 +7,19 @@ import back from './../../assets/images/back.png';
 import user from './../../assets/images/user.png';
 import styles from './header.module.css';
 
-const userLoggedIn = localStorage.getItem('userId');
-
 const Header = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    let userLoggedIn;
+    const userFromStore = useSelector(state => state.userLogin);
     const currentPageName = useSelector(state => state.currentPageName.pageName);
+
+    if (userFromStore.userInfo) {
+        userLoggedIn = userFromStore.userInfo.token;
+    } else {
+        userLoggedIn = localStorage.getItem('userId');
+    }
 
     const openSidebar = () => {
         dispatch(openSidebarAction());

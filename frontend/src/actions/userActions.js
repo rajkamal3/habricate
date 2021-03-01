@@ -4,7 +4,8 @@ import {
     USER_LOGIN_FAIL,
     USER_SIGNUP_REQUEST,
     USER_SIGNUP_SUCCESS,
-    USER_SIGNUP_FAIL
+    USER_SIGNUP_FAIL,
+    USER_LOGOUT
 } from './../constants/userConstants';
 import axios from 'axios';
 
@@ -65,4 +66,13 @@ export const register = (name, email, password) => async dispatch => {
             payload: error.response
         });
     }
+};
+
+export const logout = () => dispatch => {
+    dispatch({
+        type: USER_LOGOUT
+    });
+
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('userId');
 };

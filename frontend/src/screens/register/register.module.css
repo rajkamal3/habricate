@@ -61,3 +61,13 @@
     border-radius: 500px;
     background-color: whitesmoke;
 }
+
+.marginTop15px {
+    margin-top: 15px;
+}
+
+.loginButtonLink {
+    text-decoration: underline;
+    color: rgb(102, 168, 81);
+    font-weight: 600;
+}

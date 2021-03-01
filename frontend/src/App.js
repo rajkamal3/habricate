@@ -30,7 +30,7 @@ function App() {
                 <Route path="/login" component={LoginScreen} />
                 {/* <Route path="/home" component={HomeScreen} /> */}
                 <Route path="/register" component={RegisterScreen} />
-                <Route path="/habits/:id" component={SingleHabit} currentPage="habits" />
+                <Route path="/habits/:id" component={SingleHabit} />
                 {/* <Route path="/register" component={RegisterScreen} /> */}
                 {/* <Route path="/admin/productlist/:pageNumber" component={ProductListScreen} exact /> */}
                 {/* <Route path="/search/:keyword" component={HomeScreen} exact /> */}

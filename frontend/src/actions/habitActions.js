@@ -12,12 +12,26 @@ import {
     ADD_SINGLE_HABIT_SUCCESS,
     ADD_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
+import store from './../store';
 import { closeAddHabitAction, closeModalAction } from './uiActions';
 import axios from 'axios';
 
-const jwt = localStorage.getItem('jwt');
-const AuthStr = 'Bearer '.concat(jwt);
-const user = localStorage.getItem('userId');
+let jwt = localStorage.getItem('jwt');
+let AuthStr = jwt;
+let user = localStorage.getItem('userId');
+
+const getToken = () => {
+    const globalStore = store.getState();
+    let bearerToken;
+
+    if (globalStore.userLogin.userInfo) {
+        bearerToken = globalStore.userLogin.userInfo.token;
+    } else {
+        bearerToken = AuthStr;
+    }
+
+    return bearerToken;
+};
 
 export const getHabits = () => async dispatch => {
     try {
@@ -40,14 +54,14 @@ export const getHabits = () => async dispatch => {
     }
 };
 
-export const fetchAllHabitsOfUser = () => async dispatch => {
+export const fetchAllHabitsOfUser = () => async (dispatch, getState) => {
     try {
         dispatch({
             type: FETCH_ALL_HABITS_OF_USER_REQUEST
         });
 
-        const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: AuthStr } });
-
+        const bearerToken = getToken();
+        const data = await axios.get('/api/v1/habits/myHabits', { headers: { Authorization: `Bearer ${bearerToken}` } });
         const userHabits = data.data.data;
 
         dispatch({
@@ -62,14 +76,14 @@ export const fetchAllHabitsOfUser = () => async dispatch => {
     }
 };
 
-export const fetchSingleHabit = habitId => async dispatch => {
+export const fetchSingleHabit = habitId => async (dispatch, getState) => {
     try {
         dispatch({
             type: FETCH_SINGLE_HABIT_OF_USER_REQUEST
         });
 
-        const data = await axios.get(`/api/v1/habits/${habitId}`, { headers: { Authorization: AuthStr } });
-
+        const bearerToken = getToken();
+        const data = await axios.get(`/api/v1/habits/${habitId}`, { headers: { Authorization: `Bearer ${bearerToken}` } });
         const habit = data.data.data;
 
         dispatch({
@@ -90,10 +104,11 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
             type: ADD_SINGLE_HABIT_REQUEST
         });
 
+        const bearerToken = getToken();
         const data = await axios.post(
             `/api/v1/habits`,
             { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
-            { headers: { Authorization: AuthStr } }
+            { headers: { Authorization: `Bearer ${bearerToken}` } }
         );
 
         dispatch({

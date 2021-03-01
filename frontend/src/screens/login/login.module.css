@@ -62,6 +62,10 @@
     background-color: whitesmoke;
 }
 
+.marginTop15px {
+    margin-top: 15px;
+}
+
 .forgotPassword {
     height: 25px;
     align-items: center;
