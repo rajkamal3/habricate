@@ -14,9 +14,9 @@ const HomeScreen = () => {
     const dispatch = useDispatch();
 
     const userHabitsFromStore = useSelector(state => state.userHabits);
-    const { loading, habits, error } = userHabitsFromStore;
-
     const addHabitFromStore = useSelector(state => state.addHabit);
+
+    const { loading, habits, error } = userHabitsFromStore;
     const { openAddHabit } = addHabitFromStore;
 
     const toHabit = id => {
