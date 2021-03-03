@@ -27,6 +27,7 @@ const AddHabit = ({ click }) => {
             );
 
         const counterToDisplayMinus = document.querySelectorAll('.timingCounter').length;
+
         if (counterToDisplayMinus > 0) {
             setMinusImg(true);
         }
@@ -41,8 +42,8 @@ const AddHabit = ({ click }) => {
         const timingCounterForRemoval = document.querySelectorAll('.timingCounter');
         const removeEl = document.querySelectorAll('.timingCounter')[timingCounterForRemoval.length - 1];
         document.querySelector('.timingsContainer').removeChild(removeEl);
-
         const counterToDisplayMinus = document.querySelectorAll('.timingCounter').length;
+
         if (counterToDisplayMinus === 0) {
             setMinusImg(false);
         }
