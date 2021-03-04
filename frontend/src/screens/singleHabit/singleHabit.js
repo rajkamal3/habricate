@@ -15,7 +15,7 @@ const SingleHabit = ({ history }) => {
     useEffect(() => {
         dispatch(fetchSingleHabit(id));
         dispatch(setCurrentPageAction('singleHabit'));
-        console.log(Date());
+        // console.log(Date());
     }, [dispatch, id]);
 
     return (
