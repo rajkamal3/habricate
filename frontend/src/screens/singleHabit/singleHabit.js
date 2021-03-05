@@ -16,6 +16,7 @@ const SingleHabit = ({ history }) => {
         dispatch(fetchSingleHabit(id));
         dispatch(setCurrentPageAction('singleHabit'));
         console.log(Date());
+        console.log(Date.now());
     }, [dispatch, id]);
 
     return (
