@@ -12,7 +12,8 @@
 		"start": "set NODE_ENV=development& nodemon backend/server.js",
 		"dev1": "nodemon backend/app.js",
 		"start:prod": "set NODE_ENV=production& nodemon backend/server.js",
-		"debug": "ndb node backend/server.js"
+		"debug": "ndb node backend/server.js",
+		"heroku": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"repository": {
 		"type": "git",

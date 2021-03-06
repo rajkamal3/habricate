@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const path = require('path');
 const habitRoutes = require('./routes/habitRoutes');
 const userRoutes = require('./routes/userRoutes');
 
@@ -35,6 +36,16 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/habits', habitRoutes);
 app.use('/api/v1/users', userRoutes);
+
+// Serve statis files in prod environment
+if (process.env.NODE_ENV === 'prod') {
+    // Set static folder
+    app.use(express.static('./../frontend/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(`${__dirname}/../frontend/build/index.html`));
+    });
+}
 
 const port = 3000;
 
