@@ -74,7 +74,8 @@ const HomeScreen = () => {
                                     </div>
                                     <div className={styles.habitDetailsContainer}>
                                         <div className={styles.habitName}>
-                                            {habit.name} <span className={styles.habitDetailsVerbiage}>at</span> {habit.doAtPlace}
+                                            {habit.name} <span className={styles.habitDetailsVerbiage}>at</span>{' '}
+                                            {habit.doAtPlace.toLowerCase()}
                                         </div>
                                         <div>{habit.doAtTime.join(', ')}</div>
                                         <div>{`${habit.dailyTarget} ${habit.dailyTargetUnit.toLowerCase()} per day`}</div>

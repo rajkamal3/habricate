@@ -27,6 +27,7 @@ const AddHabit = ({ click }) => {
             );
 
         const counterToDisplayMinus = document.querySelectorAll('.timingCounter').length;
+
         if (counterToDisplayMinus > 0) {
             setMinusImg(true);
         }
@@ -41,8 +42,8 @@ const AddHabit = ({ click }) => {
         const timingCounterForRemoval = document.querySelectorAll('.timingCounter');
         const removeEl = document.querySelectorAll('.timingCounter')[timingCounterForRemoval.length - 1];
         document.querySelector('.timingsContainer').removeChild(removeEl);
-
         const counterToDisplayMinus = document.querySelectorAll('.timingCounter').length;
+
         if (counterToDisplayMinus === 0) {
             setMinusImg(false);
         }
@@ -89,7 +90,7 @@ const AddHabit = ({ click }) => {
     const capitalize = title => {
         if (typeof title !== 'string') return '';
         const newTitle = title.charAt(0).toUpperCase() + title.slice(1);
-        setHabitTitle(newTitle);
+        return newTitle;
     };
 
     return (
@@ -110,14 +111,14 @@ const AddHabit = ({ click }) => {
                         <input
                             type="text"
                             className={styles.addHabitTextInputs}
-                            onChange={e => capitalize(e.target.value)}
+                            onChange={e => setHabitTitle(capitalize(e.target.value))}
                             placeholder="read a book"
                         />{' '}
                         at{' '}
                         <input
                             type="text"
                             className={styles.addHabitTextInputs}
-                            onChange={e => setLocation(e.target.value)}
+                            onChange={e => setLocation(capitalize(e.target.value))}
                             placeholder="study table"
                         />
                         .
@@ -137,7 +138,7 @@ const AddHabit = ({ click }) => {
                             <input
                                 type="text"
                                 className={styles.addHabitDateInput}
-                                onChange={e => setDailyGoalUnits(e.target.value)}
+                                onChange={e => setDailyGoalUnits(capitalize(e.target.value))}
                                 placeholder="pages"
                             />
                         </label>
