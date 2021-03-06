@@ -49,6 +49,6 @@ if (process.env.NODE_ENV === 'prod') {
 
 const port = 3000;
 
-app.listen(port || 3000, () => {
+app.listen(process.env.PORT || port || 3000, () => {
     console.log(`App running on port ${port}`);
 });
