@@ -9,10 +9,11 @@
 		"devFrontendNative": "npm start --prefix frontend-native",
 		"devWeb": "concurrently \"npm run devBackend\" \"npm run devFrontend\"",
 		"devNative": "concurrently \"npm run devBackend\" \"npm run devFrontendNative\"",
-		"start": "set NODE_ENV=development& nodemon backend/server.js",
+		"start": "node backend/app",
 		"dev1": "nodemon backend/app.js",
 		"start:prod": "set NODE_ENV=production& nodemon backend/server.js",
-		"debug": "ndb node backend/server.js"
+		"debug": "ndb node backend/server.js",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"repository": {
 		"type": "git",
