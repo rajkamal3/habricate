@@ -33,11 +33,8 @@ mongoose
 app.use('/api/v1/habits', habitRoutes);
 app.use('/api/v1/users', userRoutes);
 
-// Serve statis files in prod environment
 if (process.env.NODE_ENV === 'prod') {
-    // Set static folder
     app.use(express.static(`${__dirname}/../frontend/build`));
-
     app.get('/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/../frontend/build/index.html`)));
 } else {
     app.get('/', (req, res) => {
