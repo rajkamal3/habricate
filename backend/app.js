@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const path = require('path');
 const habitRoutes = require('./routes/habitRoutes');
 const userRoutes = require('./routes/userRoutes');
 
@@ -29,15 +30,20 @@ mongoose
         console.log(`Database connection successful.`);
     });
 
-app.get('/', (req, res) => {
-    res.send(`I'm a freakin' server!`);
-});
-
 app.use('/api/v1/habits', habitRoutes);
 app.use('/api/v1/users', userRoutes);
 
+if (process.env.NODE_ENV === 'prod') {
+    app.use(express.static(`${__dirname}/../frontend/build`));
+    app.get('/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/../frontend/build/index.html`)));
+} else {
+    app.get('/', (req, res) => {
+        res.send(`I'm a freakin' server!`);
+    });
+}
+
 const port = 3000;
 
-app.listen(port || 3000, () => {
+app.listen(process.env.PORT || port || 3000, () => {
     console.log(`App running on port ${port}`);
 });
