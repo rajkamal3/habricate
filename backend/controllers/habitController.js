@@ -31,7 +31,7 @@ exports.getAllHabits = catchAsync(async (req, res, next) => {
 exports.getSingleHabit = catchAsync(async (req, res, next) => {
     const habit = await Habit.findById(req.params.id);
 
-    console.log(Date.now());
+    console.log(Date());
 
     res.status(201).json({
         status: 'success',
