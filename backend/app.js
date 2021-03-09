@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const schedule = require('node-schedule');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const path = require('path');
@@ -29,6 +30,10 @@ mongoose
     .then(() => {
         console.log(`Database connection successful.`);
     });
+
+const job = schedule.scheduleJob('*/30 * * * * *', function () {
+    console.log(Math.floor(Math.random() * 10));
+});
 
 app.use('/api/v1/habits', habitRoutes);
 app.use('/api/v1/users', userRoutes);
