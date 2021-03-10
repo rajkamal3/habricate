@@ -31,9 +31,9 @@ mongoose
         console.log(`Database connection successful.`);
     });
 
-const job = schedule.scheduleJob('*/30 * * * * *', function () {
-    console.log(Math.floor(Math.random() * 10));
-});
+// const job = schedule.scheduleJob('*/30 * * * * *', function () {
+//     console.log(Math.floor(Math.random() * 10));
+// });
 
 app.use('/api/v1/habits', habitRoutes);
 app.use('/api/v1/users', userRoutes);
