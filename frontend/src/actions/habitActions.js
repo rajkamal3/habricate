@@ -98,7 +98,7 @@ export const fetchSingleHabit = habitId => async (dispatch, getState) => {
     }
 };
 
-export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit) => async dispatch => {
+export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit, reminder) => async dispatch => {
     try {
         dispatch({
             type: ADD_SINGLE_HABIT_REQUEST
@@ -107,7 +107,7 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
         const bearerToken = getToken();
         const data = await axios.post(
             `/api/v1/habits`,
-            { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
+            { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit, reminder },
             { headers: { Authorization: `Bearer ${bearerToken}` } }
         );
 

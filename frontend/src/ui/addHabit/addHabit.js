@@ -83,7 +83,7 @@ const AddHabit = ({ click }) => {
 
     const addHabit = () => {
         updateExtraTime();
-        dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits));
+        dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits, reminder));
         click();
     };
 
