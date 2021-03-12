@@ -27,6 +27,9 @@ const habitSchema = new mongoose.Schema(
         },
         dailyTargetUnit: {
             type: String
+        },
+        reminder: {
+            type: Boolean
         }
     },
     {
