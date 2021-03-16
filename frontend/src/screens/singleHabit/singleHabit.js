@@ -45,6 +45,15 @@ const SingleHabit = ({ history }) => {
                                         </div>
                                     );
                                 })}
+                                {/*  */}
+                                {habit.doAtTimeChecks.map(check => {
+                                    return (
+                                        <div key={Math.random()}>
+                                            <input type="checkbox" defaultChecked={check} />
+                                        </div>
+                                    );
+                                })}
+                                {/*  */}
                             </span>
                         </div>
                     </div>
