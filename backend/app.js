@@ -2,11 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 // const schedule = require('node-schedule');
 const cron = require('node-cron');
+const Habit = require('./models/habitModel');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const path = require('path');
 const habitRoutes = require('./routes/habitRoutes');
 const userRoutes = require('./routes/userRoutes');
+
+const store = require('store2');
 
 dotenv.config({
     path: `${__dirname}/config.env`
@@ -59,9 +62,11 @@ mongoose
 // );
 cron.schedule(
     // '0 0 * * *',
-    '*/30 * * * * *',
-    () => {
-        console.log('Runs everyday at 12:00 AM at Asia/Kolkata timezone ' + Math.floor(Math.random() * 10));
+    '*/3 * * * * *',
+    async () => {
+        // console.log('Runs everyday at 12:00 AM at Asia/Kolkata timezone ' + Math.floor(Math.random() * 10));
+        const habits = await Habit.find({ user: store.user._id });
+        console.log(habits);
     },
     {
         scheduled: true,

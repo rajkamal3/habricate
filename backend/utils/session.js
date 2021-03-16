@@ -1,0 +1,72 @@
+//  [
+//        {
+//          doAtTime: [ '00:50' ],
+//          _id: 6037ea1edf822641b0ddabfb,
+//          user: 601844eb2a7be30c98b35473,
+//          name: 'Have cheap thrills',
+//          doAtPlace: 'Sia',
+//          dailyTarget: 12,
+//          dailyTargetUnit: 'chandeliers',
+//          createdAt: 2021-02-25T18:19:10.825Z,
+//          updatedAt: 2021-02-25T18:19:10.825Z,
+//          __v: 0,
+//          averageGoal: 12,
+//          id: '6037ea1edf822641b0ddabfb'
+//        },
+//        {
+//          doAtTime: [ '00:45' ],
+//          _id: 603bdce727580b34e4567f84,
+//          user: 601844eb2a7be30c98b35473,
+//          name: 'Make a change',
+//          doAtPlace: 'black community',
+//          dailyTarget: 25,
+//          dailyTargetUnit: 'niggas',
+//          createdAt: 2021-02-28T18:11:52.004Z,
+//          updatedAt: 2021-02-28T18:11:52.004Z,
+//          __v: 0,
+//          averageGoal: 25,
+//          id: '603bdce727580b34e4567f84'
+//        },
+//        {
+//          doAtTime: [ '08:05' ],
+//          _id: 603e7e678ebc574848552aa0,
+//          user: 601844eb2a7be30c98b35473,
+//          name: 'Wake up',
+//          doAtPlace: 'the bed',
+//          dailyTarget: 0,
+//          dailyTargetUnit: '',
+//          createdAt: 2021-03-02T18:05:27.288Z,
+//          updatedAt: 2021-03-02T18:05:27.288Z,
+//          __v: 0,
+//          averageGoal: 0,
+//          id: '603e7e678ebc574848552aa0'
+//        },
+//        {
+//          doAtTime: [ '23:05' ],
+//          _id: 6044f445d89857001558a350,
+//          user: 601844eb2a7be30c98b35473,
+//          name: 'Have sex',
+//          doAtPlace: 'The bed',
+//          dailyTarget: 98,
+//          dailyTargetUnit: 'Hh',
+//          createdAt: 2021-03-07T15:41:57.797Z,
+//          updatedAt: 2021-03-07T15:41:57.797Z,
+//          __v: 0,
+//          averageGoal: 98,
+//          id: '6044f445d89857001558a350'
+//        },
+//        {
+//          doAtTime: [ '21:20' ],
+//          _id: 60463f21bad5890015faa3dd,
+//          user: 601844eb2a7be30c98b35473,
+//          name: 'Frick',
+//          doAtPlace: 'Bring',
+//          dailyTarget: 25,
+//          dailyTargetUnit: 'Fricks',
+//          createdAt: 2021-03-08T15:13:37.419Z,
+//          updatedAt: 2021-03-08T15:13:37.419Z,
+//          __v: 0,
+//          averageGoal: 25,
+//          id: '60463f21bad5890015faa3dd'
+//        }
+//      ]

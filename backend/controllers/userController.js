@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const catchAsync = require('express-async-handler');
 const jwt = require('jsonwebtoken');
+const store = require('store2');
 
 const signToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -18,6 +19,8 @@ const createAndSendToken = (user, statusCode, res) => {
     res.cookie('jwt', token, cookieOptions);
 
     user.password = undefined;
+
+    store.user = user;
 
     res.status(statusCode).json({
         status: 'Success',
