@@ -16,11 +16,9 @@ const habitSchema = new mongoose.Schema(
             {
                 type: String,
                 required: [true, 'Please enter the time(s) you want to do this.']
-            },
-            {
-                type: String
             }
         ],
+        doAtTimeChecks: [],
         doAtPlace: {
             type: String,
             required: [true, 'Please enter the place you do this.']
