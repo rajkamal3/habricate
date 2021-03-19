@@ -65,8 +65,8 @@ cron.schedule(
     '*/3 * * * * *',
     async () => {
         // console.log('Runs everyday at 12:00 AM at Asia/Kolkata timezone ' + Math.floor(Math.random() * 10));
-        const habits = await Habit.find({ user: store.user._id });
-        console.log(habits);
+        // const habits = await Habit.find({ user: store.user._id });
+        // console.log(habits);
     },
     {
         scheduled: true,
