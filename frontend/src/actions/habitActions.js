@@ -105,6 +105,7 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
         });
 
         const bearerToken = getToken();
+
         const data = await axios.post(
             `/api/v1/habits`,
             { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit, reminder },
