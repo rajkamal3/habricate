@@ -35,24 +35,36 @@ const SingleHabit = ({ history }) => {
                     <div className={styles.habitDetailsContainer}>
                         <div className={[styles.habitDetailsContainerChild, 'ticks'].join(' ')}>
                             <span>
-                                {habit.doAtTime.map(time => {
+                                {habit.doAtTime.map(goal => {
                                     return (
-                                        <div key={time} className={styles.doAtTime}>
-                                            <input type="checkbox" id={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`} />
-                                            <label htmlFor={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
-                                                {time} - {habit.averageGoal} {habit.dailyTargetUnit}
+                                        <div
+                                            key={goal.time}
+                                            className={styles.doAtgoal}
+                                            style={{
+                                                height: '30px',
+                                                fontWeight: '500',
+                                                color: '#888888'
+                                            }}
+                                        >
+                                            <input
+                                                type="checkbox"
+                                                id={`${goal.time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}
+                                                defaultChecked={goal.checked}
+                                            />
+                                            <label htmlFor={`${goal.time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
+                                                {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit}
                                             </label>
                                         </div>
                                     );
                                 })}
                                 {/*  */}
-                                {habit.doAtTimeChecks.map(check => {
+                                {/* {habit.doAtTimeChecks.map(check => {
                                     return (
                                         <div key={Math.random()}>
                                             <input type="checkbox" defaultChecked={check} />
                                         </div>
                                     );
-                                })}
+                                })} */}
                                 {/*a  */}
                             </span>
                         </div>

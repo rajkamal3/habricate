@@ -77,7 +77,11 @@ const HomeScreen = () => {
                                             {habit.name} <span className={styles.habitDetailsVerbiage}>at</span>{' '}
                                             {habit.doAtPlace.toLowerCase()}
                                         </div>
-                                        <div>{habit.doAtTime.join(', ')}</div>
+                                        <div>
+                                            {habit.doAtTime.map(goal => {
+                                                return <span key={Math.random()}>{goal.time} </span>;
+                                            })}
+                                        </div>
                                         <div>{`${habit.dailyTarget} ${habit.dailyTargetUnit.toLowerCase()} per day`}</div>
                                     </div>
                                     <div className={styles.eachHabitRightArrow}>

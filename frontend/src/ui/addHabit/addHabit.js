@@ -57,7 +57,7 @@ const AddHabit = ({ click }) => {
     const updateExtraTime = async () => {
         const defaultTimeVar = {
             date: new Date().toLocaleDateString(),
-            doAtTime: document.querySelector('.defaultTime').value,
+            time: document.querySelector('.defaultTime').value,
             checked: false
         };
         const addedTimesVar = Array.from(document.querySelectorAll('.addedTimes'));
@@ -67,7 +67,7 @@ const AddHabit = ({ click }) => {
         for (let i = 0; i < addedTimesVar.length; i++) {
             addedTimesArr.push({
                 date: new Date().toLocaleDateString(),
-                doAtTime: addedTimesVar[i].value,
+                time: addedTimesVar[i].value,
                 checked: false
             });
         }
