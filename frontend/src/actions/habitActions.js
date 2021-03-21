@@ -10,7 +10,10 @@ import {
     FETCH_SINGLE_HABIT_OF_USER_FAIL,
     ADD_SINGLE_HABIT_REQUEST,
     ADD_SINGLE_HABIT_SUCCESS,
-    ADD_SINGLE_HABIT_FAIL
+    ADD_SINGLE_HABIT_FAIL,
+    UPDATE_SINGLE_HABIT_REQUEST,
+    UPDATE_SINGLE_HABIT_SUCCESS,
+    UPDATE_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
 import store from './../store';
 import { closeAddHabitAction, closeModalAction } from './uiActions';
@@ -125,4 +128,11 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
             payload: error.response
         });
     }
+};
+
+export const updateHabit = id => async dispatch => {
+    dispatch({
+        type: UPDATE_SINGLE_HABIT_REQUEST
+    });
+    console.log(id);
 };

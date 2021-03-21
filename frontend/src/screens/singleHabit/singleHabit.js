@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Spinner from './../../ui/spinner/spinner';
 import styles from './singleHabit.module.css';
 import pen from './../../assets/images/pen.png';
-import { fetchSingleHabit } from '../../actions/habitActions';
+import { fetchSingleHabit, updateHabit } from '../../actions/habitActions';
 import { setCurrentPageAction } from '../../actions/uiActions';
 
 const SingleHabit = ({ history }) => {
@@ -15,11 +15,10 @@ const SingleHabit = ({ history }) => {
     useEffect(() => {
         dispatch(fetchSingleHabit(id));
         dispatch(setCurrentPageAction('singleHabit'));
-        // console.log(Date());
     }, [dispatch, id]);
 
     const postChecked = id => {
-        console.log(id);
+        dispatch(updateHabit(id));
     };
 
     return (
