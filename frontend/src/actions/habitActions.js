@@ -131,8 +131,15 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
 };
 
 export const updateHabit = id => async dispatch => {
-    dispatch({
-        type: UPDATE_SINGLE_HABIT_REQUEST
-    });
-    console.log(id);
+    try {
+        dispatch({
+            type: UPDATE_SINGLE_HABIT_REQUEST
+        });
+        console.log(id);
+    } catch (error) {
+        dispatch({
+            type: UPDATE_SINGLE_HABIT_FAIL,
+            payload: error.response
+        });
+    }
 };
