@@ -37,35 +37,14 @@ const SingleHabit = ({ history }) => {
                             <span>
                                 {habit.doAtTime.map(goal => {
                                     return (
-                                        <div
-                                            key={goal.time}
-                                            className={styles.doAtgoal}
-                                            style={{
-                                                height: '30px',
-                                                fontWeight: '500',
-                                                color: '#888888'
-                                            }}
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                id={`${goal.time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}
-                                                defaultChecked={goal.checked}
-                                            />
-                                            <label htmlFor={`${goal.time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
-                                                {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit}
+                                        <div key={goal._id} className={styles.doAtGoal}>
+                                            <input type="checkbox" id={goal._id} defaultChecked={goal.checked} />
+                                            <label htmlFor={goal._id}>
+                                                {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit} {goal._id}
                                             </label>
                                         </div>
                                     );
                                 })}
-                                {/*  */}
-                                {/* {habit.doAtTimeChecks.map(check => {
-                                    return (
-                                        <div key={Math.random()}>
-                                            <input type="checkbox" defaultChecked={check} />
-                                        </div>
-                                    );
-                                })} */}
-                                {/*a  */}
                             </span>
                         </div>
                     </div>
