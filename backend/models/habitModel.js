@@ -12,10 +12,22 @@ const habitSchema = new mongoose.Schema(
             required: [true, 'Habit name is mandatory.'],
             trim: true
         },
-        doAtTime: {
-            type: Array,
-            required: [true, 'Please enter the time(s) you want to do this.']
-        },
+        doAtTime: [
+            {
+                date: {
+                    type: Date,
+                    default: Date.now()
+                },
+                time: {
+                    type: String,
+                    required: [true, 'Please enter the time(s) you want to do this.']
+                },
+                checked: {
+                    type: Boolean,
+                    default: false
+                }
+            }
+        ],
         doAtPlace: {
             type: String,
             required: [true, 'Please enter the place you do this.']
