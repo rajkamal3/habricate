@@ -18,6 +18,10 @@ const SingleHabit = ({ history }) => {
         // console.log(Date());
     }, [dispatch, id]);
 
+    const postChecked = id => {
+        console.log(id);
+    };
+
     return (
         <div className={styles.singleHabitContainer}>
             {loading && <Spinner />}
@@ -37,7 +41,12 @@ const SingleHabit = ({ history }) => {
                             <span>
                                 {habit.doAtTime.map(goal => {
                                     return (
-                                        <div key={goal._id} className={styles.doAtGoal}>
+                                        <div
+                                            key={goal._id}
+                                            data-id={goal._id}
+                                            className={styles.doAtGoal}
+                                            onClick={e => postChecked(e.target.parentNode.getAttribute('data-id'))}
+                                        >
                                             <input type="checkbox" id={goal._id} defaultChecked={goal.checked} />
                                             <label htmlFor={goal._id}>
                                                 {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit} {goal._id}
