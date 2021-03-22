@@ -135,6 +135,10 @@ export const updateHabit = id => async dispatch => {
         dispatch({
             type: UPDATE_SINGLE_HABIT_REQUEST
         });
+
+        dispatch({
+            type: UPDATE_SINGLE_HABIT_SUCCESS
+        });
         console.log(id);
     } catch (error) {
         dispatch({
