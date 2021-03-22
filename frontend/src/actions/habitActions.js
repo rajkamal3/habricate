@@ -130,18 +130,13 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
     }
 };
 
-export const updateHabit = habitId => async dispatch => {
+export const updateHabit = (habitId, checked) => async dispatch => {
     try {
         dispatch({
             type: UPDATE_SINGLE_HABIT_REQUEST
         });
 
-        // const bearerToken = getToken();
-
-        console.log('BBBBBBBBBBBBBBBBBBBBB');
-
-        const data = await axios.patch('/api/v1/habits/myHabits', habitId);
-        console.log(data);
+        await axios.patch('/api/v1/habits/myHabits', { habitId, checked });
 
         dispatch({
             type: UPDATE_SINGLE_HABIT_SUCCESS

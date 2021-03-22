@@ -38,15 +38,12 @@ exports.getSingleHabit = catchAsync(async (req, res, next) => {
 });
 
 exports.updateChecklist = catchAsync(async (req, res, next) => {
-    const id = '6056f1310c231341c41e02fe';
-    console.log(id);
+    const { habitId, checked } = req.body;
 
-    const singleTime = await Habit.updateOne(
-        { doAtTime: { $elemMatch: { _id: '6056f1310c231341c41e02fe' } } },
-        { $set: { 'doAtTime.$.checked': true } }
-    );
+    await Habit.updateOne({ doAtTime: { $elemMatch: { _id: habitId } } }, { $set: { 'doAtTime.$.checked': checked } });
 
-    console.log(singleTime);
-
-    res.end();
+    res.status(204).json({
+        status: 'success',
+        message: 'Updated successfully.'
+    });
 });

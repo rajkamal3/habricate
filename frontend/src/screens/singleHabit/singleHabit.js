@@ -48,7 +48,7 @@ const SingleHabit = ({ history }) => {
                                                 defaultChecked={goal.checked}
                                             />
                                             <label htmlFor={goal._id}>
-                                                {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit} {goal._id}
+                                                {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit}
                                             </label>
                                         </div>
                                     );
