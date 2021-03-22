@@ -31,10 +31,22 @@ exports.getAllHabits = catchAsync(async (req, res, next) => {
 exports.getSingleHabit = catchAsync(async (req, res, next) => {
     const habit = await Habit.findById(req.params.id);
 
-    console.log(Date());
-
     res.status(201).json({
         status: 'success',
         data: habit
     });
+});
+
+exports.updateChecklist = catchAsync(async (req, res, next) => {
+    const id = '6056f1310c231341c41e02fe';
+    console.log(id);
+
+    const singleTime = await Habit.updateOne(
+        { doAtTime: { $elemMatch: { _id: '6056f1310c231341c41e02fe' } } },
+        { $set: { 'doAtTime.$.checked': true } }
+    );
+
+    console.log(singleTime);
+
+    res.end();
 });

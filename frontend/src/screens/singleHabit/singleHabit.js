@@ -42,9 +42,11 @@ const SingleHabit = ({ history }) => {
                                     return (
                                         <div
                                             key={goal._id}
+                                            data-habit-id={habit._id}
                                             data-id={goal._id}
                                             className={styles.doAtGoal}
                                             onClick={e => postChecked(e.target.parentNode.getAttribute('data-id'))}
+                                            // e.target.parentNode.getAttribute('data-id')
                                         >
                                             <input type="checkbox" id={goal._id} defaultChecked={goal.checked} />
                                             <label htmlFor={goal._id}>
