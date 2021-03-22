@@ -17,10 +17,8 @@ const SingleHabit = ({ history }) => {
         dispatch(setCurrentPageAction('singleHabit'));
     }, [dispatch, id]);
 
-    const postChecked = (id, huelled) => {
-        // const isChecked = document.getElementById(id).checked;
-        console.log(huelled);
-        dispatch(updateHabit(id));
+    const postChecked = (id, isChecked) => {
+        dispatch(updateHabit(id, isChecked));
     };
 
     return (
