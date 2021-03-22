@@ -10,7 +10,10 @@ import {
     FETCH_SINGLE_HABIT_OF_USER_FAIL,
     ADD_SINGLE_HABIT_REQUEST,
     ADD_SINGLE_HABIT_SUCCESS,
-    ADD_SINGLE_HABIT_FAIL
+    ADD_SINGLE_HABIT_FAIL,
+    UPDATE_SINGLE_HABIT_REQUEST,
+    UPDATE_SINGLE_HABIT_SUCCESS,
+    UPDATE_SINGLE_HABIT_FAIL
 } from './../constants/habitConstants';
 import store from './../store';
 import { closeAddHabitAction, closeModalAction } from './uiActions';
@@ -98,16 +101,17 @@ export const fetchSingleHabit = habitId => async (dispatch, getState) => {
     }
 };
 
-export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit) => async dispatch => {
+export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit, reminder) => async dispatch => {
     try {
         dispatch({
             type: ADD_SINGLE_HABIT_REQUEST
         });
 
         const bearerToken = getToken();
+
         const data = await axios.post(
             `/api/v1/habits`,
-            { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit },
+            { user, name, doAtTime, doAtPlace, dailyTarget, dailyTargetUnit, reminder },
             { headers: { Authorization: `Bearer ${bearerToken}` } }
         );
 
@@ -121,6 +125,25 @@ export const addSingleHabit = (name, doAtTime, doAtPlace, dailyTarget, dailyTarg
     } catch (error) {
         dispatch({
             type: ADD_SINGLE_HABIT_FAIL,
+            payload: error.response
+        });
+    }
+};
+
+export const updateHabit = (habitId, checked) => async dispatch => {
+    try {
+        dispatch({
+            type: UPDATE_SINGLE_HABIT_REQUEST
+        });
+
+        await axios.patch('/api/v1/habits/myHabits', { habitId, checked });
+
+        dispatch({
+            type: UPDATE_SINGLE_HABIT_SUCCESS
+        });
+    } catch (error) {
+        dispatch({
+            type: UPDATE_SINGLE_HABIT_FAIL,
             payload: error.response
         });
     }

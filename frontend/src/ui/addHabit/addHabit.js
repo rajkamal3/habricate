@@ -55,14 +55,24 @@ const AddHabit = ({ click }) => {
     };
 
     const updateExtraTime = async () => {
-        const defaultTimeVar = document.querySelector('.defaultTime').value;
+        const defaultTimeVar = {
+            date: new Date().toLocaleDateString(),
+            time: document.querySelector('.defaultTime').value,
+            checked: false
+        };
         const addedTimesVar = Array.from(document.querySelectorAll('.addedTimes'));
 
         let addedTimesArr = [];
 
         for (let i = 0; i < addedTimesVar.length; i++) {
-            addedTimesArr.push(addedTimesVar[i].value);
+            addedTimesArr.push({
+                date: new Date().toLocaleDateString(),
+                time: addedTimesVar[i].value,
+                checked: false
+            });
         }
+
+        console.log(addedTimesArr);
 
         const totalTimes = [defaultTimeVar, ...addedTimesArr];
 
@@ -83,7 +93,7 @@ const AddHabit = ({ click }) => {
 
     const addHabit = () => {
         updateExtraTime();
-        dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits));
+        dispatch(addSingleHabit(habitTitle, times, location, dailyGoalQuantity, dailyGoalUnits, reminder));
         click();
     };
 

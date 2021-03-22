@@ -14,8 +14,18 @@ const habitSchema = new mongoose.Schema(
         },
         doAtTime: [
             {
-                type: String,
-                required: [true, 'Please enter the time(s) you want to do this.']
+                date: {
+                    type: Date,
+                    default: Date.now()
+                },
+                time: {
+                    type: String,
+                    required: [true, 'Please enter the time(s) you want to do this.']
+                },
+                checked: {
+                    type: Boolean,
+                    default: false
+                }
             }
         ],
         doAtPlace: {
@@ -27,6 +37,9 @@ const habitSchema = new mongoose.Schema(
         },
         dailyTargetUnit: {
             type: String
+        },
+        reminder: {
+            type: Boolean
         }
     },
     {

@@ -31,10 +31,19 @@ exports.getAllHabits = catchAsync(async (req, res, next) => {
 exports.getSingleHabit = catchAsync(async (req, res, next) => {
     const habit = await Habit.findById(req.params.id);
 
-    console.log(Date());
-
     res.status(201).json({
         status: 'success',
         data: habit
+    });
+});
+
+exports.updateChecklist = catchAsync(async (req, res, next) => {
+    const { habitId, checked } = req.body;
+
+    await Habit.updateOne({ doAtTime: { $elemMatch: { _id: habitId } } }, { $set: { 'doAtTime.$.checked': checked } });
+
+    res.status(204).json({
+        status: 'success',
+        message: 'Updated successfully.'
     });
 });
