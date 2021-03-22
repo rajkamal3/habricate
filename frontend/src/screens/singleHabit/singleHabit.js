@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Spinner from './../../ui/spinner/spinner';
 import styles from './singleHabit.module.css';
 import pen from './../../assets/images/pen.png';
-import { fetchSingleHabit } from '../../actions/habitActions';
+import { fetchSingleHabit, updateHabit } from '../../actions/habitActions';
 import { setCurrentPageAction } from '../../actions/uiActions';
 
 const SingleHabit = ({ history }) => {
@@ -15,8 +15,11 @@ const SingleHabit = ({ history }) => {
     useEffect(() => {
         dispatch(fetchSingleHabit(id));
         dispatch(setCurrentPageAction('singleHabit'));
-        // console.log(Date());
     }, [dispatch, id]);
+
+    const postChecked = (id, isChecked) => {
+        dispatch(updateHabit(id, isChecked));
+    };
 
     return (
         <div className={styles.singleHabitContainer}>
@@ -35,12 +38,17 @@ const SingleHabit = ({ history }) => {
                     <div className={styles.habitDetailsContainer}>
                         <div className={[styles.habitDetailsContainerChild, 'ticks'].join(' ')}>
                             <span>
-                                {habit.doAtTime.map(time => {
+                                {habit.doAtTime.map(goal => {
                                     return (
-                                        <div key={time} className={styles.doAtTime}>
-                                            <input type="checkbox" id={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`} />
-                                            <label htmlFor={`${time} - ${habit.averageGoal} ${habit.dailyTargetUnit}`}>
-                                                {time} - {habit.averageGoal} {habit.dailyTargetUnit}
+                                        <div key={goal._id} data-id={goal._id} className={styles.doAtGoal}>
+                                            <input
+                                                onChange={e => postChecked(e.target.parentNode.getAttribute('data-id'), e.target.checked)}
+                                                type="checkbox"
+                                                id={goal._id}
+                                                defaultChecked={goal.checked}
+                                            />
+                                            <label htmlFor={goal._id}>
+                                                {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit}
                                             </label>
                                         </div>
                                     );
