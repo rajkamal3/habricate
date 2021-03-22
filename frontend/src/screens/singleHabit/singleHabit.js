@@ -17,7 +17,9 @@ const SingleHabit = ({ history }) => {
         dispatch(setCurrentPageAction('singleHabit'));
     }, [dispatch, id]);
 
-    const postChecked = id => {
+    const postChecked = (id, huelled) => {
+        // const isChecked = document.getElementById(id).checked;
+        console.log(huelled);
         dispatch(updateHabit(id));
     };
 
@@ -40,15 +42,13 @@ const SingleHabit = ({ history }) => {
                             <span>
                                 {habit.doAtTime.map(goal => {
                                     return (
-                                        <div
-                                            key={goal._id}
-                                            data-habit-id={habit._id}
-                                            data-id={goal._id}
-                                            className={styles.doAtGoal}
-                                            onClick={e => postChecked(e.target.parentNode.getAttribute('data-id'))}
-                                            // e.target.parentNode.getAttribute('data-id')
-                                        >
-                                            <input type="checkbox" id={goal._id} defaultChecked={goal.checked} />
+                                        <div key={goal._id} data-id={goal._id} className={styles.doAtGoal}>
+                                            <input
+                                                onChange={e => postChecked(e.target.parentNode.getAttribute('data-id'), e.target.checked)}
+                                                type="checkbox"
+                                                id={goal._id}
+                                                defaultChecked={goal.checked}
+                                            />
                                             <label htmlFor={goal._id}>
                                                 {goal.time} - {habit.averageGoal} {habit.dailyTargetUnit} {goal._id}
                                             </label>
