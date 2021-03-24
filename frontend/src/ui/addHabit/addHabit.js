@@ -55,32 +55,25 @@ const AddHabit = ({ click }) => {
     };
 
     const updateExtraTime = async () => {
-        const defaultTimeVar = {
-            date: new Date().toLocaleDateString(),
-            time: document.querySelector('.defaultTime').value,
-            checked: false
-        };
+        let addedTimesArr = [
+            {
+                data: []
+            }
+        ];
+
+        addedTimesArr[0].data.push({ time: document.querySelector('.defaultTime').value });
+
         const addedTimesVar = Array.from(document.querySelectorAll('.addedTimes'));
 
-        let addedTimesArr = [];
-
         for (let i = 0; i < addedTimesVar.length; i++) {
-            addedTimesArr.push({
-                date: new Date().toLocaleDateString(),
-                time: addedTimesVar[i].value,
-                checked: false
-            });
+            addedTimesArr[0].data.push({ time: addedTimesVar[i].value });
         }
-
-        console.log(addedTimesArr);
-
-        const totalTimes = [defaultTimeVar, ...addedTimesArr];
 
         while (times.length > 0) {
             times.pop();
         }
 
-        times.push(...totalTimes);
+        times.push(...addedTimesArr);
     };
 
     const toggleDailyGoal = () => {
