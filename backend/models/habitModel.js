@@ -26,7 +26,8 @@ const habitSchema = new mongoose.Schema(
                         },
                         time: String
                     }
-                ]
+                ],
+                _id: false
             }
         ],
         doAtPlace: {

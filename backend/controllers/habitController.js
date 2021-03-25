@@ -40,7 +40,7 @@ exports.getSingleHabit = catchAsync(async (req, res, next) => {
 exports.updateChecklist = catchAsync(async (req, res, next) => {
     const { habitId, checked } = req.body;
 
-    await Habit.updateOne({ doAtTime: { $elemMatch: { _id: habitId } } }, { $set: { 'doAtTime.$.checked': checked } });
+    await Habit.updateOne({ 'doAtTime.0.data': { $elemMatch: { _id: habitId } } }, { $set: { 'doAtTime.0.data.$.checked': checked } });
 
     res.status(204).json({
         status: 'success',
