@@ -78,7 +78,7 @@ const HomeScreen = () => {
                                             {habit.doAtPlace.toLowerCase()}
                                         </div>
                                         <div>
-                                            {habit.doAtTime.map(goal => {
+                                            {habit.doAtTime[habit.doAtTime.length - 1].data.map(goal => {
                                                 return <span key={Math.random()}>{goal.time} </span>;
                                             })}
                                         </div>

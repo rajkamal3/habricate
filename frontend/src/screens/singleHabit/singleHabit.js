@@ -38,7 +38,7 @@ const SingleHabit = ({ history }) => {
                     <div className={styles.habitDetailsContainer}>
                         <div className={[styles.habitDetailsContainerChild, 'ticks'].join(' ')}>
                             <span>
-                                {habit.doAtTime.map(goal => {
+                                {habit.doAtTime[habit.doAtTime.length - 1].data.map(goal => {
                                     return (
                                         <div key={goal._id} data-id={goal._id} className={styles.doAtGoal}>
                                             <input
