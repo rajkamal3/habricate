@@ -18,14 +18,16 @@ const habitSchema = new mongoose.Schema(
                     type: Date,
                     default: Date.now()
                 },
-                time: {
-                    type: String,
-                    required: [true, 'Please enter the time(s) you want to do this.']
-                },
-                checked: {
-                    type: Boolean,
-                    default: false
-                }
+                data: [
+                    {
+                        checked: {
+                            type: Boolean,
+                            default: false
+                        },
+                        time: String
+                    }
+                ],
+                _id: false
             }
         ],
         doAtPlace: {
